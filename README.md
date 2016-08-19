@@ -2,6 +2,8 @@
 
 Automatic icon resizing for React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
 
+![Banner Image](./assets/banner.png)
+
 ## Introduction
 
 This simple tool allows you to create a single icon in your react-native project, then create icons of all required sizes from it. It currently works for iOS and Android.
