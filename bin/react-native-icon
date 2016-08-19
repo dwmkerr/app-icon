@@ -1,0 +1,64 @@
+#!/bin/sh
+
+# Generates an icon. Usage:
+# generate source.png dest.png "32"   # 32x32 pixels
+generate ()
+{
+    # Create the destination folder if needed.
+    DESTINATION_DIR=$(dirname $2)
+    mkdir -p $DESTINATION_DIR
+
+    # Resize the icon and update the output.
+    convert $1 -resize $3x$3 $2
+	echo "   \033[32m✓\033[0m $2 created..."
+}
+
+# See if we've got an iOS iconset folder.
+IOS=$(find ./ios -name "AppIcon.appiconset" -type d)
+
+# Do we have an iOS project?
+if [ ! -z "$IOS" ]; then
+
+	echo "Found iOS icons at $IOS..."
+
+	generate "icon.png" "$IOS/icon-40.png"          "40"
+	generate "icon.png" "$IOS/icon-40@2x.png"       "80"
+	generate "icon.png" "$IOS/icon-50.png"          "50"
+	generate "icon.png" "$IOS/icon-50@2x.png"       "100"
+	generate "icon.png" "$IOS/icon-60.png"          "60"
+	generate "icon.png" "$IOS/icon-60@2x.png"       "120"
+	generate "icon.png" "$IOS/icon-60@3x.png"       "180"
+	generate "icon.png" "$IOS/icon-72.png"          "72"
+	generate "icon.png" "$IOS/icon-72@2x.png"       "144"
+	generate "icon.png" "$IOS/icon-76.png"          "76"
+	generate "icon.png" "$IOS/icon-76@2x.png"       "152"
+	generate "icon.png" "$IOS/icon-small.png"       "29"
+	generate "icon.png" "$IOS/icon-small@2x.png"    "58"
+	generate "icon.png" "$IOS/icon-small@3x.png"    "87"
+	generate "icon.png" "$IOS/icon.png"             "57"
+	generate "icon.png" "$IOS/icon@2x.png"          "114"
+	generate "icon.png" "$IOS/icon-83.5@2x.png"     "167"
+
+fi
+
+# See if we've got an android res folder.
+MANIFEST=$(find ./android -name "AndroidManifest.xml" | head -n 1)
+if [ -z "$MANIFEST" ]; then 
+    echo "No Android project found."
+    exit 0
+fi
+ANDROID=$(dirname $MANIFEST)/res
+
+# Do we have an android project?
+if [ ! -z "$ANDROID" ]; then
+
+	echo "Found Android icons at $ANDROID..."
+
+    generate "icon.png" "$ANDROID/drawable/icon.png"         "96"
+    generate "icon.png" "$ANDROID/drawable-hdpi/icon.png"    "72"
+    generate "icon.png" "$ANDROID/drawable-ldpi/icon.png"    "36"
+    generate "icon.png" "$ANDROID/drawable-mdpi/icon.png"    "48"
+    generate "icon.png" "$ANDROID/drawable-xhdpi/icon.png"   "96"
+    generate "icon.png" "$ANDROID/drawable-xxhdpi/icon.png"  "144"
+    generate "icon.png" "$ANDROID/drawable-xxxhdpi/icon.png" "192"
+fi

@@ -1,0 +1,28 @@
+{
+  "name": "react-native-icon",
+  "version": "0.1.0",
+  "description": "Automatic icon resizing for React Native. Inspired by cordova-icon.",
+  "main": "index.js",
+  "directories": {
+    "bin": ".bin"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwmkerr/react-native-icon.git"
+  },
+  "keywords": [
+    "react-native",
+    "icon",
+    "cordova-icon",
+    "resize"
+  ],
+  "author": "Dave Kerr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dwmkerr/react-native-icon/issues"
+  },
+  "homepage": "https://github.com/dwmkerr/react-native-icon#readme"
+}
