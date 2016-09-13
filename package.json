@@ -7,7 +7,7 @@
     "react-native-icon": "react-native-icon.js"
   },
   "scripts": {
-    "test": "istanbul cover --dir './artifacts/coverage' _mocha *.specs.js",
+    "test": "istanbul cover --dir './artifacts/coverage' -x '*.specs.js' _mocha *.specs.js",
     "dev": "mocha -d --debug-brk -w *.specs.js"
   },
   "repository": {
