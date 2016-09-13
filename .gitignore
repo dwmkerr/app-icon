@@ -1,2 +1,3 @@
 node_modules/
 artifacts/
+test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/
