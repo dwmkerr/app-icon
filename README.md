@@ -2,7 +2,7 @@
 
 Automatic icon resizing for React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
 
-![Banner Image](./assets/banner.png)
+<img src="./assets/banner.png" width="614" alt="Banner">
 
 ## Introduction
 
@@ -35,6 +35,18 @@ Add an icon named `icon.png` to your project root. Then run:
 ```
 
 The image should be at least 192x192 pixels and square.
+
+If an iOS project is present, then the icon will be copied at all required sizes to:
+
+```
+./ios/<ProjectName>/Images.xcassets/AppIcon.appiconset
+```
+
+If an Android project is present, then the icon will be copied at all required sizes to:
+
+```
+./android/app/src/main/res
+```
 
 ## License
 
