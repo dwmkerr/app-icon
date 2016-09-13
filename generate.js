@@ -8,11 +8,21 @@ const contentsTemplate = require('./AppIcon.iconset.Contents.template.json');
 
 function findIconSets() {
   return find('./', (file, stat) => {
-    //  Exclude node modules from the search.
+    //  exclude node modules from the search.
     if(file.match(/node_modules/)) return false;
 
-    //  Only grab the iconset folders.
-    return file.match(/AppIcon.appiconset/) && stat.isDirectory();
+    //  only grab the iconset folders.
+    return file.match(/appicon.appiconset/) && stat.isDirectory();
+  });
+}
+
+function findAndroidManifests() {
+  return find('./', (file, stat) => {
+    //  exclude node modules from the search.
+    if(file.match(/node_modules/)) return false;
+
+    //  Only grab the manifest file...
+    return file.match(/AndroidManifest.xml/) && !stat.isDirectory();
   });
 }
 
@@ -70,6 +80,7 @@ function generate() {
 
 module.exports = {
   findIconSets,
+  findAndroidManifests,
   generateIconSetIcons,
   generate
 };

@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
 const expect = require('chai').expect;
-const { findIconSets, generateIconSetIcons,  generate } = require('./generate');
+const { findIconSets, findAndroidManifests, generateIconSetIcons,  generate } = require('./generate');
 
 describe('Find Icon Sets', () => {
   it('should be able to find the iOS iconsets', () => {
@@ -12,6 +12,12 @@ describe('Find Icon Sets', () => {
   it('should not find any iconsets in the node_modules/ folder', () => {
     return findIconSets('./').then(iconSets => {
       iconSets.forEach(is => expect(is).not.to.match(/node_modules/));
+    });
+  });
+
+  it('should be able to find the Android Manifest', () => {
+    return findAndroidManifests('./').then(manifests => {
+      expect(manifests).to.include('test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml');
     });
   });
 
