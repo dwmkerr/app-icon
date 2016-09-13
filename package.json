@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Automatic icon resizing for React Native. Inspired by cordova-icon.",
   "main": "index.js",
-  "directories": {
-    "bin": ".bin"
+  "bin": {
+    "react-native-icon": "index.js"
   },
   "scripts": {
     "test": "istanbul cover --dir './artifacts/coverage' _mocha **/*.specs.js",
@@ -26,12 +26,14 @@
     "url": "https://github.com/dwmkerr/react-native-icon/issues"
   },
   "homepage": "https://github.com/dwmkerr/react-native-icon#readme",
-  "dependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.0.2"
-  },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
     "istanbul": "^0.4.5",
     "node-inspector": "^0.12.8"
+  },
+  "dependencies": {
+    "command-exists": "^1.0.2",
+    "commander": "^2.9.0"
   }
 }

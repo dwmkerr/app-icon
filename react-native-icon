@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const program = require('commander');
+const commandExists = require('command-exists');
+const fs = require('fs');
+
+program
+  .version(require('./package.json').version)
+  .option('-i, --icon [optional]', 'The icon to use. Defaults to icon.png')
+  .parse(process.argv);
+
+//  Get our parameters.
+const sourceIcon = program.icon || "icon.png";
+
+//  Check that we have imagemagick installed.
+commandExists('convert', (err, imageMagickInstalled) => {
+  if(err) throw err;
+  if(!imageMagickInstalled) {
+    console.error("ImageMagick must be installed. Please check the docs.");
+    return process.exit(1);
+  }
+
+  //  Check that we have a source icon.
+  fs.stat(sourceIcon, (err) => {
+    if(err && err.code === 'ENOENT') {
+      console.error(`Source file '${sourceIcon}' does not exist.`);
+      return process.exit(1);
+    }
+  });
+});
