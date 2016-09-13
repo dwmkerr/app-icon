@@ -7,8 +7,8 @@
     "react-native-icon": "index.js"
   },
   "scripts": {
-    "test": "istanbul cover --dir './artifacts/coverage' _mocha **/*.specs.js",
-    "dev": "mocha -d --debug-brk -w **/*.specs.js"
+    "test": "istanbul cover --dir './artifacts/coverage' _mocha *.specs.js",
+    "dev": "mocha -d --debug-brk -w *.specs.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "command-exists": "^1.0.2",
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "mkdirp": "^0.5.1"
   }
 }

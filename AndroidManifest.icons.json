@@ -1,0 +1,11 @@
+{
+    "icons": [ 
+        { "path": "res/drawable/icon.png"         , "size": "96x96" },
+        { "path": "res/drawable-hdpi/icon.png"    , "size": "72x72" },
+        { "path": "res/drawable-ldpi/icon.png"    , "size": "36x36" },
+        { "path": "res/drawable-mdpi/icon.png"    , "size": "48x48" },
+        { "path": "res/drawable-xhdpi/icon.png"   , "size": "96x96" },
+        { "path": "res/drawable-xxhdpi/icon.png"  , "size": "144x144"},
+        { "path": "res/drawable-xxxhdpi/icon.png" , "size": "192x192" } 
+    ]
+}

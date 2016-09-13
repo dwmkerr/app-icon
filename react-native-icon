@@ -36,6 +36,7 @@ commandExists('convert', (err, imageMagickInstalled) => {
       })
       .catch(err => {
         console.error("An error occurred generating the icons...");
+        console.log(err);
         throw err;
       });
   });
