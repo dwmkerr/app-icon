@@ -7,7 +7,7 @@
     "bin": ".bin"
   },
   "scripts": {
-    "test": "mocha **/*.specs.js",
+    "test": "istanbul cover --dir './artifacts/coverage' _mocha **/*.specs.js",
     "dev": "mocha -d --debug-brk -w **/*.specs.js"
   },
   "repository": {
@@ -31,6 +31,7 @@
     "mocha": "^3.0.2"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "node-inspector": "^0.12.8"
   }
 }
