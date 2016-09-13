@@ -26,7 +26,7 @@ commandExists('convert', (err, imageMagickInstalled) => {
   //  Check that we have a source icon.
   fs.stat(sourceIcon, (err) => {
     if(err && err.code === 'ENOENT') {
-      console.error(`Source file '${sourceIcon}' does not exist.`);
+      console.error(`Source file '${sourceIcon}' does not exist. Add the file or specify source icon with the '--icon' paramter.`);
       return process.exit(1);
     }
 

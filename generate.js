@@ -55,7 +55,7 @@ function generateIconSetIcons(iconSet) {
 
   //  Generate each image in the full icon set, updating the contents.
   return Promise.all(contentsTemplate.images.map(image => {
-    const targetName = `icon-${image.size}-${image.scale}.png`;
+    const targetName = `${image.idiom}-${image.size}-${image.scale}.png`;
     const targetPath = path.join(iconSet, targetName);
     return generateIcon("icon.png", targetPath, image.size)
       .then(() => {
