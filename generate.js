@@ -100,11 +100,9 @@ function generateManifestIcons(manifest) {
   }));
 }
 
-function generate() {
+function generate(search) {
   return findIconSets()
-    .then(iconSets => {
-      return Promise.all(iconSets.map(generateIconSetIcons));
-    })
+    .then(iconSets => Promise.all(iconSets.map(generateIconSetIcons)))
     .then(() => findAndroidManifests('./'))
     .then((manifests) => Promise.all(manifests.map(generateManifestIcons)));
 }
