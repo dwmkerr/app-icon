@@ -1,6 +1,7 @@
 const child_process = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const chalk = require('chalk');
 const find = require('./find');
 
 const contentsTemplate = require('./AppIcon.iconset.Contents.template.json');
@@ -19,14 +20,12 @@ function findIconSets() {
 function generateIcon(source, target, size) {
   return new Promise((resolve, reject) => {
     const command = `convert ${source} -resize ${size} ${target}`;
-    console.log("Preparing to execute: " + command);
     child_process.exec(command, (err, stdout, stderr) => {
       if (err) {
         console.log("child processes failed with error code: " +
           err.code);
         return reject(err);
       }
-      console.log(stdout);
       return resolve();
     });
   });
@@ -34,7 +33,7 @@ function generateIcon(source, target, size) {
 
 //  Generate xCode icons given an iconset folder.
 function generateIconSetIcons(iconSet) {
-  console.log(`Generating icons for iconset ${iconSet}...`);
+  console.log(`Found iOS iconset: ${iconSet}...`);
 
   //  We've got the iconset folder. Get the contents Json.
   const contentsPath = path.join(iconSet, 'Contents.json');
@@ -45,20 +44,22 @@ function generateIconSetIcons(iconSet) {
   return Promise.all(contentsTemplate.images.map(image => {
     const targetName = `icon-${image.size}-${image.scale}.png`;
     const targetPath = path.join(iconSet, targetName);
-    console.log(`Generating ${targetName} from icon.png...`);
     return generateIcon("icon.png", targetPath, image.size)
       .then(() => {
+        console.log(`    ${chalk.green('✓')}  Generated ${targetName}`);
         contents.images.push({
           size: image.size,
           idiom: image.idiom,
           scale: image.scale,
           filename: targetName
         });
-        fs.writeFileSync(contentsPath, JSON.stringify(contents, null, 2), 'utf8');
       });
-  }));
+  }))
+  .then(() => {
+    fs.writeFileSync(contentsPath, JSON.stringify(contents, null, 2), 'utf8');
+    console.log(`    ${chalk.green('✓')}  Updated Contents.json`); 
+  });
 }
-
 
 function generate() {
   return findIconSets()

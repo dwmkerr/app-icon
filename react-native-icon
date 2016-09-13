@@ -5,6 +5,7 @@
 const program = require('commander');
 const commandExists = require('command-exists');
 const fs = require('fs');
+const { generate } = require('./generate');
 
 program
   .version(require('./package.json').version)
@@ -28,5 +29,14 @@ commandExists('convert', (err, imageMagickInstalled) => {
       console.error(`Source file '${sourceIcon}' does not exist.`);
       return process.exit(1);
     }
+
+    //  Generate some icons then innit.
+    generate(sourceIcon)
+      .then((results) => {
+      })
+      .catch(err => {
+        console.error("An error occurred generating the icons...");
+        throw err;
+      });
   });
 });
