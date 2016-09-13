@@ -2,6 +2,10 @@ const find = require('./find');
 
 function findIconSets() {
   return find('./', (file, stat) => {
+    //  Exclude node modules from the search.
+    if(file.match(/node_modules/)) return false;
+
+    //  Only grab the iconset folders.
     return file.match(/AppIcon.appiconset/) && stat.isDirectory();
   });
 }
