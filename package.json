@@ -7,7 +7,8 @@
     "bin": ".bin"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha **/*.specs.js",
+    "dev": "mocha -d --debug-brk -w **/*.specs.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,12 @@
   "bugs": {
     "url": "https://github.com/dwmkerr/react-native-icon/issues"
   },
-  "homepage": "https://github.com/dwmkerr/react-native-icon#readme"
+  "homepage": "https://github.com/dwmkerr/react-native-icon#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  },
+  "devDependencies": {
+    "node-inspector": "^0.12.8"
+  }
 }
