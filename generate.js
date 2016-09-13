@@ -20,8 +20,9 @@ function findIconSets() {
 
 function findAndroidManifests() {
   return find('./', (file, stat) => {
-    //  exclude node modules from the search.
+    //  Exclude: node modules and android build intermediates.
     if(file.match(/node_modules/)) return false;
+    if(file.match(/\/build\//)) return false;
 
     //  Only grab the manifest file...
     return file.match(/AndroidManifest.xml/) && !stat.isDirectory();

@@ -1,4 +1,5 @@
-# react-native-icon
+# react-native-icon [![CircleCI](https://circleci.com/gh/dwmkerr/react-native-icon.svg?style=svg)](https://circleci.com/gh/dwmkerr/react-native-icon) [![codecov](https://codecov.io/gh/dwmkerr/react-native-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/react-native-icon)
+
 
 Automatic icon resizing for React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
 
