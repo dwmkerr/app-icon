@@ -1,13 +1,14 @@
 /* eslint-env node, mocha */
 const fs = require('fs');
 const expect = require('chai').expect;
-const { 
-  findIconSets,
-  findAndroidManifests,
-  generateManifestIcons,
-  generateIconSetIcons,
-  generate
-} = require('./generate');
+const generateFunctions = require('./generate');
+
+//  Grab the functions we're testing.
+const findIconSets = generateFunctions.findIconSets;
+const findAndroidManifests = generateFunctions.findAndroidManifests;
+const generateManifestIcons = generateFunctions.generateManifestIcons;
+const generateIconSetIcons = generateFunctions.generateIconSetIcons;
+const generate = generateFunctions.generate;
 
 describe('Find Icon Sets', () => {
 

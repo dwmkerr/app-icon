@@ -5,7 +5,7 @@
 const program = require('commander');
 const commandExists = require('command-exists');
 const fs = require('fs');
-const { generate } = require('./generate');
+const generate = require('./generate');
 
 program
   .version(require('./package.json').version)
@@ -33,7 +33,7 @@ commandExists('convert', (err, imageMagickInstalled) => {
     }
 
     //  Generate some icons then innit.
-    generate(searchRoot, sourceIcon)
+    generate.generate(searchRoot, sourceIcon)
       .then((results) => {
       })
       .catch(err => {
