@@ -82,13 +82,10 @@ const files = [
   'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-72x72-2x.png',
   'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-76x76-1x.png',
   'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-76x76-2x.png',
-  'test/ReactNativeIconTest/android/app/src/main/res/drawable/icon.png',
-  'test/ReactNativeIconTest/android/app/src/main/res/drawable-hdpi/icon.png',
-  'test/ReactNativeIconTest/android/app/src/main/res/drawable-ldpi/icon.png',
-  'test/ReactNativeIconTest/android/app/src/main/res/drawable-mdpi/icon.png',
-  'test/ReactNativeIconTest/android/app/src/main/res/drawable-xhdpi/icon.png',
-  'test/ReactNativeIconTest/android/app/src/main/res/drawable-xxhdpi/icon.png',
-  'test/ReactNativeIconTest/android/app/src/main/res/drawable-xxxhdpi/icon.png'
+  'test/ReactNativeIconTest/android/app/src/main/res/mipmap-hdpi/ic_launcher.png',
+  'test/ReactNativeIconTest/android/app/src/main/res/mipmap-mdpi/ic_launcher.png',
+  'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png',
+  'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png',
 ];
 
 describe('Generate', () => {
