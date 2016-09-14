@@ -1,6 +1,6 @@
 {
   "name": "react-native-icon",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Automatic icon resizing for React Native. Inspired by cordova-icon.",
   "main": "index.js",
   "bin": {
