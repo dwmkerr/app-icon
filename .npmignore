@@ -1,1 +1,7 @@
+artifacts/
 assets/
+test/
+circle.yml
+icon.png
+*.specs.js
+
