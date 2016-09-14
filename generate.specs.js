@@ -86,7 +86,7 @@ describe('Generate', () => {
     files.forEach(file => fs.unlinkSync);
 
     //  Generate the icons, then check each expected file exists.
-    return generate().then((results) => {
+    return generate('./').then((results) => {
       return Promise.all(files.map(file => {
         return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true)); 
       }));

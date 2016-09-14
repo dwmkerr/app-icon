@@ -8,8 +8,8 @@ const mkdirp = require('mkdirp');
 const contentsTemplate = require('./AppIcon.iconset.Contents.template.json');
 const androidManifestIcons = require('./AndroidManifest.icons.json');
 
-function findIconSets() {
-  return find('./', (file, stat) => {
+function findIconSets(searchRoot) {
+  return find(searchRoot, (file, stat) => {
     //  exclude node modules from the search.
     if(file.match(/node_modules/)) return false;
 
@@ -18,8 +18,8 @@ function findIconSets() {
   });
 }
 
-function findAndroidManifests() {
-  return find('./', (file, stat) => {
+function findAndroidManifests(searchRoot) {
+  return find(searchRoot, (file, stat) => {
     //  Exclude: node modules and android build intermediates.
     if(file.match(/node_modules/)) return false;
     if(file.match(/\/build\//)) return false;
@@ -100,10 +100,10 @@ function generateManifestIcons(manifest) {
   }));
 }
 
-function generate(search) {
-  return findIconSets()
+function generate(searchRoot) {
+  return findIconSets(searchRoot)
     .then(iconSets => Promise.all(iconSets.map(generateIconSetIcons)))
-    .then(() => findAndroidManifests('./'))
+    .then(() => findAndroidManifests(searchRoot))
     .then((manifests) => Promise.all(manifests.map(generateManifestIcons)));
 }
 

@@ -9,11 +9,13 @@ const { generate } = require('./generate');
 
 program
   .version(require('./package.json').version)
-  .option('-i, --icon [optional]', 'The icon to use. Defaults to icon.png')
+  .option('-i, --icon [optional]', "The icon to use. Defaults to 'icon.png'")
+  .option('-s, --search [optional]', "The folder to search from. Defaults to './'")
   .parse(process.argv);
 
 //  Get our parameters.
 const sourceIcon = program.icon || "icon.png";
+const searchRoot = program.search || "./";
 
 //  Check that we have imagemagick installed.
 commandExists('convert', (err, imageMagickInstalled) => {
@@ -31,7 +33,7 @@ commandExists('convert', (err, imageMagickInstalled) => {
     }
 
     //  Generate some icons then innit.
-    generate(sourceIcon)
+    generate(searchRoot, sourceIcon)
       .then((results) => {
       })
       .catch(err => {
