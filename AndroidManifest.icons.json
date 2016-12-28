@@ -3,6 +3,7 @@
         { "path": "res/mipmap-hdpi/ic_launcher.png"     , "size": "72x72" },
         { "path": "res/mipmap-mdpi/ic_launcher.png"     , "size": "48x48" },
         { "path": "res/mipmap-xhdpi/ic_launcher.png"    , "size": "96x96" },
-        { "path": "res/mipmap-xxhdpi/ic_launcher.png"   , "size": "144x144" }
+        { "path": "res/mipmap-xxhdpi/ic_launcher.png"   , "size": "144x144" },
+        { "path": "res/mipmap-xxxhdpi/ic_launcher.png"   , "size": "192x192" }
     ]
 }
