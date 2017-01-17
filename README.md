@@ -49,6 +49,17 @@ If an Android project is present, then the icon will be copied at all required s
 ./android/app/src/main/res
 ```
 
+## Coding
+
+This section will guide you on how to develop with this project.
+
+### Creating a Release
+
+To create a release.
+
+- Merge your work to master.
+- Use `nvm version` to bump, e.g. `nvm version patch`
+- Push and deploy `git push --tags && git push && npm deploy`
 ## License
 
 MIT
