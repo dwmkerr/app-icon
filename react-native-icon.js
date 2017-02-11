@@ -21,7 +21,8 @@ const searchRoot = program.search || "./";
 commandExists('convert', (err, imageMagickInstalled) => {
   if(err) throw err;
   if(!imageMagickInstalled) {
-    console.error("ImageMagick must be installed. Please check the docs.");
+    console.error('  Error: ImageMagick must be installed. Try:');
+    console.error('    brew install imagemagick');
     return process.exit(1);
   }
 

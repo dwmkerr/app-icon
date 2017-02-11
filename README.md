@@ -1,6 +1,5 @@
 # react-native-icon [![CircleCI](https://circleci.com/gh/dwmkerr/react-native-icon.svg?style=svg)](https://circleci.com/gh/dwmkerr/react-native-icon) [![codecov](https://codecov.io/gh/dwmkerr/react-native-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/react-native-icon)
 
-
 Automatic icon resizing for React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
 
 <img src="./assets/banner.png" width="614" alt="Banner">
@@ -53,6 +52,34 @@ If an Android project is present, then the icon will be copied at all required s
 
 This section will guide you on how to develop with this project.
 
+Dependencies:
+
+- Node.js
+- Yarn
+
+### Setup
+
+Install the dependencies (I recommend [Node Version Manager](https://github.com/creationix/nvm)):
+
+```bash
+nvm install 4
+nvm use 4
+npm install -g yarn
+git clone git@github.com:dwmkerr/react-native-icon.git
+cd react-native-icon
+yarn
+```
+
+### Running Tests
+
+Run the tests with:
+
+```bash
+npm test
+```
+
+Tests are executed with [Mocha](https://mochajs.org/) and coverage is handled by [Istanbul](https://github.com/gotwarlost/istanbul). Coverage reports are written to an `./artifacts` folder.
+
 ### Creating a Release
 
 To create a release.
@@ -60,6 +87,7 @@ To create a release.
 - Merge your work to master.
 - Use `nvm version` to bump, e.g. `nvm version patch`
 - Push and deploy `git push --tags && git push && npm deploy`
+
 ## License
 
 MIT
