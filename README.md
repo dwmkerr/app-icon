@@ -87,7 +87,7 @@ To create a release.
 - Merge your work to master.
 - Use `nvm version` to bump, e.g. `nvm version patch`
 - Push and deploy `git push --tags && git push && npm deploy`
-c
+
 ## License
 
 MIT

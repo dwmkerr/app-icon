@@ -21,7 +21,8 @@ const searchRoot = program.search || "./";
 commandExists('convert', (err, imageMagickInstalled) => {
   if(err) throw err;
   if(!imageMagickInstalled) {
-    console.error(`ImageMagick must be installed. See https://github.com/dwmkerr/react-native-icon`);
+    console.error('  Error: ImageMagick must be installed. Try:');
+    console.error('    brew install imagemagick');
     return process.exit(1);
   }
 
