@@ -57,6 +57,8 @@ function generateIconSetIcons(iconSet) {
   return Promise.all(contentsTemplate.images.map(image => {
     const targetName = `${image.idiom}-${image.size}-${image.scale}.png`;
     const targetPath = path.join(iconSet, targetName);
+    const targetScale = parseInt(image.scale.slice(1));
+    const targetSize = image.size.split('x').map(|p| p*targetScale }.join('x');
     return generateIcon("icon.png", targetPath, image.size)
       .then(() => {
         console.log(`    ${chalk.green('✓')}  Generated ${targetName}`);
