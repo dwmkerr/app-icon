@@ -88,6 +88,10 @@ To create a release.
 - Use `npm version` to bump, e.g. `npm version patch`
 - Push and deploy `git push --tags && git push && npm deploy`
 
+## Contributors
+
+- [raldred](https://github.com/raldred) fixed some goofy scaling bugs
+
 ## License
 
 MIT
