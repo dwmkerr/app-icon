@@ -85,7 +85,7 @@ Tests are executed with [Mocha](https://mochajs.org/) and coverage is handled by
 To create a release.
 
 - Merge your work to master.
-- Use `nvm version` to bump, e.g. `nvm version patch`
+- Use `npm version` to bump, e.g. `npm version patch`
 - Push and deploy `git push --tags && git push && npm deploy`
 
 ## License
