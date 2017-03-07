@@ -1,4 +1,4 @@
-# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/react-native-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/react-native-icon) [![codecov](https://codecov.io/gh/dwmkerr/react-native-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/react-native-icon)
+# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon)
 
 Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
 
