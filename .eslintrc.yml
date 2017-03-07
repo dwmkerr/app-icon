@@ -5,3 +5,7 @@ plugins:
   - import
 rules:
   no-console: 0
+  # Sometimes I like a single 'return' statement in a full bloc, e.g. see the
+  # tests, so relax the requirement to have single return statements
+  arrow-body-style: 0
+  import/no-extraneous-dependencies: [error, { devDependencies: ['**/*.specs.js'] }]

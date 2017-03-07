@@ -21,10 +21,12 @@ function walk(dir, existingResults, predicate, done) {
         if (predicate(filePath, stat)) results.push(filePath);
         if (stat && stat.isDirectory()) {
           walk(filePath, results, predicate, () => {
-            if (!--pending) done(null, results);
+            pending -= 1;
+            if (!pending) done(null, results);
           });
         } else {
-          if (!--pending) done(null, results);
+          pending -= 1;
+          if (!pending) done(null, results);
         }
       });
     });

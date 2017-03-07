@@ -49,23 +49,23 @@ function generateIconSetIcons(iconSet) {
 
   //  We've got the iconset folder. Get the contents Json.
   const contentsPath = path.join(iconSet, 'Contents.json');
-  var contents = JSON.parse(fs.readFileSync(contentsPath, 'utf8'));
+  const contents = JSON.parse(fs.readFileSync(contentsPath, 'utf8'));
   contents.images = [];
 
   //  Generate each image in the full icon set, updating the contents.
-  return Promise.all(contentsTemplate.images.map(image => {
+  return Promise.all(contentsTemplate.images.map((image) => {
     const targetName = `${image.idiom}-${image.size}-${image.scale}.png`;
     const targetPath = path.join(iconSet, targetName);
-    const targetScale = parseInt(image.scale.slice(0,1));
-    const targetSize = image.size.split("x").map((p) => { return p*targetScale; }).join("x");
-    return generateIcon("icon.png", targetPath, targetSize)
+    const targetScale = parseInt(image.scale.slice(0, 1), 10);
+    const targetSize = image.size.split('x').map(p => p * targetScale).join('x');
+    return generateIcon('icon.png', targetPath, targetSize)
       .then(() => {
         console.log(`    ${chalk.green('✓')}  Generated ${targetName}`);
         contents.images.push({
           size: image.size,
           idiom: image.idiom,
           scale: image.scale,
-          filename: targetName
+          filename: targetName,
         });
       });
   }))
@@ -83,7 +83,7 @@ function generateManifestIcons(manifest) {
   const manifestFolder = path.dirname(manifest);
 
   //  Generate each image in the full icon set, updating the contents.
-  return Promise.all(androidManifestIcons.icons.map(icon  => {
+  return Promise.all(androidManifestIcons.icons.map((icon) => {
     const targetPath = path.join(manifestFolder, icon.path);
 
     //  Each icon lives in its own folder, so we'd better make sure that folder
