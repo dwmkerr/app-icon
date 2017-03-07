@@ -18,7 +18,7 @@ function walk(dir, existingResults, predicate, done) {
     list.forEach((file) => {
       file = path.resolve(dir, file);
       fs.stat(file, (err, stat) => {
-        if (predicate(file, stat)) results.push(file); 
+        if (predicate(file, stat)) results.push(file);
         if (stat && stat.isDirectory()) {
           walk(file, results, predicate, (err, res) => {
             if (!--pending) done(null, results);
@@ -34,7 +34,7 @@ function walk(dir, existingResults, predicate, done) {
 module.exports = function find(root, predicate) {
   return new Promise((resolve, reject) => {
     walk(root, [], predicate, (err, files) => {
-      if(err) return reject(err);
+      if (err) return reject(err);
       return resolve(files.map(f => path.relative('', f)));
     });
   });

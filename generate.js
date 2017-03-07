@@ -1,4 +1,4 @@
-const child_process = require('child_process');
+const childProcess = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
@@ -11,7 +11,7 @@ const androidManifestIcons = require('./AndroidManifest.icons.json');
 function findIconSets(searchRoot) {
   return find(searchRoot, (file, stat) => {
     //  exclude node modules from the search.
-    if(file.match(/node_modules/)) return false;
+    if (file.match(/node_modules/)) return false;
 
     //  only grab the iconset folders.
     return file.match(/AppIcon.appiconset/) && stat.isDirectory();
@@ -21,8 +21,8 @@ function findIconSets(searchRoot) {
 function findAndroidManifests(searchRoot) {
   return find(searchRoot, (file, stat) => {
     //  Exclude: node modules and android build intermediates.
-    if(file.match(/node_modules/)) return false;
-    if(file.match(/\/build\//)) return false;
+    if (file.match(/node_modules/)) return false;
+    if (file.match(/\/build\//)) return false;
 
     //  Only grab the manifest file...
     return file.match(/AndroidManifest.xml/) && !stat.isDirectory();
@@ -33,10 +33,9 @@ function findAndroidManifests(searchRoot) {
 function generateIcon(source, target, size) {
   return new Promise((resolve, reject) => {
     const command = `convert ${source} -resize ${size} ${target}`;
-    child_process.exec(command, (err, stdout, stderr) => {
+    childProcess.exec(command, (err) => {
       if (err) {
-        console.log("child processes failed with error code: " +
-          err.code);
+        console.log(`child processes failed with error code: ${err.code}`);
         return reject(err);
       }
       return resolve();
@@ -72,7 +71,7 @@ function generateIconSetIcons(iconSet) {
   }))
   .then(() => {
     fs.writeFileSync(contentsPath, JSON.stringify(contents, null, 2), 'utf8');
-    console.log(`    ${chalk.green('✓')}  Updated Contents.json`); 
+    console.log(`    ${chalk.green('✓')}  Updated Contents.json`);
   });
 }
 
@@ -91,9 +90,9 @@ function generateManifestIcons(manifest) {
     //  exists.
     return new Promise((resolve, reject) => {
       mkdirp(path.dirname(targetPath), (err) => {
-        if(err) return reject(err);
+        if (err) return reject(err);
 
-        return resolve(generateIcon("icon.png", targetPath, icon.size)
+        return resolve(generateIcon('icon.png', targetPath, icon.size)
           .then(() => {
             console.log(`    ${chalk.green('✓')}  Generated ${icon.path}`);
           }));
@@ -106,7 +105,7 @@ function generate(searchRoot) {
   return findIconSets(searchRoot)
     .then(iconSets => Promise.all(iconSets.map(generateIconSetIcons)))
     .then(() => findAndroidManifests(searchRoot))
-    .then((manifests) => Promise.all(manifests.map(generateManifestIcons)));
+    .then(manifests => Promise.all(manifests.map(generateManifestIcons)));
 }
 
 module.exports = {
@@ -114,5 +113,5 @@ module.exports = {
   findAndroidManifests,
   generateManifestIcons,
   generateIconSetIcons,
-  generate
+  generate,
 };
