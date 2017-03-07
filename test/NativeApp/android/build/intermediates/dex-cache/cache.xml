@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.1_24264ac03559383bd7d8e724e8b2b166c2f4d4c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.1_fe4284e656aee72cd8158c9a85196efcd4f7f0e2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.1_40a675bcf16cca03b416fae2e542fc8b61a0fddd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.1_c256912579413be9c2dde5312eb291f51b45ab88.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.1_1782853263807a11c9271065f29f80c1f65d70c0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.1_b2a53c45476b4a61f5c21670e36b9a421600f2c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/support-annotations-25.1.1_916b36117f2d0d3207cea374b9c8b9691be00c5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.1_31c71ed85183d498ea74ce6e5aca1b422ec45e5f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.1_653493d0f8c0a29b69f113cbb5c177d0579c473e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="/Users/dave/repos/github/dwmkerr/beautifully-simple-app-ci/3_native/android/NativeApp/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.1_e880014e2d62bd659bdf70b39c8eb786a24c4d57.jar" />
+    </item>
+
+</items>

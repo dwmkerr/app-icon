@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/ionic_app.app</string>
+		<key>CFBundleIdentifier</key>
+		<string>com.ionicframework.ionicapp431589</string>
+		<key>CFBundleShortVersionString</key>
+		<string>0.1.0</string>
+		<key>CFBundleVersion</key>
+		<string>3</string>
+		<key>SigningIdentity</key>
+		<string>iPhone Developer: Dave Kerr (D2TKYQF77R)</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2017-03-01T09:38:46Z</date>
+	<key>Name</key>
+	<string>ionic_app</string>
+	<key>SchemeName</key>
+	<string>ionic_app</string>
+</dict>
+</plist>
