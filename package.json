@@ -1,10 +1,10 @@
 {
-  "name": "react-native-icon",
+  "name": "app-icon",
   "version": "0.2.11",
-  "description": "Automatic icon resizing for React Native. Inspired by cordova-icon.",
+  "description": "Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by cordova-icon.",
   "main": "index.js",
   "bin": {
-    "react-native-icon": "react-native-icon.js"
+    "app-icon": "app-icon.js"
   },
   "scripts": {
     "test": "istanbul cover --dir './artifacts/coverage' -x '*.specs.js' _mocha *.specs.js",
@@ -12,9 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dwmkerr/react-native-icon.git"
+    "url": "git+https://github.com/dwmkerr/app-icon.git"
   },
   "keywords": [
+    "cordvoa",
     "react-native",
     "icon",
     "cordova-icon",
@@ -23,9 +24,9 @@
   "author": "Dave Kerr",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dwmkerr/react-native-icon/issues"
+    "url": "https://github.com/dwmkerr/app-icon/issues"
   },
-  "homepage": "https://github.com/dwmkerr/react-native-icon#readme",
+  "homepage": "https://github.com/dwmkerr/app-icon#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.0.2",

@@ -1,21 +1,19 @@
-# react-native-icon [![CircleCI](https://circleci.com/gh/dwmkerr/react-native-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/react-native-icon) [![codecov](https://codecov.io/gh/dwmkerr/react-native-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/react-native-icon)
+# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/react-native-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/react-native-icon) [![codecov](https://codecov.io/gh/dwmkerr/react-native-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/react-native-icon)
 
-Automatic icon resizing for React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
+Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
 ## Introduction
 
-This simple tool allows you to create a single icon in your react-native project, then create icons of all required sizes from it. It currently works for iOS and Android.
-
-This project is inspired by [Alex Disler's](github.com/AlexDisler) superb [cordova-icon](github.com/AlexDisler/cordova-icon) project.
+This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android.
 
 ## Installation
 
 Install with:
 
 ```bash
-npm install react-native-icon
+npm install app-icon
 ```
 
 You will need [imagemagick](http://www.imagemagick.org/) installed:
@@ -28,13 +26,11 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
-Add an icon named `icon.png` to your project root. Then run:
+Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root. Then run:
 
 ```bash
-./node_modules/.bin/react-native-icon
+./node_modules/.bin/app-icon
 ```
-
-The image should be at least 192x192 pixels and square.
 
 If an iOS project is present, then the icon will be copied at all required sizes to:
 
@@ -65,8 +61,8 @@ Install the dependencies (I recommend [Node Version Manager](https://github.com/
 nvm install 4
 nvm use 4
 npm install -g yarn
-git clone git@github.com:dwmkerr/react-native-icon.git
-cd react-native-icon
+git clone git@github.com:dwmkerr/app-icon.git
+cd app-icon
 yarn
 ```
 
@@ -86,7 +82,7 @@ To create a release.
 
 - Merge your work to master.
 - Use `npm version` to bump, e.g. `npm version patch`
-- Push and deploy `git push --tags && git push && npm deploy`
+- Push and deploy `git push --tags && git push && npm publish`
 
 ## The Sample Projects
 
@@ -117,10 +113,6 @@ cordova run ios
 ### Native
 
 To run the native apps, open the `./test/NativeApp` directory, then open the iOS/Android projects in XCode/AndroidStudio as needed.
-
-## Contributors
-
-- [raldred](https://github.com/raldred) fixed some goofy scaling bugs
 
 ## License
 
