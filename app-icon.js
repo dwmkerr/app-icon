@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+// We use Node 4 to keep compatibility high, so need the 'use strict' statement.
+// eslint-disable-next-line
+'use strict';
+
 const program = require('commander');
 const commandExists = require('command-exists');
 const fs = require('fs');

@@ -7,6 +7,10 @@
 //
 //  Inspired by: http://stackoverflow.com/questions/5827612/node-js-fs-readdir-recursive-directory-search
 
+// We use Node 4 to keep compatibility high, so need the 'use strict' statement.
+// eslint-disable-next-line
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
