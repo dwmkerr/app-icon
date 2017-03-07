@@ -25,20 +25,20 @@ commandExists('convert', (err, imageMagickInstalled) => {
   }
 
   //  Check that we have a source icon.
-  fs.stat(sourceIcon, (err) => {
-    if (err && err.code === 'ENOENT') {
+  return fs.stat(sourceIcon, (statErr) => {
+    if (statErr && statErr.code === 'ENOENT') {
       console.error(`Source file '${sourceIcon}' does not exist. Add the file or specify source icon with the '--icon' paramter.`);
       return process.exit(1);
     }
 
     //  Generate some icons then innit.
-    generate.generate(searchRoot, sourceIcon)
-      .then((results) => {
+    return generate.generate(searchRoot, sourceIcon)
+      .then(() => {
       })
-      .catch(err => {
-        console.error("An error occurred generating the icons...");
-        console.log(err);
-        throw err;
+      .catch((generateErr) => {
+        console.error('An error occurred generating the icons...');
+        console.log(generateErr);
+        throw generateErr;
       });
   });
 });
