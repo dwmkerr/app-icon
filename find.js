@@ -7,24 +7,30 @@
 //
 //  Inspired by: http://stackoverflow.com/questions/5827612/node-js-fs-readdir-recursive-directory-search
 
+// We use Node 4 to keep compatibility high, so need the 'use strict' statement.
+// eslint-disable-next-line
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
 function walk(dir, existingResults, predicate, done) {
   const results = existingResults || [];
   fs.readdir(dir, (err, list) => {
-    var pending = list.length;
+    let pending = list.length;
     if (err || pending === 0) return done(err, results);
-    list.forEach((file) => {
-      file = path.resolve(dir, file);
-      fs.stat(file, (err, stat) => {
-        if (predicate(file, stat)) results.push(file); 
+    return list.forEach((file) => {
+      const filePath = path.resolve(dir, file);
+      fs.stat(filePath, (statErr, stat) => {
+        if (predicate(filePath, stat)) results.push(filePath);
         if (stat && stat.isDirectory()) {
-          walk(file, results, predicate, (err, res) => {
-            if (!--pending) done(null, results);
+          walk(filePath, results, predicate, () => {
+            pending -= 1;
+            if (!pending) done(null, results);
           });
         } else {
-          if (!--pending) done(null, results);
+          pending -= 1;
+          if (!pending) done(null, results);
         }
       });
     });
@@ -34,7 +40,7 @@ function walk(dir, existingResults, predicate, done) {
 module.exports = function find(root, predicate) {
   return new Promise((resolve, reject) => {
     walk(root, [], predicate, (err, files) => {
-      if(err) return reject(err);
+      if (err) return reject(err);
       return resolve(files.map(f => path.relative('', f)));
     });
   });

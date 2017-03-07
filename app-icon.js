@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// We use Node 4 to keep compatibility high, so need the 'use strict' statement.
+// eslint-disable-next-line
 'use strict';
 
 const program = require('commander');
@@ -14,33 +16,33 @@ program
   .parse(process.argv);
 
 //  Get our parameters.
-const sourceIcon = program.icon || "icon.png";
-const searchRoot = program.search || "./";
+const sourceIcon = program.icon || 'icon.png';
+const searchRoot = program.search || './';
 
 //  Check that we have imagemagick installed.
 commandExists('convert', (err, imageMagickInstalled) => {
-  if(err) throw err;
-  if(!imageMagickInstalled) {
+  if (err) throw err;
+  if (!imageMagickInstalled) {
     console.error('  Error: ImageMagick must be installed. Try:');
     console.error('    brew install imagemagick');
     return process.exit(1);
   }
 
   //  Check that we have a source icon.
-  fs.stat(sourceIcon, (err) => {
-    if(err && err.code === 'ENOENT') {
+  return fs.stat(sourceIcon, (statErr) => {
+    if (statErr && statErr.code === 'ENOENT') {
       console.error(`Source file '${sourceIcon}' does not exist. Add the file or specify source icon with the '--icon' paramter.`);
       return process.exit(1);
     }
 
     //  Generate some icons then innit.
-    generate.generate(searchRoot, sourceIcon)
-      .then((results) => {
+    return generate.generate(searchRoot, sourceIcon)
+      .then(() => {
       })
-      .catch(err => {
-        console.error("An error occurred generating the icons...");
-        console.log(err);
-        throw err;
+      .catch((generateErr) => {
+        console.error('An error occurred generating the icons...');
+        console.log(generateErr);
+        throw generateErr;
       });
   });
 });

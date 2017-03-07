@@ -53,6 +53,8 @@ Dependencies:
 - Node.js
 - Yarn
 
+Currently the linting style is based on [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). Run `npm run lint` to lint the code.
+
 ### Setup
 
 Install the dependencies (I recommend [Node Version Manager](https://github.com/creationix/nvm)):
