@@ -13,14 +13,14 @@ const path = require('path');
 function walk(dir, existingResults, predicate, done) {
   const results = existingResults || [];
   fs.readdir(dir, (err, list) => {
-    var pending = list.length;
+    let pending = list.length;
     if (err || pending === 0) return done(err, results);
-    list.forEach((file) => {
-      file = path.resolve(dir, file);
-      fs.stat(file, (err, stat) => {
-        if (predicate(file, stat)) results.push(file);
+    return list.forEach((file) => {
+      const filePath = path.resolve(dir, file);
+      fs.stat(filePath, (statErr, stat) => {
+        if (predicate(filePath, stat)) results.push(filePath);
         if (stat && stat.isDirectory()) {
-          walk(file, results, predicate, (err, res) => {
+          walk(filePath, results, predicate, () => {
             if (!--pending) done(null, results);
           });
         } else {
