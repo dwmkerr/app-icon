@@ -88,6 +88,36 @@ To create a release.
 - Use `npm version` to bump, e.g. `npm version patch`
 - Push and deploy `git push --tags && git push && npm deploy`
 
+## The Sample Projects
+
+This project includes some sample apps in the `test` folder, which are used for the tests. You can also run these apps to see the icons produced in action.
+
+### React Native
+
+To run:
+
+```bash
+cd ./test/ReactNativeIconTest/
+npm install
+react-native run-ios
+# OR react-native run-android
+```
+
+### Cordova
+
+To run:
+
+```bash
+cd ./test/CordovaApp/
+npm install
+cordova run ios
+# OR cordova run android
+```
+
+### Native
+
+To run the native apps, open the `./test/NativeApp` directory, then open the iOS/Android projects in XCode/AndroidStudio as needed.
+
 ## Contributors
 
 - [raldred](https://github.com/raldred) fixed some goofy scaling bugs
