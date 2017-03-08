@@ -75,8 +75,6 @@ function generate(searchRoot) {
 }
 
 module.exports = {
-  findIconsetFolders,
-  findAndroidManifests,
   generateManifestIcons,
   generateIconSetIcons,
   generate,
