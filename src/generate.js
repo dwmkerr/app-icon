@@ -2,7 +2,7 @@ const childProcess = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
-const find = require('./find');
+const find = require('./utils/find');
 const mkdirp = require('mkdirp');
 
 const contentsTemplate = require('./AppIcon.iconset.Contents.template.json');

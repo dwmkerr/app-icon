@@ -7,8 +7,9 @@
     "app-icon": "./bin/app-icon.js"
   },
   "scripts": {
-    "test": "istanbul cover --dir './artifacts/coverage' -x '*.specs.js' _mocha *.specs.js",
-    "dev": "mocha -d --debug-brk -w *.specs.js",
+    "test": "mocha **/*.specs.js",
+    "test:debug": "mocha -d --debug-brk -w **/*.specs.js",
+    "cov": "istanbul cover --dir './artifacts/coverage' -x '**/*.specs.js' _mocha **/*.specs.js",
     "lint": "eslint ."
   },
   "repository": {

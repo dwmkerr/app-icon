@@ -15,10 +15,11 @@ const fs = require('fs');
 const path = require('path');
 
 function walk(dir, existingResults, predicate, done) {
-  const results = existingResults || [];
+  const results = existingResults;
   fs.readdir(dir, (err, list) => {
+    if (err) return done(err);
     let pending = list.length;
-    if (err || pending === 0) return done(err, results);
+    if (pending === 0) return done(null, results);
     return list.forEach((file) => {
       const filePath = path.resolve(dir, file);
       fs.stat(filePath, (statErr, stat) => {
