@@ -4,8 +4,6 @@ const expect = require('chai').expect;
 const generateFunctions = require('./src/generate');
 
 //  Grab the functions we're testing.
-const findIconSets = generateFunctions.findIconSets;
-const findAndroidManifests = generateFunctions.findAndroidManifests;
 const generateManifestIcons = generateFunctions.generateManifestIcons;
 const generateIconSetIcons = generateFunctions.generateIconSetIcons;
 const generate = generateFunctions.generate;
@@ -19,38 +17,6 @@ function fileExists(path) {
     });
   });
 }
-
-describe('Find Icon Sets', () => {
-  it('should not find any iconsets in the node_modules/ folder', () => {
-    return findIconSets('./').then((iconSets) => {
-      iconSets.forEach(is => expect(is).not.to.match(/node_modules/));
-    });
-  });
-
-  it('should be able to find the iOS iconsets', () => {
-    return findIconSets('./').then((iconSets) => {
-      expect(iconSets).to.include('test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset');
-    });
-  });
-
-  it('should be able to find the iOS iconsets with a deep search path', () => {
-    return findIconSets('./test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets').then((iconSets) => {
-      expect(iconSets).to.include('test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset');
-    });
-  });
-
-  it('should be able to find the Android Manifest', () => {
-    return findAndroidManifests('./').then((manifests) => {
-      expect(manifests).to.include('test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml');
-    });
-  });
-
-  it('should be able to find the Android Manifest with a deep search path', () => {
-    return findAndroidManifests('./test/ReactNativeIconTest/android/app/src/main').then((manifests) => {
-      expect(manifests).to.include('test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml');
-    });
-  });
-});
 
 describe('React Native', () => {
   describe('Generate iconset icons', () => {

@@ -1,47 +1,13 @@
-const childProcess = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
-const find = require('./utils/find');
 const mkdirp = require('mkdirp');
 
+const findIconsetFolders = require('./ios/find-iconset-folders');
+const findAndroidManifests = require('./android/find-android-manifests');
+const resizeImage = require('./resize/resize-image');
 const contentsTemplate = require('./AppIcon.iconset.Contents.template.json');
 const androidManifestIcons = require('./AndroidManifest.icons.json');
-
-function findIconSets(searchRoot) {
-  return find(searchRoot, (file, stat) => {
-    //  exclude node modules from the search.
-    if (file.match(/node_modules/)) return false;
-
-    //  only grab the iconset folders.
-    return file.match(/AppIcon.appiconset/) && stat.isDirectory();
-  });
-}
-
-function findAndroidManifests(searchRoot) {
-  return find(searchRoot, (file, stat) => {
-    //  Exclude: node modules and android build intermediates.
-    if (file.match(/node_modules/)) return false;
-    if (file.match(/\/build\//)) return false;
-
-    //  Only grab the manifest file...
-    return file.match(/AndroidManifest.xml/) && !stat.isDirectory();
-  });
-}
-
-//  Generate an icon.
-function generateIcon(source, target, size) {
-  return new Promise((resolve, reject) => {
-    const command = `convert ${source} -resize ${size} ${target}`;
-    childProcess.exec(command, (err) => {
-      if (err) {
-        console.log(`child processes failed with error code: ${err.code}`);
-        return reject(err);
-      }
-      return resolve();
-    });
-  });
-}
 
 //  Generate xCode icons given an iconset folder.
 function generateIconSetIcons(iconSet) {
@@ -58,7 +24,7 @@ function generateIconSetIcons(iconSet) {
     const targetPath = path.join(iconSet, targetName);
     const targetScale = parseInt(image.scale.slice(0, 1), 10);
     const targetSize = image.size.split('x').map(p => p * targetScale).join('x');
-    return generateIcon('icon.png', targetPath, targetSize)
+    return resizeImage('icon.png', targetPath, targetSize)
       .then(() => {
         console.log(`    ${chalk.green('✓')}  Generated ${targetName}`);
         contents.images.push({
@@ -92,7 +58,7 @@ function generateManifestIcons(manifest) {
       mkdirp(path.dirname(targetPath), (err) => {
         if (err) return reject(err);
 
-        return resolve(generateIcon('icon.png', targetPath, icon.size)
+        return resolve(resizeImage('icon.png', targetPath, icon.size)
           .then(() => {
             console.log(`    ${chalk.green('✓')}  Generated ${icon.path}`);
           }));
@@ -102,14 +68,14 @@ function generateManifestIcons(manifest) {
 }
 
 function generate(searchRoot) {
-  return findIconSets(searchRoot)
+  return findIconsetFolders(searchRoot)
     .then(iconSets => Promise.all(iconSets.map(generateIconSetIcons)))
     .then(() => findAndroidManifests(searchRoot))
     .then(manifests => Promise.all(manifests.map(generateManifestIcons)));
 }
 
 module.exports = {
-  findIconSets,
+  findIconsetFolders,
   findAndroidManifests,
   generateManifestIcons,
   generateIconSetIcons,
