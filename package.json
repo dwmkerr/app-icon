@@ -4,7 +4,7 @@
   "description": "Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by cordova-icon.",
   "main": "index.js",
   "bin": {
-    "app-icon": "app-icon.js"
+    "app-icon": "./bin/app-icon.js"
   },
   "scripts": {
     "test": "istanbul cover --dir './artifacts/coverage' -x '*.specs.js' _mocha *.specs.js",

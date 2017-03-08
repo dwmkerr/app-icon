@@ -1,7 +1,7 @@
 /* eslint-env node, mocha */
 const fs = require('fs');
 const expect = require('chai').expect;
-const generateFunctions = require('./generate');
+const generateFunctions = require('./src/generate');
 
 //  Grab the functions we're testing.
 const findIconSets = generateFunctions.findIconSets;
