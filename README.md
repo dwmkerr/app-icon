@@ -127,3 +127,7 @@ To run the native apps, open the `./test/NativeApp` directory, then open the iOS
 ## License
 
 MIT
+
+# Refactoring
+
+[ ] Extract the `fileExists` and `deleteIfExists` functions into the utils
