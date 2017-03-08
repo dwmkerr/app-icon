@@ -1,6 +1,7 @@
 extends: airbnb-base
 env:
   node: true
+  mocha: true
 plugins:
   - import
 rules:

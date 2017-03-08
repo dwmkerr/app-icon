@@ -46,6 +46,14 @@ If an Android project is present, then the icon will be copied at all required s
 
 ## Coding
 
+WIP:
+
+| Command | Usage |
+|---------|-------|
+| `npm test` | Runs the unit tests. |
+| `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging. |
+| `npm run cov` | Runs the tests, writing coverage reports to `./artifacts/coverage`. |
+
 This section will guide you on how to develop with this project.
 
 Dependencies:
@@ -119,3 +127,10 @@ To run the native apps, open the `./test/NativeApp` directory, then open the iOS
 ## License
 
 MIT
+
+# Refactoring
+
+[ ] Extract `deleteIfExists` functions into the utils.
+[ ] Raise and fix the `sourceIcon` bug (it is not being used)
+[ ] Promisify the generate functions and extract the console output
+[ ] Fix the issue of checked in files
