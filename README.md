@@ -130,4 +130,7 @@ MIT
 
 # Refactoring
 
-[ ] Extract the `fileExists` and `deleteIfExists` functions into the utils
+[ ] Extract `deleteIfExists` functions into the utils.
+[ ] Raise and fix the `sourceIcon` bug (it is not being used)
+[ ] Promisify the generate functions and extract the console output
+[ ] Fix the issue of checked in files

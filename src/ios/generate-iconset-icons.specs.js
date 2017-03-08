@@ -1,16 +1,6 @@
-const fs = require('fs');
 const expect = require('chai').expect;
 const generateIconsetIcons = require('./generate-iconset-icons');
-
-function fileExists(path) {
-  return new Promise((resolve, reject) => {
-    fs.stat(path, (err) => {
-      if (err === null) return resolve(true);
-      if (err && err.code === 'ENOENT') return resolve(false);
-      return reject(err);
-    });
-  });
-}
+const fileExists = require('../utils/file-exists');
 
 describe('generate-iconset-icons', () => {
   it('should be able to generate icons for the React Native iconset', () => {
