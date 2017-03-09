@@ -35,7 +35,7 @@ describe('find', () => {
     //  TODO: The find function has a different codepath for empty folders.
     //  Better would be a more functional pattern, then iterating through a
     //  fileset works with same whether or not it is empty.
-    
+
     //  Ensure we have an empty directory first!
     fs.mkdirSync('./src/utils/empty');
     return find('./src/utils/empty', () => true)
