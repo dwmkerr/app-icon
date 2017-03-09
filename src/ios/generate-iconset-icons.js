@@ -8,9 +8,11 @@ const contentsTemplate = require('./AppIcon.iconset.Contents.template.json');
 //  TODO: explicitly promisify this function to avoid sync calls.
 //  Generate xCode icons given an iconset folder.
 function generateIconSetIcons(iconset) {
-  //  TODO: If we resolve the targetPaths from this function, we can extract
-  //  the console statements out of it to the caller...
-  console.log(`Found iOS iconset: ${iconset}...`);
+  //  Build the results object.
+  const results = {
+    icons: [],
+    contentsPath: null,
+  };
 
   //  We've got the iconset folder. Get the contents Json.
   const contentsPath = path.join(iconset, 'Contents.json');
@@ -25,7 +27,7 @@ function generateIconSetIcons(iconset) {
     const targetSize = image.size.split('x').map(p => p * targetScale).join('x');
     return resizeImage('icon.png', targetPath, targetSize)
       .then(() => {
-        console.log(`    ${chalk.green('✓')}  Generated ${targetName}`);
+        results.icons.push(targetName);
         contents.images.push({
           size: image.size,
           idiom: image.idiom,
@@ -36,7 +38,8 @@ function generateIconSetIcons(iconset) {
   }))
   .then(() => {
     fs.writeFileSync(contentsPath, JSON.stringify(contents, null, 2), 'utf8');
-    console.log(`    ${chalk.green('✓')}  Updated Contents.json`);
+    results.contentsPath = contentsPath;
+    return results;
   });
 }
 

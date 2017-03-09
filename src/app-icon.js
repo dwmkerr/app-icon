@@ -39,7 +39,7 @@ function appIcon(argv) {
       }
 
       //  Generate some icons then innit.
-      return generate.generate(searchRoot, sourceIcon)
+      return generate(searchRoot, sourceIcon)
         .then(() => {
         })
         .catch((generateErr) => {

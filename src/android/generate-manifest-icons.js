@@ -1,5 +1,4 @@
 const path = require('path');
-const chalk = require('chalk');
 const mkdirp = require('mkdirp');
 
 const androidManifestIcons = require('./AndroidManifest.icons.json');
@@ -7,7 +6,10 @@ const resizeImage = require('../resize/resize-image');
 
 //  Generate Android Manifest icons given a manifest file.
 function generateManifestIcons(manifest) {
-  console.log(`Found Android Manifest: ${manifest}...`);
+  //  Create the object we will return.
+  const results = {
+    icons: [],
+  };
 
   //  We've got the manifest file, get the parent folder.
   const manifestFolder = path.dirname(manifest);
@@ -21,14 +23,11 @@ function generateManifestIcons(manifest) {
     return new Promise((resolve, reject) => {
       mkdirp(path.dirname(targetPath), (err) => {
         if (err) return reject(err);
-
-        return resolve(resizeImage('icon.png', targetPath, icon.size)
-          .then(() => {
-            console.log(`    ${chalk.green('✓')}  Generated ${icon.path}`);
-          }));
+        results.icons.push(icon.path);
+        return resolve(resizeImage('icon.png', targetPath, icon.size));
       });
     });
-  }));
+  })).then(() => results);
 }
 
 module.exports = generateManifestIcons;

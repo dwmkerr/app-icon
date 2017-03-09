@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
 const generateIconsetIcons = require('./generate-iconset-icons');
+const deleteIfExists = require('../utils/delete-if-exists');
 const fileExists = require('../utils/file-exists');
 
 describe('generate-iconset-icons', () => {
@@ -23,15 +24,15 @@ describe('generate-iconset-icons', () => {
       'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-76x76-2x.png',
     ];
 
-    //  Delete all of the files we're expecting to create...
-    //  TODO: new to replace this with a 'delete if exists' or something...
-    // files.forEach(fs.unlinkSync);
-
-    return generateIconsetIcons('test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset')
+    //  Delete all of the files we're expecting to create, then generate them.
+    return Promise.all(files.map(f => deleteIfExists(f)))
       .then(() => {
-        return Promise.all(files.map((file) => {
-          return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
-        }));
+        return generateIconsetIcons('test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset')
+        .then(() => {
+          return Promise.all(files.map((file) => {
+            return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
+          }));
+        });
       });
   });
 
@@ -55,15 +56,15 @@ describe('generate-iconset-icons', () => {
       'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset/ipad-76x76-2x.png',
     ];
 
-    //  Delete all of the files we're expecting to create...
-    //  TODO: new to replace this with a 'delete if exists' or something...
-    // files.forEach(fs.unlinkSync);
-
-    return generateIconsetIcons('test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset')
+    //  Delete all of the files we're expecting to create, then generate them.
+    return Promise.all(files.map(f => deleteIfExists(f)))
       .then(() => {
-        return Promise.all(files.map((file) => {
-          return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
-        }));
+        return generateIconsetIcons('test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset')
+        .then(() => {
+          return Promise.all(files.map((file) => {
+            return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
+          }));
+        });
       });
   });
 
@@ -87,15 +88,15 @@ describe('generate-iconset-icons', () => {
       'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset/ipad-76x76-2x.png',
     ];
 
-    //  Delete all of the files we're expecting to create...
-    //  TODO: new to replace this with a 'delete if exists' or something...
-    // files.forEach(fs.unlinkSync);
-
-    return generateIconsetIcons('test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset')
+    //  Delete all of the files we're expecting to create, then generate them.
+    return Promise.all(files.map(f => deleteIfExists(f)))
       .then(() => {
-        return Promise.all(files.map((file) => {
-          return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
-        }));
+        return generateIconsetIcons('test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset')
+        .then(() => {
+          return Promise.all(files.map((file) => {
+            return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
+          }));
+        });
       });
   });
 });

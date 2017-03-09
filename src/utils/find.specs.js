@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const fs = require('fs');
+const mkdirp = require('mkdirp');
 const find = require('./find');
 
 describe('find', () => {
@@ -37,7 +37,7 @@ describe('find', () => {
     //  fileset works with same whether or not it is empty.
 
     //  Ensure we have an empty directory first!
-    fs.mkdirSync('./src/utils/empty');
+    mkdirp('./src/utils/empty');
     return find('./src/utils/empty', () => true)
       .then((results) => {
         expect(results.length).to.equal(0);
