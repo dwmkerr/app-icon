@@ -4,7 +4,7 @@ const generateIconsetIcons = require('./ios/generate-iconset-icons');
 const findAndroidManifests = require('./android/find-android-manifests');
 const generateManifestIcons = require('./android/generate-manifest-icons');
 
-function generate(searchRoot) {
+module.exports = function generate(searchRoot) {
   return findIconsetFolders(searchRoot)
     .then(iconSets => Promise.all(iconSets.map((iconset) => {
       console.log(`Found iOS iconset: ${iconset}...`);
@@ -26,6 +26,4 @@ function generate(searchRoot) {
         });
       });
     })));
-}
-
-module.exports = generate;
+};

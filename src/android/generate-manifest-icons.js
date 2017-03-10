@@ -5,7 +5,7 @@ const androidManifestIcons = require('./AndroidManifest.icons.json');
 const resizeImage = require('../resize/resize-image');
 
 //  Generate Android Manifest icons given a manifest file.
-function generateManifestIcons(manifest) {
+module.exports = function generateManifestIcons(manifest) {
   //  Create the object we will return.
   const results = {
     icons: [],
@@ -28,6 +28,4 @@ function generateManifestIcons(manifest) {
       });
     });
   })).then(() => results);
-}
-
-module.exports = generateManifestIcons;
+};

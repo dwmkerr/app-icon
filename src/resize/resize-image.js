@@ -1,7 +1,7 @@
 const childProcess = require('child_process');
 
 //  Takes a source image, resizes to a target path.
-function resizeImage(source, target, size) {
+module.exports = function resizeImage(source, target, size) {
   return new Promise((resolve, reject) => {
     const command = `convert ${source} -resize ${size} ${target}`;
     childProcess.exec(command, (err) => {
@@ -12,6 +12,4 @@ function resizeImage(source, target, size) {
       return resolve();
     });
   });
-}
-
-module.exports = resizeImage;
+};

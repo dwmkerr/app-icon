@@ -2,7 +2,7 @@ const fs = require('fs');
 
 //  Unlinks a file or folder. Resolves with true if a deletion occured, false
 //  if no deletion occured, and rejets if there is an exception.
-function deleteIfExists(path) {
+module.exports = function deleteIfExists(path) {
   return new Promise((resolve, reject) => {
     fs.unlink(path, (err) => {
       if (err === null) return resolve(true);
@@ -10,6 +10,4 @@ function deleteIfExists(path) {
       return reject(err);
     });
   });
-}
-
-module.exports = deleteIfExists;
+};

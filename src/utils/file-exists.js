@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function fileExists(path) {
+module.exports = function fileExists(path) {
   return new Promise((resolve, reject) => {
     fs.stat(path, (err) => {
       if (err === null) return resolve(true);
@@ -8,6 +8,4 @@ function fileExists(path) {
       return reject(err);
     });
   });
-}
-
-module.exports = fileExists;
+};
