@@ -46,7 +46,7 @@ If an Android project is present, then the icon will be copied at all required s
 
 ## Coding
 
-WIP:
+Useful commands abound:
 
 | Command | Usage |
 |---------|-------|
@@ -127,10 +127,3 @@ To run the native apps, open the `./test/NativeApp` directory, then open the iOS
 ## License
 
 MIT
-
-# Refactoring
-
-[ ] Extract `deleteIfExists` functions into the utils.
-[ ] Raise and fix the `sourceIcon` bug (it is not being used)
-[ ] Promisify the generate functions and extract the console output
-[ ] Fix the issue of checked in files
