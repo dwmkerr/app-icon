@@ -46,6 +46,14 @@ If an Android project is present, then the icon will be copied at all required s
 
 ## Coding
 
+Useful commands abound:
+
+| Command | Usage |
+|---------|-------|
+| `npm test` | Runs the unit tests. |
+| `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging. |
+| `npm run cov` | Runs the tests, writing coverage reports to `./artifacts/coverage`. |
+
 This section will guide you on how to develop with this project.
 
 Dependencies:
