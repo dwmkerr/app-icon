@@ -13,7 +13,7 @@ This simple tool allows you to create a single icon in your app project, then cr
 Install with:
 
 ```bash
-npm install app-icon
+npm install -g app-icon
 ```
 
 You will need [imagemagick](http://www.imagemagick.org/) installed:
@@ -29,7 +29,7 @@ sudo yum install imagemagick      # CentOS/etc
 Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root. Then run:
 
 ```bash
-./node_modules/.bin/app-icon
+app-icon generate
 ```
 
 If an iOS project is present, then the icon will be copied at all required sizes to:
@@ -43,6 +43,8 @@ If an Android project is present, then the icon will be copied at all required s
 ```
 ./android/app/src/main/res
 ```
+
+You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon -h` to see the options.
 
 ## Coding
 
