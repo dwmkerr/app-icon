@@ -1,9 +1,13 @@
 machine:
   node:
     version: 4
+general:
+  artifacts:
+    # Test images are useful artifacts - especially when tests fail!
+    - "src/label/test-images"
 test:
   override:
-    - npm test
+    - npm run cov
     - npm run lint
   post:
     - bash <(curl -s https://codecov.io/bash)

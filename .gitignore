@@ -3,7 +3,8 @@ artifacts/
 test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/
 test/ReactNativeIconTest/android/app/src/main/res
 test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset
-test/CordovaApp/platforms/android/src/res
+test/CordovaApp/platforms/android/res
 test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset
 test/NativeApp/android/native_app/src/main/res
 npm-debug.log
+src/label/test-images/*-output.png

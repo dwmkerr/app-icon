@@ -37,7 +37,7 @@ describe('find', () => {
     //  fileset works with same whether or not it is empty.
 
     //  Ensure we have an empty directory first!
-    mkdirp('./src/utils/empty');
+    mkdirp.sync('./src/utils/empty');
     return find('./src/utils/empty', () => true)
       .then((results) => {
         expect(results.length).to.equal(0);
