@@ -9,7 +9,7 @@
   "scripts": {
     "start": "./bin/app-icon.js",
     "test": "mocha './src/**/*.specs.js'",
-    "test:debug": "mocha -d --debug-brk -w './src/**/*.specs.js'",
+    "test:debug": "mocha -d --debug-brk -w --inspect './src/**/*.specs.js'",
     "cov": "istanbul cover --dir './artifacts/coverage' -x './src/**/*.specs.js' _mocha './src/**/*.specs.js'",
     "lint": "eslint ."
   },

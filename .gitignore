@@ -7,3 +7,4 @@ test/CordovaApp/platforms/android/src/res
 test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset
 test/NativeApp/android/native_app/src/main/res
 npm-debug.log
+src/label/test-images/*-output.png
