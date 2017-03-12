@@ -1,12 +1,12 @@
 # app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/react-native-icon/status.svg)](https://david-dm.org/dwmkerr/react-native-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/react-native-icon/dev-status.svg)](https://david-dm.org/dwmkerr/react-native-icon?type=dev)
 
-Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
+Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](github.com/AlexDisler/cordova-icon).
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
 ## Introduction
 
-This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android.
+This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android. You can also add labels to your app icons.
 
 ## Installation
 
@@ -26,7 +26,7 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
-Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root. Then run:
+Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root. To automatically generate icons of all sizes for all app projects in the same folder, run:
 
 ```bash
 app-icon generate
@@ -44,11 +44,25 @@ If an Android project is present, then the icon will be copied at all required s
 ./android/app/src/main/res
 ```
 
-You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon -h` to see the options.
+You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon generate -h` to see the options.
+
+Add labels to an icon with the command below:
+
+```bash
+app-icon label -i icon.png -o output.png --top UAT --bottom 0.12.3
+```
+
+This would produce output like the below image:
+
+![Labelled Icon Image](./assets/label.png)
+
+This is a useful trick when you are creating things like internal QA versions of your app, where you might want to show a version number or other label in the icon itself.
 
 ## Coding
 
-Useful commands abound:
+The only dependencies are Node 4 (or above) and Yarn.
+
+Useful commands for development are:
 
 | Command | Usage |
 |---------|-------|
@@ -56,16 +70,9 @@ Useful commands abound:
 | `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging. |
 | `npm run cov` | Runs the tests, writing coverage reports to `./artifacts/coverage`. |
 
-This section will guide you on how to develop with this project.
-
-Dependencies:
-
-- Node.js
-- Yarn
-
 Currently the linting style is based on [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). Run `npm run lint` to lint the code.
 
-### Setup
+### Initial Setup
 
 Install the dependencies (I recommend [Node Version Manager](https://github.com/creationix/nvm)):
 
