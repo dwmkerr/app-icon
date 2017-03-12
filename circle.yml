@@ -5,9 +5,6 @@ general:
   artifacts:
     # Test images are useful artifacts - especially when tests fail!
     - "src/label/test-images"
-dependencies:
-  pre:
-    - sudo apt-get update; sudo apt-get install --only-upgrade imagemagick
 test:
   override:
     - npm test

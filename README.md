@@ -126,6 +126,12 @@ cordova run ios
 
 To run the native apps, open the `./test/NativeApp` directory, then open the iOS/Android projects in XCode/AndroidStudio as needed.
 
+## Troubleshooting
+
+**Images labelled with `app-icon label` have the text slightly vertically offset**
+
+This seems to be an issue with Imagemagick 6 - try upgrading to 7.
+
 ## License
 
 MIT
