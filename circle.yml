@@ -1,6 +1,10 @@
 machine:
   node:
     version: 4
+general:
+  artifacts:
+    # Test images are useful artifacts - especially when tests fail!
+    - "src/label/test-images"
 test:
   override:
     - npm test
