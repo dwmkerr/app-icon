@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const callImagemagick = require('./call-imagemagick');
 
 describe('call-imagemagick', () => {
-  xit('should be able to call imagemagick and get the installed version', () => {
+  it('should be able to call imagemagick and get the installed version', () => {
     return callImagemagick('identify -version')
       .then(({ stdout }) => {
         expect(stdout).to.match(/Version: ImageMagick/);
