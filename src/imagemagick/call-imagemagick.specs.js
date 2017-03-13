@@ -11,9 +11,9 @@ describe('call-imagemagick', () => {
 
   it('should return a sensible error if the command has bad parameters', () => {
     return callImagemagick('identify no-file.png')
-    .catch(({ err }) => {
-      expect(err.message).to.match(/unable to open image/);
-    });
+      .catch(({ err }) => {
+        expect(err.message).to.match(/unable to open image/);
+      });
   });
 
   it('should return a sensible error if the command does not exist', () => {
