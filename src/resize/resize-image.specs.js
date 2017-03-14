@@ -1,25 +1,27 @@
 const expect = require('chai').expect;
 const resizeImage = require('./resize-image');
+const compareImages = require('../testing/compare-images');
 
 describe('resize-image', () => {
-  xit('should be able to downscale an image', () => {
-    return resizeImage('./src/resize/test-input-512.png',
-      './src/resize/test-output-16.png',
-      '16x16').then(() => {
-        //  TODO: image compare test-output-16 with test-reference-16.
+  it('should be able to downscale an image', () => {
+    const input = './src/resize/test-images/input.png';
+    const output = './src/resize/test-images/output.png';
+    const reference = './src/resize/test-images/reference.png';
+    return resizeImage(input, output, '16x16')
+      .then(() => {
+        return compareImages(output, reference);
+      })
+      .then((difference) => {
+        //  Note that locally, I can pass this test with a threshhold of 1. But
+        //  on circle, it only manages about 18. Probably due to differing
+        //  imagemagick versions...
+        expect(difference).to.be.below(20, 'Generated image is below accepted similarly threshold');
       });
   });
 
-  xit('should fail with a sensible error message is imagemagick is not installed', () => {
-    //  TODO: still some work to do to cover the negative scenarios.
-  });
-
-  xit('should fail with a sensible error message if imagemagick returns an error', () => {
-    return resizeImage('./src/resize/test-input-512.png',
-      './src/resize/test-output-16.png',
-      '16!16').catch((err) => {
-        //  TODO: still some work to do to cover the negative scenarios.
-        expect(err).to.match(/convert/);
-      });
+  it('should fail with a sensible error message if imagemagick returns an error', () => {
+    return resizeImage('badinput', 'badoutput', 'badsize').catch(({ err }) => {
+      expect(err.message).to.match(/failed/);
+    });
   });
 });

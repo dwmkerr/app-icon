@@ -1,30 +1,20 @@
-const childProcess = require('child_process');
+const callImagemagick = require('../imagemagick/call-imagemagick');
 const getImageWidth = require('./get-image-width');
 
 //  Use imagemagick to label an image. Gravity should be 'north' or 'south'.
 function caption(input, output, label, gravity) {
-  return new Promise((resolve, reject) => {
-    //  Get the image width.
-    getImageWidth(input)
-      .then((width) => {
-        //  The height is a fifth of the width.
-        const height = width / 5;
-        const command = `convert \
-          -background '#0008' -fill white \
-          -gravity center -size ${width}x${height} \
-          caption:"${label}" \
-          ${input} +swap -gravity ${gravity} -composite ${output}`;
-        childProcess.exec(command, (err) => {
-          if (err) {
-            console.log(`child processes failed with error code: ${err.code}`);
-            return reject(err);
-          }
-
-          return resolve();
-        });
-      })
-      .catch(reject);
-  });
+  //  Get the image width.
+  return getImageWidth(input)
+    .then((width) => {
+      //  The height is a fifth of the width.
+      const height = width / 5;
+      const command = `convert \
+        -background '#0008' -fill white \
+        -gravity center -size ${width}x${height} \
+        caption:"${label}" \
+        ${input} +swap -gravity ${gravity} -composite ${output}`;
+      return callImagemagick(command);
+    });
 }
 
 //  Single function to label an image (optionally top and bottom).
@@ -38,5 +28,5 @@ module.exports = function labelImage(input, output, top, bottom) {
     return caption(input, output, bottom, 'south');
   }
 
-  throw new Error("When labeling an image, a 'top' or 'bottom' must be specified.");
+  return Promise.reject(Error("When labeling an image, a 'top' or 'bottom' must be specified."));
 };

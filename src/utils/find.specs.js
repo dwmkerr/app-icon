@@ -25,7 +25,7 @@ describe('find', () => {
     //  TODO: A potential improvement here might be to use chai-as-promised
     //  and explicitly expect a rejection. Otherwise, if the function
     //  succeeds (by mistake), we won't see it as an explicit failure.
-    return find('./invalid', () => true)
+    return find('./invalid')
       .catch((err) => {
         expect(err.message).to.match(/no such file or directory/);
       });
@@ -38,7 +38,7 @@ describe('find', () => {
 
     //  Ensure we have an empty directory first!
     mkdirp.sync('./src/utils/empty');
-    return find('./src/utils/empty', () => true)
+    return find('./src/utils/empty')
       .then((results) => {
         expect(results.length).to.equal(0);
       });

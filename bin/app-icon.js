@@ -5,8 +5,8 @@
 'use strict';
 
 const program = require('commander');
-const commandExists = require('command-exists');
 const pack = require('../package.json');
+const isImagemagickInstalled = require('../src/imagemagick/is-imagemagick-installed');
 const generate = require('../src/generate');
 const labelImage = require('../src/label/label-image');
 const fileExists = require('../src/utils/file-exists');
@@ -22,31 +22,31 @@ program
   .option('-i, --icon [icon]', "The icon to use. Defaults to 'icon.png'", 'icon.png')
   .option('-s, --search [optional]', "The folder to search from. Defaults to './'", './')
   .action(({ icon, search }) => {
-    //  Check that we have imagemagick installed.
-    commandExists('convert', (err, imageMagickInstalled) => {
-      if (err) throw err;
-      if (!imageMagickInstalled) {
-        console.error('  Error: ImageMagick must be installed. Try:');
-        console.error('    brew install imagemagick');
-        return process.exit(1);
-      }
+    isImagemagickInstalled()
+      .catch((err) => { throw err; })
+      .then((imageMagickInstalled) => {
+        if (!imageMagickInstalled) {
+          console.error('  Error: ImageMagick must be installed. Try:');
+          console.error('    brew install imagemagick');
+          return process.exit(1);
+        }
 
-      //  Check that we have a source icon.
-      return fileExists(icon)
-        .then((exists) => {
-          if (!exists) {
-            console.error(`Source file '${icon}' does not exist. Add the file or specify source icon with the '--icon' paramter.`);
-            return process.exit(1);
-          }
-          //  Generate some icons then innit.
-          return generate(icon, search)
-            .catch((generateErr) => {
-              console.error('An error occurred generating the icons...');
-              console.log(generateErr);
-              throw generateErr;
-            });
-        });
-    });
+        //  Check that we have a source icon.
+        return fileExists(icon);
+      })
+      .then((exists) => {
+        if (!exists) {
+          console.error(`Source file '${icon}' does not exist. Add the file or specify source icon with the '--icon' paramter.`);
+          return process.exit(1);
+        }
+        //  Generate some icons.
+        return generate(icon, search);
+      })
+      .catch((generateErr) => {
+        console.error('An error occurred generating the icons...');
+        console.log(generateErr);
+        throw generateErr;
+      });
   });
 
 //  Define the 'label' command.
@@ -58,31 +58,31 @@ program
   .option('-t, --top [top]', "The label to put on the top of the image, .e.g 'qa'.")
   .option('-b, --bottom [bottom]', "The label to put on the bottom of the image, .e.g '1.2.5'.")
   .action(({ input, output, top, bottom }) => {
-    //  Check that we have imagemagick installed.
-    commandExists('convert', (err, imageMagickInstalled) => {
-      if (err) throw err;
-      if (!imageMagickInstalled) {
-        console.error('  Error: ImageMagick must be installed. Try:');
-        console.error('    brew install imagemagick');
-        return process.exit(1);
-      }
+    isImagemagickInstalled()
+      .catch((err) => { throw err; })
+      .then((imageMagickInstalled) => {
+        if (!imageMagickInstalled) {
+          console.error('  Error: ImageMagick must be installed. Try:');
+          console.error('    brew install imagemagick');
+          return process.exit(1);
+        }
 
-      //  Check that we have a source icon.
-      return fileExists(input)
-        .then((exists) => {
-          if (!exists) {
-            console.error(`Input file '${input}' does not exist.`);
-            return process.exit(1);
-          }
-          //  Generate some icons then innit.
-          return labelImage(input, output, top, bottom)
-            .catch((labelErr) => {
-              console.error('An error occurred labelling the icon...');
-              console.log(labelErr);
-              throw labelErr;
-            });
-        });
-    });
+        //  Check that we have a input file.
+        return fileExists(input);
+      })
+      .then((exists) => {
+        if (!exists) {
+          console.error(`Input file '${input}' does not exist.`);
+          return process.exit(1);
+        }
+        //  Generate some icons then innit.
+        return labelImage(input, output, top, bottom);
+      })
+      .catch((labelErr) => {
+        console.error('An error occurred labelling the icon...');
+        console.log(labelErr);
+        throw labelErr;
+      });
   });
 
 //  Extend the help with some examples.
