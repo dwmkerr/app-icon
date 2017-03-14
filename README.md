@@ -60,7 +60,7 @@ This is a useful trick when you are creating things like internal QA versions of
 
 ## Coding
 
-The only dependencies are Node 4 (or above) and Yarn.
+The only dependencies are Node 6 (or above) and Yarn.
 
 Useful commands for development are:
 
@@ -77,8 +77,8 @@ Currently the linting style is based on [airbnb](https://github.com/airbnb/javas
 Install the dependencies (I recommend [Node Version Manager](https://github.com/creationix/nvm)):
 
 ```bash
-nvm install 4
-nvm use 4
+nvm install 6
+nvm use 6
 npm install -g yarn
 git clone git@github.com:dwmkerr/app-icon.git
 cd app-icon
