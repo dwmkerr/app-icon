@@ -32,7 +32,7 @@ describe('labelImage', () => {
     return labelImage(input, output, 'top', 'bottom')
       .then(() => compareImages(output, reference))
       .then((difference) => {
-        expect(difference).to.be.below(2.5, 'Generated image is below accepted similarly threshold');
+        expect(difference).to.be.below(6, 'Generated image is below accepted similarly threshold');
       });
   });
 

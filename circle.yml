@@ -5,6 +5,7 @@ general:
   artifacts:
     # Test images are useful artifacts - especially when tests fail!
     - "src/label/test-images"
+    - "src/resize/test-images"
 test:
   override:
     - npm run cov
