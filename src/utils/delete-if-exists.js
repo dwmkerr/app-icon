@@ -5,7 +5,7 @@ const fs = require('fs');
 module.exports = function deleteIfExists(path) {
   return new Promise((resolve, reject) => {
     fs.unlink(path, (err) => {
-      if (path === null ) => {
+      if (path === null) {
         throw new Error('whoops');
       }
       if (err === null) return resolve(true);
