@@ -3,7 +3,7 @@ const generateManifestIcons = require('./generate-manifest-icons');
 const deleteIfExists = require('../utils/delete-if-exists');
 const fileExists = require('../utils/file-exists');
 
-const iconSource = 'icon.png';
+const sourceIcon = 'icon.png';
 
 describe('generate-manifest-icons', () => {
   it('should be able to generate icons for the React Native manifest', () => {
@@ -18,7 +18,7 @@ describe('generate-manifest-icons', () => {
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(f => deleteIfExists(f)))
       .then(() => (
-        generateManifestIcons(iconSource, './test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml')
+        generateManifestIcons(sourceIcon, './test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml')
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
@@ -40,7 +40,7 @@ describe('generate-manifest-icons', () => {
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(f => deleteIfExists(f)))
       .then(() => (
-        generateManifestIcons(iconSource, 'test/CordovaApp/platforms/android/AndroidManifest.xml')
+        generateManifestIcons(sourceIcon, 'test/CordovaApp/platforms/android/AndroidManifest.xml')
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
@@ -62,7 +62,7 @@ describe('generate-manifest-icons', () => {
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(f => deleteIfExists(f)))
       .then(() => (
-        generateManifestIcons(iconSource, 'test/NativeApp/android/native_app/src/main/AndroidManifest.xml')
+        generateManifestIcons(sourceIcon, 'test/NativeApp/android/native_app/src/main/AndroidManifest.xml')
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {

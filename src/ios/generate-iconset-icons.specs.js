@@ -3,7 +3,7 @@ const generateIconsetIcons = require('./generate-iconset-icons');
 const deleteIfExists = require('../utils/delete-if-exists');
 const fileExists = require('../utils/file-exists');
 
-const iconSource = 'icon.png';
+const sourceIcon = 'icon.png';
 
 describe('generate-iconset-icons', () => {
   it('should be able to generate icons for the React Native iconset', () => {
@@ -29,7 +29,7 @@ describe('generate-iconset-icons', () => {
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(deleteIfExists))
       .then(() => (
-        generateIconsetIcons(iconSource, 'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset')
+        generateIconsetIcons(sourceIcon, 'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset')
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
@@ -62,7 +62,7 @@ describe('generate-iconset-icons', () => {
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(deleteIfExists))
       .then(() => (
-        generateIconsetIcons(iconSource, 'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset')
+        generateIconsetIcons(sourceIcon, 'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset')
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
@@ -95,7 +95,7 @@ describe('generate-iconset-icons', () => {
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(deleteIfExists))
       .then(() => (
-        generateIconsetIcons(iconSource, 'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset')
+        generateIconsetIcons(sourceIcon, 'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset')
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
