@@ -1,4 +1,4 @@
-# v0.2.13
+# v0.4.2
 
 - Fixed bug where the -i flag was being ignored, thanks [morcerf](https://github.com/morcerf)!
 
