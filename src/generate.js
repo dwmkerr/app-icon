@@ -9,7 +9,7 @@ module.exports = function generate(sourceIcon, searchRoot) {
     .then(iconSets => Promise.all(iconSets.map((iconset) => {
       console.log(`Found iOS iconset: ${iconset}...`);
 
-      return generateIconsetIcons(iconset)
+      return generateIconsetIcons(sourceIcon, iconset)
         .then((results) => {
           results.icons.forEach((icon) => {
             console.log(`    ${chalk.green('✓')}  Generated ${icon}`);
@@ -20,7 +20,7 @@ module.exports = function generate(sourceIcon, searchRoot) {
     .then(() => findAndroidManifests(searchRoot))
     .then(manifests => Promise.all(manifests.map((manifest) => {
       console.log(`Found Android Manifest: ${manifest}...`);
-      return generateManifestIcons(manifest).then((results) => {
+      return generateManifestIcons(sourceIcon, manifest).then((results) => {
         results.icons.forEach((icon) => {
           console.log(`    ${chalk.green('✓')}  Generated ${icon}`);
         });

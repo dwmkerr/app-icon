@@ -37,7 +37,7 @@
     "eslint-plugin-import": "^2.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
-    "node-inspector": "^0.12.8"
+    "node-inspector": "^1.1.1"
   },
   "dependencies": {
     "chalk": "^1.1.3",

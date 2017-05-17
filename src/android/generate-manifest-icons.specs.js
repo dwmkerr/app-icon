@@ -3,6 +3,8 @@ const generateManifestIcons = require('./generate-manifest-icons');
 const deleteIfExists = require('../utils/delete-if-exists');
 const fileExists = require('../utils/file-exists');
 
+const sourceIcon = 'icon.png';
+
 describe('generate-manifest-icons', () => {
   it('should be able to generate icons for the React Native manifest', () => {
     const files = [
@@ -15,12 +17,13 @@ describe('generate-manifest-icons', () => {
 
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(f => deleteIfExists(f)))
-      .then(() => {
-        return generateManifestIcons('./test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml')
-        .then(() => {
-          return Promise.all(files.map((file) => {
-            return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
-          }));
+      .then(() => (
+        generateManifestIcons(sourceIcon, './test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml')
+      ))
+      .then(() => Promise.all(files.map(fileExists)))
+      .then((filesDoExist) => {
+        filesDoExist.forEach((fileExists, index) => {
+          expect(fileExists, `${files[index]} should be generated`).to.equal(true);
         });
       });
   });
@@ -36,12 +39,13 @@ describe('generate-manifest-icons', () => {
 
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(f => deleteIfExists(f)))
-      .then(() => {
-        return generateManifestIcons('test/CordovaApp/platforms/android/AndroidManifest.xml')
-        .then(() => {
-          return Promise.all(files.map((file) => {
-            return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
-          }));
+      .then(() => (
+        generateManifestIcons(sourceIcon, 'test/CordovaApp/platforms/android/AndroidManifest.xml')
+      ))
+      .then(() => Promise.all(files.map(fileExists)))
+      .then((filesDoExist) => {
+        filesDoExist.forEach((fileExists, index) => {
+          expect(fileExists, `${files[index]} should be generated`).to.equal(true);
         });
       });
   });
@@ -57,12 +61,13 @@ describe('generate-manifest-icons', () => {
 
     //  Delete all of the files we're expecting to create, then generate them.
     return Promise.all(files.map(f => deleteIfExists(f)))
-      .then(() => {
-        return generateManifestIcons('test/NativeApp/android/native_app/src/main/AndroidManifest.xml')
-        .then(() => {
-          return Promise.all(files.map((file) => {
-            return fileExists(file).then(exists => expect(exists, `${file} should be generated`).to.equal(true));
-          }));
+      .then(() => (
+        generateManifestIcons(sourceIcon, 'test/NativeApp/android/native_app/src/main/AndroidManifest.xml')
+      ))
+      .then(() => Promise.all(files.map(fileExists)))
+      .then((filesDoExist) => {
+        filesDoExist.forEach((fileExists, index) => {
+          expect(fileExists, `${files[index]} should be generated`).to.equal(true);
         });
       });
   });
