@@ -22,8 +22,8 @@ describe('generate-manifest-icons', () => {
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
-        filesDoExist.forEach((fileExists, index) => {
-          expect(fileExists, `${files[index]} should be generated`).to.equal(true);
+        filesDoExist.forEach((exists, index) => {
+          expect(exists, `${files[index]} should be generated`).to.equal(true);
         });
       });
   });
@@ -44,8 +44,8 @@ describe('generate-manifest-icons', () => {
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
-        filesDoExist.forEach((fileExists, index) => {
-          expect(fileExists, `${files[index]} should be generated`).to.equal(true);
+        filesDoExist.forEach((exists, index) => {
+          expect(exists, `${files[index]} should be generated`).to.equal(true);
         });
       });
   });
@@ -66,8 +66,8 @@ describe('generate-manifest-icons', () => {
       ))
       .then(() => Promise.all(files.map(fileExists)))
       .then((filesDoExist) => {
-        filesDoExist.forEach((fileExists, index) => {
-          expect(fileExists, `${files[index]} should be generated`).to.equal(true);
+        filesDoExist.forEach((exists, index) => {
+          expect(exists, `${files[index]} should be generated`).to.equal(true);
         });
       });
   });

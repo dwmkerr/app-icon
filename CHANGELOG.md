@@ -1,3 +1,7 @@
+# v0.2.13
+
+- Fixed bug where the -i flag was being ignored, thanks [morcerf](https://github.com/morcerf)!
+
 # v0.2.12
 
 - Added some missing iOS Icon Sizes, thanks [robbiet480](https://github.com/robbiet480).
