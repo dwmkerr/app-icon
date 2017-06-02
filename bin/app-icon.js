@@ -4,6 +4,7 @@
 // eslint-disable-next-line
 'use strict';
 
+const chalk = require('chalk');
 const program = require('commander');
 const pack = require('../package.json');
 const isImagemagickInstalled = require('../src/imagemagick/is-imagemagick-installed');
@@ -21,7 +22,8 @@ program
   .description('Generate all app icons from a single input icon')
   .option('-i, --icon [icon]', "The icon to use. Defaults to 'icon.png'", 'icon.png')
   .option('-s, --search [optional]', "The folder to search from. Defaults to './'", './')
-  .action(({ icon, search }) => {
+  .option('-p, --platforms [optional]', "The platforms to generate icons for. Defaults to 'android,ios'", 'android,ios')
+  .action(({ icon, search, platforms }) => {
     isImagemagickInstalled()
       .catch((err) => { throw err; })
       .then((imageMagickInstalled) => {
@@ -40,12 +42,10 @@ program
           return process.exit(1);
         }
         //  Generate some icons.
-        return generate(icon, search);
+        return generate({ icon, search, platforms });
       })
       .catch((generateErr) => {
-        console.error('An error occurred generating the icons...');
-        console.log(generateErr);
-        throw generateErr;
+        console.error(chalk.red(`An error occurred generating the icons: ${generateErr.message}`));
       });
   });
 
