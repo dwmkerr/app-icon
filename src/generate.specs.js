@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const generate = require('./generate');
 
 describe('generate', () => {
-  it('should be able to generate React Native icons', () => {
+  it('should be able to generate test app icons', () => {
     const parameters = {
       sourceIcon: 'icon.png',
       searchPath: './',
