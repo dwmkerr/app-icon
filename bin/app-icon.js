@@ -21,7 +21,8 @@ program
   .description('Generate all app icons from a single input icon')
   .option('-i, --icon [icon]', "The icon to use. Defaults to 'icon.png'", 'icon.png')
   .option('-s, --search [optional]', "The folder to search from. Defaults to './'", './')
-  .action(({ icon, search }) => {
+  .option('-p, --platforms [optional]', "The platforms to generate icons for. Defaults to 'android,ios'", 'android,ios')
+  .action(({ icon, search, platforms }) => {
     isImagemagickInstalled()
       .catch((err) => { throw err; })
       .then((imageMagickInstalled) => {
@@ -40,7 +41,7 @@ program
           return process.exit(1);
         }
         //  Generate some icons.
-        return generate(icon, search);
+        return generate({ icon, search, platforms });
       })
       .catch((generateErr) => {
         console.error('An error occurred generating the icons...');
