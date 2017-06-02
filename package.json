@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "./bin/app-icon.js",
-    "test": "mocha './src/**/*.specs.js'",
-    "test:debug": "mocha -d --debug-brk -w --inspect './src/**/*.specs.js'",
-    "cov": "istanbul cover --dir './artifacts/coverage' -x './src/**/*.specs.js' _mocha './src/**/*.specs.js'",
+    "test": "mocha -t 10000 './src/**/*.specs.js'",
+    "test:debug": "mocha -d --debug-brk -w --inspect './src/**/*.specs.js'" ,
+    "cov": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' -x './src/**/*.specs.js' mocha --timeout 10000 './src/**/*.specs.js'",
     "lint": "eslint ."
   },
   "repository": {
@@ -35,9 +35,8 @@
     "eslint": "^3.17.1",
     "eslint-config-airbnb-base": "^11.1.1",
     "eslint-plugin-import": "^2.2.0",
-    "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
-    "node-inspector": "^1.1.1"
+    "nyc": "^11.0.1"
   },
   "dependencies": {
     "chalk": "^1.1.3",
