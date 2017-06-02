@@ -4,6 +4,7 @@
 // eslint-disable-next-line
 'use strict';
 
+const chalk = require('chalk');
 const program = require('commander');
 const pack = require('../package.json');
 const isImagemagickInstalled = require('../src/imagemagick/is-imagemagick-installed');
@@ -44,9 +45,7 @@ program
         return generate({ icon, search, platforms });
       })
       .catch((generateErr) => {
-        console.error('An error occurred generating the icons...');
-        console.log(generateErr);
-        throw generateErr;
+        console.error(chalk.red(`An error occurred generating the icons: ${generateErr.message}`));
       });
   });
 

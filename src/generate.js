@@ -39,5 +39,8 @@ module.exports = function generate(parameters) {
         });
       });
     })))
-    .then(() => results);
+    .then(() => results)
+    .catch((err) => {
+      console.log(chalk.red(err.message));
+    });
 };
