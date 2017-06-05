@@ -4,6 +4,19 @@ Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Nati
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+	- [Generating Icons](#generating-icons)
+	- [Labelling Icons](#labelling-icons)
+- [Coding](#coding)
+	- [Initial Setup](#initial-setup)
+	- [Running Tests](#running-tests)
+	- [Creating a Release](#creating-a-release)
+- [The Sample Projects](#the-sample-projects)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
+
 ## Introduction
 
 This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android. You can also add labels to your app icons.
@@ -26,6 +39,10 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
+The commandline tool can be used to generate icons or label icons.
+
+### Generating Icons
+
 Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root. To automatically generate icons of all sizes for all app projects in the same folder, run:
 
 ```bash
@@ -44,7 +61,18 @@ If an Android project is present, then the icon will be copied at all required s
 ./android/app/src/main/res
 ```
 
+You can limit the platforms which icons are generated for with the `--platforms` flag, specifying:
+
+```bash
+app-icon generate --platforms=ios
+app-icon generate --platforms=android,ios
+```
+
+By default the tool will generate icons for both platforms.
+
 You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon generate -h` to see the options.
+
+### Labelling Icons
 
 Add labels to an icon with the command below:
 
