@@ -46,6 +46,7 @@ program
       })
       .catch((generateErr) => {
         console.error(chalk.red(`An error occurred generating the icons: ${generateErr.message}`));
+        return process.exit(1);
       });
   });
 
@@ -81,7 +82,7 @@ program
       .catch((labelErr) => {
         console.error('An error occurred labelling the icon...');
         console.log(labelErr);
-        throw labelErr;
+        return process.exit(1);
       });
   });
 
