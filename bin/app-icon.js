@@ -38,11 +38,11 @@ program
       })
       .then((exists) => {
         if (!exists) {
-          console.error(`Source file '${icon}' does not exist. Add the file or specify source icon with the '--icon' paramter.`);
+          console.error(`Source file '${icon}' does not exist. Add the file or specify source icon with the '--icon' parameter.`);
           return process.exit(1);
         }
         //  Generate some icons.
-        return generate({ icon, search, platforms });
+        return generate({ sourceIcon: icon, search, platforms });
       })
       .catch((generateErr) => {
         console.error(chalk.red(`An error occurred generating the icons: ${generateErr.message}`));
