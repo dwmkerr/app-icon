@@ -1,3 +1,7 @@
+# v0.6.1
+
+- Fixed a bug where the source icon was not being passed properly, thanks [SamyPesse](https://github.com/SamyPesse)!
+
 # v0.4.2
 
 - Fixed bug where the -i flag was being ignored, thanks [morcerf](https://github.com/morcerf)!
