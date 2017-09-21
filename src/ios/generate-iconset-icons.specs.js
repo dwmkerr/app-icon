@@ -24,6 +24,7 @@ describe('generate-iconset-icons', () => {
       'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-72x72-2x.png',
       'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-76x76-1x.png',
       'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-76x76-2x.png',
+      'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ios-marketing-1024x1024-1x.png',
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
@@ -57,6 +58,7 @@ describe('generate-iconset-icons', () => {
       'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset/ipad-72x72-2x.png',
       'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset/ipad-76x76-1x.png',
       'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset/ipad-76x76-2x.png',
+      'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset/ios-marketing-1024x1024-1x.png',
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
@@ -90,6 +92,7 @@ describe('generate-iconset-icons', () => {
       'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset/ipad-72x72-2x.png',
       'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset/ipad-76x76-1x.png',
       'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset/ipad-76x76-2x.png',
+      'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset/ios-marketing-1024x1024-1x.png',
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
