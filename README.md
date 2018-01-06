@@ -70,6 +70,12 @@ app-icon generate --platforms=android,ios
 
 By default the tool will generate icons for both platforms.
 
+You can search in specific directories for icons, if the presence of other projects is interfering, just use the `--search` or `-s` parameter:
+
+```bash
+app-icon generate -s ./ios -s ./android
+```
+
 You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon generate -h` to see the options.
 
 ### Labelling Icons
