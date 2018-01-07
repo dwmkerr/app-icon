@@ -33,7 +33,7 @@ module.exports = function compareImages(lhs, rhs) {
           return reject(new Error(`Cannot parse returned percentage '${percentage}'`));
         }
 
-        return resolve(percentage);
+        return resolve(percentageDifference);
       });
     });
   });
