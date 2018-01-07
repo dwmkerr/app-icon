@@ -6,7 +6,7 @@ module.exports = function isImagemagickInstalled() {
   return new Promise((resolve, reject) => {
     //  Imagemagick installs a suite of commands, we'll check against the common
     //  'convert' command to see if it is installed.
-    commandExists('convert', (err, imageMagickInstalled) => {
+    commandExists('magick', (err, imageMagickInstalled) => {
       if (err) return reject(err);
       return resolve(imageMagickInstalled);
     });

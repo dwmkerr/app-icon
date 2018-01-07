@@ -6,14 +6,14 @@ install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
   # install modules
-  - choco install imagemagick.tool --version "6.9.9.23" && refreshenv
+  # - choco install imagemagick.tool --version "6.9.9.23" && refreshenv
+  - choco install imagemagick.tool && refreshenv
   - npm install
 
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging.
-  - "\"%PROGRAMFILES%\\ImageMagick\\convert.exe\" -version"
-  - convert -version
+  - magick -version
   - node --version
   - npm --version
   # run tests
