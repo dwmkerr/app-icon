@@ -8,6 +8,7 @@ general:
     - "src/resize/test-images"
 test:
   override:
+    - magick -version
     - npm run cov
     - npm run lint
   post:
