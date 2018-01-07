@@ -58,7 +58,13 @@ program
   .option('-o, --output <output>', "The output image, .e.g 'icon-out.png'.")
   .option('-t, --top [top]', "The label to put on the top of the image, .e.g 'qa'.")
   .option('-b, --bottom [bottom]', "The label to put on the bottom of the image, .e.g '1.2.5'.")
-  .action(({ input, output, top, bottom }) => {
+  .action((params) => {
+    const {
+      input,
+      output,
+      top,
+      bottom,
+    } = params;
     isImagemagickInstalled()
       .catch((err) => { throw err; })
       .then((imageMagickInstalled) => {

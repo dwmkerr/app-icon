@@ -35,12 +35,12 @@ module.exports = function generateIconSetIcons(sourceIcon, iconset) {
           });
         });
     }))
-    .then(() => {
-      fs.writeFile(contentsPath, JSON.stringify(contents, null, 2), (err) => {
-        if (err) return reject(err);
-        results.contentsPath = contentsPath;
-        return resolve(results);
+      .then(() => {
+        fs.writeFile(contentsPath, JSON.stringify(contents, null, 2), (err) => {
+          if (err) return reject(err);
+          results.contentsPath = contentsPath;
+          return resolve(results);
+        });
       });
-    });
   });
 };

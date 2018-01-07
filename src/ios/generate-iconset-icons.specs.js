@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const generateIconsetIcons = require('./generate-iconset-icons');
 const deleteIfExists = require('../utils/delete-if-exists');
 const fileExists = require('../utils/file-exists');

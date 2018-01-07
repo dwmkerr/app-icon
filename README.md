@@ -167,6 +167,17 @@ cordova run ios
 
 To run the native apps, open the `./test/NativeApp` directory, then open the iOS/Android projects in XCode/AndroidStudio as needed.
 
+## Compatibility
+
+`app-icon` dependds on [ImageMagick](https://www.imagemagick.org/). ImageMagick 6 is installed by default on many Linux distributions, as well as OSX. Some platforms are regularly tested (such as Ubuntu, via CircleCI). Other platforms *may* work but are not tested when I make a release, so your results may vary.
+
+The table below shows the current confirmed compatibility:
+
+| Platform | `app-icon` | ImageMagick | Status |
+|----------|------------|-------------|--------|
+| OSX      | `0.6.x`    | 6, 7        | ✅ |
+| Ubuntu 14 | `0.6.x`    | 6 | ✅ |
+
 ## Troubleshooting
 
 **Images labelled with `app-icon label` have the text slightly vertically offset**
