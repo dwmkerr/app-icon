@@ -14,7 +14,7 @@ module.exports = function compareImages(lhs, rhs) {
       }
 
       const differingPixels = parseInt(stderr, 10);
-      if (isNaN(differingPixels)) {
+      if (Number.isNaN(differingPixels)) {
         console.log(`returned differing pixels '${stderr}' cannot be parsed into a number`);
         return reject(new Error(`Cannot parse returned differing pixels '${stderr}'`));
       }
@@ -28,12 +28,12 @@ module.exports = function compareImages(lhs, rhs) {
         }
 
         const percentageDifference = parseInt(percentage, 10);
-        if (isNaN(percentageDifference)) {
+        if (Number.isNaN(percentageDifference)) {
           console.log(`returned percentage '${percentage}' cannot be parsed into a number`);
           return reject(new Error(`Cannot parse returned percentage '${percentage}'`));
         }
 
-        return resolve(percentage);
+        return resolve(percentageDifference);
       });
     });
   });

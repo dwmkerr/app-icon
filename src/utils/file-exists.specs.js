@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const fileExists = require('./file-exists');
 
 describe('file-exists', () => {

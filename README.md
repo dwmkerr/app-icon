@@ -1,4 +1,4 @@
-# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/react-native-icon/status.svg)](https://david-dm.org/dwmkerr/react-native-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/react-native-icon/dev-status.svg)](https://david-dm.org/dwmkerr/react-native-icon?type=dev)
+# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev)
 
 Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
 
@@ -20,6 +20,14 @@ Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Nati
 ## Introduction
 
 This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android. You can also add labels to your app icons.
+
+Create a single large `icon.png`, at least 192 pixels square, then run:
+
+```bash
+npx app-icon generate
+```
+
+In your project root. As long as you are running NPM 5.2 onwards it download and run the tool, generating icons for your project!
 
 ## Installation
 
@@ -113,10 +121,9 @@ Install the dependencies (I recommend [Node Version Manager](https://github.com/
 ```bash
 nvm install 6
 nvm use 6
-npm install -g yarn
 git clone git@github.com:dwmkerr/app-icon.git
 cd app-icon
-yarn
+npm install && npm test
 ```
 
 ### Running Tests
@@ -166,6 +173,17 @@ cordova run ios
 ### Native
 
 To run the native apps, open the `./test/NativeApp` directory, then open the iOS/Android projects in XCode/AndroidStudio as needed.
+
+## Compatibility
+
+`app-icon` dependds on [ImageMagick](https://www.imagemagick.org/). ImageMagick 6 is installed by default on many Linux distributions, as well as OSX. Some platforms are regularly tested (such as Ubuntu, via CircleCI). Other platforms *may* work but are not tested when I make a release, so your results may vary.
+
+The table below shows the current confirmed compatibility:
+
+| Platform | `app-icon` | ImageMagick | Status |
+|----------|------------|-------------|--------|
+| OSX      | `0.6.x`    | 6, 7        | ✅ |
+| Ubuntu 14 | `0.6.x`    | 6 | ✅ |
 
 ## Troubleshooting
 
