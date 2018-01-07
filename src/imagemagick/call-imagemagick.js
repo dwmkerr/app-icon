@@ -7,7 +7,7 @@ const childProcess = require('child_process');
 //  { err, stdout, stderr }
 module.exports = function callImagemagick(command) {
   return new Promise((resolve, reject) => {
-    childProcess.exec(command, (err, stdout, stderr) => {
+    childProcess.exec(`magick ${command}`, (err, stdout, stderr) => {
       if (err) {
         console.error(`Failed to call '${command}. Error is '${err.message}'.`);
         return reject({ err, stdout, stderr });
