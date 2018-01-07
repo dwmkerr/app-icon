@@ -6,7 +6,6 @@ machine:
 # Install ImageMagick.
 dependencies:
   pre:
-    - magick -version
     - sudo aptitude -y install imagemagick
     - magick -version
 
