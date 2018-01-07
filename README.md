@@ -21,7 +21,7 @@ Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Nati
 
 This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android. You can also add labels to your app icons.
 
-Create a single large `icon.png`, at leats 192 pixels square, then run:
+Create a single large `icon.png`, at least 192 pixels square, then run:
 
 ```bash
 npx app-icon generate
@@ -117,6 +117,7 @@ nvm install 6
 nvm use 6
 git clone git@github.com:dwmkerr/app-icon.git
 cd app-icon
+npm install && npm test
 ```
 
 ### Running Tests

@@ -3,10 +3,9 @@ machine:
   node:
     version: 6
 
-# Install ImageMagick.
+# Print the ImageMagick version, useful for checking compatibility.
 dependencies:
   pre:
-    - sudo aptitude -y install imagemagick
     - convert -version
 
 # Define some useful artifacts folders. The test images are useful if test fail.
