@@ -6,7 +6,7 @@ install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
   # install modules
-  - choco install imagemagick.tool --version 6 && refreshenv
+  - choco install imagemagick.tool --version "6.9.9.23" && refreshenv
   - npm install
 
 # Post-install test scripts.
