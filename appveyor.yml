@@ -12,7 +12,7 @@ install:
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging.
-  - %PROGRAMFILES%\ImageMagick\convert.exe -version
+  - "%PROGRAMFILES%\ImageMagick\convert.exe -version"
   - convert -version
   - node --version
   - npm --version
