@@ -7,7 +7,7 @@ machine:
 dependencies:
   pre:
     - sudo aptitude -y install imagemagick
-    - magick -version
+    - convert -version
 
 # Define some useful artifacts folders. The test images are useful if test fail.
 general:
