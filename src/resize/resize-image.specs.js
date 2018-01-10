@@ -20,7 +20,7 @@ describe('resize-image', () => {
   });
 
   it('should fail with a sensible error message if imagemagick returns an error', () => {
-    return resizeImage('badinput', 'badoutput', 'badsize').catch(({ err }) => {
+    return resizeImage('badinput', 'badoutput', 'badsize').catch((err) => {
       expect(err.message).to.match(/failed/);
     });
   });

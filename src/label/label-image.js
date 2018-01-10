@@ -1,4 +1,4 @@
-const callImagemagick = require('../imagemagick/call-imagemagick');
+const imagemagickCli = require('imagemagick-cli');
 const getImageWidth = require('./get-image-width');
 
 //  Use imagemagick to label an image. Gravity should be 'north' or 'south'.
@@ -13,7 +13,7 @@ function caption(input, output, label, gravity) {
         -gravity center -size ${width}x${height} \
         caption:"${label}" \
         ${input} +swap -gravity ${gravity} -composite ${output}`;
-      return callImagemagick(command);
+      return imagemagickCli.exec(command);
     });
 }
 
