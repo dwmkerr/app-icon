@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const resizeImage = require('./resize-image');
 const compareImages = require('../testing/compare-images');
 
