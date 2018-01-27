@@ -1,5 +1,7 @@
 # app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/app-icon.svg)](https://greenkeeper.io/)
+
 Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
 
 <img src="./assets/banner.png" width="614" alt="Banner">
