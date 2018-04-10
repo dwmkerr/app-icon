@@ -2,11 +2,12 @@ const commandExists = require('command-exists');
 
 //  Returns a promise which resolves with true if imagemagick is installed and
 //  false otherwise.
+var convert = (process.platform=='win32')?'magick convert':'convert';
 module.exports = function isImagemagickInstalled() {
   return new Promise((resolve, reject) => {
     //  Imagemagick installs a suite of commands, we'll check against the common
     //  'convert' command to see if it is installed.
-    commandExists('convert', (err, imageMagickInstalled) => {
+    commandExists(convert, (err, imageMagickInstalled) => {
       if (err) return reject(err);
       return resolve(imageMagickInstalled);
     });
