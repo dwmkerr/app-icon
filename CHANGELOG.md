@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/dwmkerr/app-icon/compare/v0.6.3...v0.7.0) (2018-06-28)
+
+
+### Features
+
+* adds appveyor config ([999d697](https://github.com/dwmkerr/app-icon/commit/999d697))
+
+
+
 # v0.6.2
 
 - Added support for the new iOS marketing icon sizes, see [this](https://stackoverflow.com/a/44691659), thanks [sampsasaarela](https://github.com/sampsasaarela)!
