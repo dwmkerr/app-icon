@@ -11,7 +11,9 @@
     "test": "mocha -t 10000 -name '*.specs.js' --recursive ./src",
     "test:debug": "mocha -d --debug-brk -w --inspect './src/**/*.specs.js'",
     "cov": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' --exclude '**/*.specs.js' mocha --timeout 10000 './src/**/*.specs.js'",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "standard-version",
+    "preversion": "echo 'please use npm run release instead' && exit 1"
   },
   "repository": {
     "type": "git",
@@ -36,7 +38,8 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.2.0",
     "mocha": "^4.1.0",
-    "nyc": "^11.0.1"
+    "nyc": "^11.0.1",
+    "standard-version": "^4.4.0"
   },
   "dependencies": {
     "chalk": "^2.3.0",
