@@ -1,4 +1,4 @@
-# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev)
+# app-icon [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev)
 
 Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
 
@@ -21,7 +21,7 @@ Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Nati
 
 This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android. You can also add labels to your app icons.
 
-Create a single large `icon.png`, at leats 192 pixels square, then run:
+Create a single large `icon.png`, at least 192 pixels square, then run:
 
 ```bash
 npx app-icon generate
@@ -78,6 +78,12 @@ app-icon generate --platforms=android,ios
 
 By default the tool will generate icons for both platforms.
 
+You can search in specific directories for icons, if the presence of other projects is interfering, just use the `--search` or `-s` parameter:
+
+```bash
+app-icon generate -s ./ios -s ./android
+```
+
 You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon generate -h` to see the options.
 
 ### Labelling Icons
@@ -117,6 +123,10 @@ nvm install 6
 nvm use 6
 git clone git@github.com:dwmkerr/app-icon.git
 cd app-icon
+<<<<<<< HEAD
+=======
+npm install && npm test
+>>>>>>> master
 ```
 
 ### Running Tests
@@ -166,6 +176,17 @@ cordova run ios
 ### Native
 
 To run the native apps, open the `./test/NativeApp` directory, then open the iOS/Android projects in XCode/AndroidStudio as needed.
+
+## Compatibility
+
+`app-icon` dependds on [ImageMagick](https://www.imagemagick.org/). ImageMagick 6 is installed by default on many Linux distributions, as well as OSX. Some platforms are regularly tested (such as Ubuntu, via CircleCI). Other platforms *may* work but are not tested when I make a release, so your results may vary.
+
+The table below shows the current confirmed compatibility:
+
+| Platform | `app-icon` | ImageMagick | Status |
+|----------|------------|-------------|--------|
+| OSX      | `0.6.x`    | 6, 7        | ✅ |
+| Ubuntu 14 | `0.6.x`    | 6 | ✅ |
 
 ## Troubleshooting
 
