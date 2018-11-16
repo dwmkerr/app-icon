@@ -5,6 +5,7 @@ jobs:
       - image: circleci/node:8
     steps:
       - checkout
+      - run: npm install
       - run: npm run lint
       - run: npm run cov
       - run: bash <(curl -s https://codecov.io/bash)
