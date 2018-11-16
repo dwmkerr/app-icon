@@ -1,23 +1,20 @@
-# Use Node 6.
-machine:
-  node:
-    version: 6
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: npm run lint
+      - run: npm run cov
+      - run: bash <(curl -s https://codecov.io/bash)
 
-# Print the ImageMagick version, useful for checking compatibility.
-dependencies:
-  pre:
-    - convert -version
-
-# Define some useful artifacts folders. The test images are useful if test fail.
-general:
-  artifacts:
-    - "src/label/test-images"
-    - "src/resize/test-images"
-
-# Run the coverage and linting, then upload the coverage results.
-test:
-  override:
-    - npm run cov
-    - npm run lint
-  post:
-    - bash <(curl -s https://codecov.io/bash)
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test:
+          # All branches, all tags.
+          filters:
+            tags:
+              only: /.*/
