@@ -6,7 +6,6 @@ sudo apt remove --purge imagemagick
 
 # Install IM 7.
 version="ImageMagick-7.0.8-3"
-cp ${version}.tar.gz .
 tar xzf ${version}.tar.gz
 cd ${version}
 touch configure
