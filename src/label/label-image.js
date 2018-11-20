@@ -22,9 +22,11 @@ module.exports = function labelImage(input, output, top, bottom) {
   if (top && bottom) {
     return caption(input, output, top, 'north')
       .then(() => caption(output, output, bottom, 'south'));
-  } else if (top) {
+  }
+  if (top) {
     return caption(input, output, top, 'north');
-  } else if (bottom) {
+  }
+  if (bottom) {
     return caption(input, output, bottom, 'south');
   }
 
