@@ -2,10 +2,9 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/node:8
+      - image: dwmkerr/node:8-imagemagick
     steps:
       - checkout
-      - run: cd ./.circleci; ./setup-imagemagick.sh
       - run: npm install
       - run: npm run lint
       - run: npm run cov
