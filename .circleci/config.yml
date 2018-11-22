@@ -7,7 +7,7 @@ jobs:
       - image: dwmkerr/node:8-imagemagick
     steps:
       - checkout
-      - make test
+      - run: make test
       - run: npm run cov
       - run: bash <(curl -s https://codecov.io/bash)
 
