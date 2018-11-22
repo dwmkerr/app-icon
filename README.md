@@ -144,6 +144,16 @@ To create a release.
 - Use `npm version` to bump, e.g. `npm version patch`
 - Push and deploy `git push --tags && git push && npm publish`
 
+### Builds
+
+Builds are run on CircleCI. You can run the CircleCI build locally with the following command:
+
+```
+make circleci
+```
+
+The CircleCI build runs on a custom image `dwmkerr/node:8-imagemagick` which is the standard [`circleci/node:8`](https://hub.docker.com/r/circleci/node/) image with ImageMagick installed on top.
+
 ## The Sample Projects
 
 This project includes some sample apps in the `test` folder, which are used for the tests. You can also run these apps to see the icons produced in action.

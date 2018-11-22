@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  # To test, we just build the code, run the tests, then create and upload
+  # a coverage report.
+  test:
+    docker:
+      - image: dwmkerr/node:8-imagemagick
+    steps:
+      - checkout
+      - run: make test
+      - run: npm run cov
+      - run: bash <(curl -s https://codecov.io/bash)
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test:
+          # All branches, all tags.
+          filters:
+            tags:
+              only: /.*/
