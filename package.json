@@ -8,9 +8,8 @@
   },
   "scripts": {
     "start": "./bin/app-icon.js",
-    "test": "mocha -t 10000 './src/**/*.specs.js'",
+    "test": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' -x './src/**/*.specs.js' mocha --timeout 10000 './src/**/*.specs.js'",
     "test:debug": "mocha -d --inspect-brk -w --inspect './src/**/*.specs.js'",
-    "cov": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' -x './src/**/*.specs.js' mocha --timeout 10000 './src/**/*.specs.js'",
     "lint": "eslint ."
   },
   "repository": {
