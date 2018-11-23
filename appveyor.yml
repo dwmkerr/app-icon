@@ -7,7 +7,7 @@ install:
   - ps: Install-Product node $env:nodejs_version
   # - choco install imagemagick.tool --version "6.9.9.23" && refreshenv
   - choco install imagemagick.tool && refreshenv
-  - make build
+  - npm install
 
 # Post-install test scripts.
 test_script:
@@ -15,7 +15,7 @@ test_script:
   - magick -version
   - node --version
   - npm --version
-  - make test
+  - npm test
 
 # Don't actually build.
 build: off
