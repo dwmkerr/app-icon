@@ -1,28 +1,27 @@
 version: 2
 jobs:
-  build:
+  # To test, we just build the code, run the tests, then create and upload
+  # a coverage report.
+  test:
     docker:
-      - image: circleci/node:6
-    working_directory: ~/repo
+      - image: dwmkerr/node:8-imagemagick
     steps:
       - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run lint
+      - run: make test
       - run: npm run cov
       - run: bash <(curl -s https://codecov.io/bash)
-
+      # Store test artifacts, useful for diagnosing failed tests.
       - store_artifacts:
           path: "src/label/test-images"
       - store_artifacts:
           path: "src/resize/test-images"
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test:
+          # All branches, all tags.
+          filters:
+            tags:
+              only: /.*/

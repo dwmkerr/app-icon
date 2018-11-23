@@ -1,4 +1,4 @@
-# app-icon [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev)
+# app-icon [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io)
 
 Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
 
@@ -123,10 +123,7 @@ nvm install 6
 nvm use 6
 git clone git@github.com:dwmkerr/app-icon.git
 cd app-icon
-<<<<<<< HEAD
-=======
 npm install && npm test
->>>>>>> master
 ```
 
 ### Running Tests
@@ -146,6 +143,16 @@ To create a release.
 - Merge your work to master.
 - Use `npm version` to bump, e.g. `npm version patch`
 - Push and deploy `git push --tags && git push && npm publish`
+
+### Builds
+
+Builds are run on CircleCI. You can run the CircleCI build locally with the following command:
+
+```
+make circleci
+```
+
+The CircleCI build runs on a custom image `dwmkerr/node:8-imagemagick` which is the standard [`circleci/node:8`](https://hub.docker.com/r/circleci/node/) image with ImageMagick installed on top.
 
 ## The Sample Projects
 
