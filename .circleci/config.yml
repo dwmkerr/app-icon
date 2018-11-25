@@ -10,6 +10,11 @@ jobs:
       - run: make test
       - run: npm run cov
       - run: bash <(curl -s https://codecov.io/bash)
+      # Store test artifacts, useful for diagnosing failed tests.
+      - store_artifacts:
+          path: "src/label/test-images"
+      - store_artifacts:
+          path: "src/resize/test-images"
 
 workflows:
   version: 2

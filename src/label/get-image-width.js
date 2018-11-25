@@ -1,7 +1,7 @@
-const callImagemagick = require('../imagemagick/call-imagemagick');
+const imagemagickCli = require('imagemagick-cli');
 
 module.exports = function getImageWidth(path) {
-  return callImagemagick(`identify -format %w "${path}"`)
+  return imagemagickCli.exec(`identify -format %w "${path}"`)
     .then(({ stdout }) => {
       //  Attempt to turn the width into pixels.
       const pixelWidth = parseInt(stdout, 10);

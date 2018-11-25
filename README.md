@@ -1,21 +1,31 @@
-# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io)
+# app-icon [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io)
 
 Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-	- [Generating Icons](#generating-icons)
-	- [Labelling Icons](#labelling-icons)
-- [Coding](#coding)
-	- [Initial Setup](#initial-setup)
-	- [Running Tests](#running-tests)
-	- [Creating a Release](#creating-a-release)
-- [The Sample Projects](#the-sample-projects)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
+
+<!-- vim-markdown-toc GFM -->
+
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [Usage](#usage)
+    * [Generating Icons](#generating-icons)
+    * [Labelling Icons](#labelling-icons)
+* [Developer Guide](#developer-guide)
+    * [Initial Setup](#initial-setup)
+    * [Running Tests](#running-tests)
+    * [Creating a Release](#creating-a-release)
+    * [Builds](#builds)
+* [The Sample Projects](#the-sample-projects)
+    * [React Native](#react-native)
+    * [Cordova](#cordova)
+    * [Native](#native)
+* [Compatibility](#compatibility)
+* [Troubleshooting](#troubleshooting)
+* [License](#license)
+
+<!-- vim-markdown-toc -->
 
 ## Introduction
 
@@ -100,7 +110,7 @@ This would produce output like the below image:
 
 This is a useful trick when you are creating things like internal QA versions of your app, where you might want to show a version number or other label in the icon itself.
 
-## Coding
+## Developer Guide
 
 The only dependencies are Node 6 (or above) and Yarn.
 
@@ -135,6 +145,8 @@ npm test
 ```
 
 Tests are executed with [Mocha](https://mochajs.org/) and coverage is handled by [Istanbul](https://github.com/gotwarlost/istanbul). Coverage reports are written to an `./artifacts` folder.
+
+Note that best practices are to pass Mocha a quoted string with a glob pattern for cross-platform execution of tests (see [Mocha Docs](https://mochajs.org/#the-test-directory)). However for some reason on AppVeyor this doesn't seem to work. Leaving the pattern unquoted works for `cmd` as well as the shell in builds for now. So please be careful if changing the quotes and test on both platforms.
 
 ### Creating a Release
 

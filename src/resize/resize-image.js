@@ -1,6 +1,6 @@
-const callImagemagick = require('../imagemagick/call-imagemagick');
+const imagemagickCli = require('imagemagick-cli');
 
 //  Takes a source image, resizes to a target path.
 module.exports = function resizeImage(source, target, size) {
-  return callImagemagick(`convert "${source}" -resize ${size} "${target}"`);
+  return imagemagickCli.exec(`convert "${source}" -resize ${size} "${target}"`);
 };

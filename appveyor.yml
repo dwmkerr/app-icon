@@ -1,19 +1,32 @@
 environment:
-  nodejs_version: "8"
+  nodejs_version: "6"
 
 # Install scripts. (runs after repo cloning)
 install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
-  # install modules
-  - make build
+  # - choco install imagemagick.tool --version "6.9.9.23" && refreshenv
+  - choco install imagemagick.tool && refreshenv
+  - npm install
 
 # Post-install test scripts.
 test_script:
   # Output useful info for debugging.
+  - magick -version
   - node --version
   - npm --version
-  - make test
+  - npm test
+
+# We need the following test artifacts to debug rendering issues:
+TODO:
+  - store_artifacts:
+      path: "src/label/test-images"
+  - store_artifacts:
+      path: "src/resize/test-images"
 
 # Don't actually build.
 build: off
+
+# Uncomment the line below to enable a remote desktop session to debug builds.
+# on_finish:
+  # - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
