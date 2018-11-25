@@ -1,6 +1,5 @@
 environment:
   nodejs_version: "6"
-  APPVEYOR_RDP_PASSWORD: '2MnpFy9xcwCF9NAv'
 
 # Install scripts. (runs after repo cloning)
 install:
