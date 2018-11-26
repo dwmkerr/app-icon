@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-var path = require('path');
+const path = require('path');
 const findAndroidManifests = require('./find-android-manifests');
 
 describe('find-android-manifests', () => {
@@ -18,7 +18,6 @@ describe('find-android-manifests', () => {
 
   it('should be able to find the Cordova manifests', () => {
     return findAndroidManifests('./test/CordovaApp').then((manifests) => {
-      debugger;
       expect(manifests.length).to.equal(2);
       expect(manifests).to.include(path.normalize('test/CordovaApp/platforms/android/AndroidManifest.xml'));
       expect(manifests).to.include(path.normalize('test/CordovaApp/platforms/android/CordovaLib/AndroidManifest.xml'));

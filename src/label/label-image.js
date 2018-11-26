@@ -14,7 +14,7 @@ function caption(input, output, label, gravity) {
         caption:"${label}" \
         ${input} +swap -gravity ${gravity} -composite ${output}`;
       return imagemagickCli.exec(command);
-    })
+    });
 }
 
 //  Single function to label an image (optionally top and bottom).
