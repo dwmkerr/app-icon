@@ -20,11 +20,12 @@ test_script:
 # We need the following test artifacts to debug rendering issues:
 # This means thats we can debug the current test issues, which are that the
 # convert command is not respecting opacity on windows.
-TODO:
-  - store_artifacts:
-      path: "src/label/test-images"
-  - store_artifacts:
-      path: "src/resize/test-images"
+artifacts:
+  - path: "src/label/test-images"
+    name: label-test-images
+  - path: logs
+    name: "src/resize/test-images"
+    type: resize-test-images
 
 # Don't actually build.
 build: off
