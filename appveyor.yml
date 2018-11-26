@@ -18,6 +18,8 @@ test_script:
   - npm test
 
 # We need the following test artifacts to debug rendering issues:
+# This means thats we can debug the current test issues, which are that the
+# convert command is not respecting opacity on windows.
 TODO:
   - store_artifacts:
       path: "src/label/test-images"
