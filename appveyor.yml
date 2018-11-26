@@ -19,13 +19,12 @@ test_script:
 
 # We need the following test artifacts to debug rendering issues:
 # This means thats we can debug the current test issues, which are that the
-# convert command is not respecting opacity on windows.
-artifacts:
-  - path: 'src\label\test-images'
-    name: label-test-images
-  - path: logs
-    name: 'src\resize\test-images'
-    type: resize-test-images
+# convert command is not respecting opacity on windows. We need to script this
+# as the 'artifacts' yaml section is only used on *successful* builds - we need
+# the artifacts when we fail!
+after_test:
+  - ps: $root = Resolve-Path .\src\label\test-images; [IO.Directory]::GetFiles($root.Path, '*.*', 'AllDirectories') | % { Push-AppveyorArtifact $_ -FileName $_.Substring($root.Path.Length + 1) -DeploymentName to-publish }
+  - ps: $root = Resolve-Path .\src\resize\test-images; [IO.Directory]::GetFiles($root.Path, '*.*', 'AllDirectories') | % { Push-AppveyorArtifact $_ -FileName $_.Substring($root.Path.Length + 1) -DeploymentName to-publish }
 
 # Don't actually build.
 build: off
