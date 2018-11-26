@@ -9,7 +9,7 @@ function caption(input, output, label, gravity) {
       //  The height is a fifth of the width.
       const height = width / 5;
       const command = `convert \
-        -background '#0000080' -fill white \
+        -background 'rgba(0,0,0,0.5)' -fill white \
         -gravity center -size ${width}x${height} \
         caption:"${label}" \
         ${input} +swap -gravity ${gravity} -composite ${output}`;
