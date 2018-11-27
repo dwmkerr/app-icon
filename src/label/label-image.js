@@ -7,9 +7,11 @@ function caption(input, output, label, gravity) {
   return getImageWidth(input)
     .then((width) => {
       //  The height is a fifth of the width.
+      //  Important: the quotes around the colour must be double quoutes for the
+      //  command to work on Windows!
       const height = width / 5;
       const command = `convert \
-        -background 'rgba(0,0,0,0.5)' -fill white \
+        -background "rgba(0,0,0,0.5)" -fill white \
         -gravity center -size ${width}x${height} \
         caption:"${label}" \
         ${input} +swap -gravity ${gravity} -composite ${output}`;
