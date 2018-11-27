@@ -34,10 +34,13 @@ This simple tool allows you to create a single icon in your app project, then cr
 Create a single large `icon.png`, at least 192 pixels square, then run:
 
 ```bash
+# If you are using npm 5.2 onwards...
 npx app-icon generate
-```
 
-In your project root. As long as you are running NPM 5.2 onwards it download and run the tool, generating icons for your project!
+# ...for older versions of npm
+npm install -g app-icon
+app-icon generate
+```
 
 ## Installation
 
