@@ -22,13 +22,11 @@ test_script:
 # convert command is not respecting opacity on windows. We need to script this
 # as the 'artifacts' yaml section is only used on *successful* builds - we need
 # the artifacts when we fail!
-after_test:
+on_finish:
   - ps: $root = Resolve-Path .\src\label\test-images; [IO.Directory]::GetFiles($root.Path, '*.*', 'AllDirectories') | % { Push-AppveyorArtifact $_ -FileName $_.Substring($root.Path.Length + 1) -DeploymentName to-publish }
   - ps: $root = Resolve-Path .\src\resize\test-images; [IO.Directory]::GetFiles($root.Path, '*.*', 'AllDirectories') | % { Push-AppveyorArtifact $_ -FileName $_.Substring($root.Path.Length + 1) -DeploymentName to-publish }
-
-# Don't actually build.
-build: off
-
 # Uncomment the line below to enable a remote desktop session to debug builds.
-# on_finish:
-  # - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+# Don't actually build (we do it ourselves).
+build: off
