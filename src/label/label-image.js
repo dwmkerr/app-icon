@@ -1,4 +1,4 @@
-const callImagemagick = require('../imagemagick/call-imagemagick');
+const imagemagickCli = require('imagemagick-cli');
 const getImageWidth = require('./get-image-width');
 
 //  Use imagemagick to label an image. Gravity should be 'north' or 'south'.
@@ -7,13 +7,15 @@ function caption(input, output, label, gravity) {
   return getImageWidth(input)
     .then((width) => {
       //  The height is a fifth of the width.
+      //  Important: the quotes around the colour must be double quoutes for the
+      //  command to work on Windows!
       const height = width / 5;
       const command = `convert \
-        -background '#0008' -fill white \
+        -background "rgba(0,0,0,0.5)" -fill white \
         -gravity center -size ${width}x${height} \
         caption:"${label}" \
         ${input} +swap -gravity ${gravity} -composite ${output}`;
-      return callImagemagick(command);
+      return imagemagickCli.exec(command);
     });
 }
 
