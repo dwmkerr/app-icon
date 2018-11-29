@@ -1,6 +1,6 @@
 # app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io)
 
-Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
+Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
@@ -27,7 +27,7 @@ Create a single large `icon.png`, at least 192 pixels square, then run:
 npx app-icon generate
 ```
 
-In your project root. As long as you are running NPM 5.2 onwards it download and run the tool, generating icons for your project!
+As long as you are running `npm` 5.2 onwards it download and run the tool, generating icons for your project!
 
 ## Installation
 
@@ -47,7 +47,7 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
-The commandline tool can be used to generate icons or label icons.
+The `app-icon` tool can be used to generate icons or label icons.
 
 ### Generating Icons
 
@@ -99,6 +99,30 @@ This would produce output like the below image:
 ![Labelled Icon Image](./assets/label.png)
 
 This is a useful trick when you are creating things like internal QA versions of your app, where you might want to show a version number or other label in the icon itself.
+
+### Creating Icons
+
+The tool can create a simple icon of the right size and structure, as well as template 'Adaptive Icons' for Android. Run the `create` command:
+
+```sh
+app-icon create
+```
+
+A simple icon named `icon.png` will be created. You can now run `app-icon generate` to create all icons of the required sizes for all projects.
+
+You can also include text for the icon:
+
+```sh
+app-icon create "App"  # creates an icon with the text 'App'
+```
+
+To create adaptive icons, run:
+
+```sh
+app-icon create --android-adaptive
+```
+
+This will create files named `icon.background.png`, `icon.foreground.png` and `icon.mask.png`. You can now run `app-icon generate` to update all Android projects.
 
 ## Coding
 

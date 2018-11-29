@@ -92,6 +92,34 @@ program
       });
   });
 
+//  Define the 'create' command.
+program
+  .command('create')
+  .description('Creates an app icon')
+  .option('-c, --caption [caption]', "An optional caption for the icon, e.g 'App'.")
+  .action((params) => {
+    const { caption } = params;
+    isImagemagickInstalled()
+      .catch((err) => { throw err; })
+      .then((imageMagickInstalled) => {
+        if (!imageMagickInstalled) {
+          console.error('  Error: ImageMagick must be installed. Try:');
+          console.error('    brew install imagemagick');
+          return process.exit(1);
+        }
+
+        //  Create the icon.
+        //  TODO: the template path will have to be worked out from the current
+        //  process location.
+        return labelImage('./src/create/icon.template.png', './icon.png', { caption });
+      })
+      .catch((createError) => {
+        console.error('An error occurred creating the icon...');
+        console.log(createError);
+        return process.exit(1);
+      });
+  });
+
 //  Extend the help with some examples.
 program.on('--help', () => {
   console.log('  Examples:');
@@ -99,6 +127,7 @@ program.on('--help', () => {
   console.log('    $ app-icon generate');
   console.log('    $ app-icon generate -i myicon.png -s ./app/cordova-app');
   console.log('    $ app-icon label -i myicon.png -o myicon.out.png -t qa -b 1.2.3');
+  console.log('    $ app-icon create --caption "App"');
   console.log('');
 });
 

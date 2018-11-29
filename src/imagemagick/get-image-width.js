@@ -1,4 +1,4 @@
-const callImagemagick = require('../imagemagick/call-imagemagick');
+const callImagemagick = require('./call-imagemagick');
 
 module.exports = function getImageWidth(path) {
   return callImagemagick(`identify -format %w "${path}"`)
