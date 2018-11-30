@@ -10,6 +10,9 @@ npm-debug.log
 src/label/test-images/*-output.png
 src/resize/test-images/*output.png
 .nyc_output/
+<<<<<<< HEAD
 
 # Windows jank
+=======
+>>>>>>> fd8536586088720c6069479ccba134f09f6a30e5
 Thumbs.db

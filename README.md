@@ -1,21 +1,31 @@
-# app-icon [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io)
+# app-icon [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io)
 
 Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-	- [Generating Icons](#generating-icons)
-	- [Labelling Icons](#labelling-icons)
-- [Coding](#coding)
-	- [Initial Setup](#initial-setup)
-	- [Running Tests](#running-tests)
-	- [Creating a Release](#creating-a-release)
-- [The Sample Projects](#the-sample-projects)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
+<!-- vim-markdown-toc GFM -->
+
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [Usage](#usage)
+    * [Generating Icons](#generating-icons)
+    * [Labelling Icons](#labelling-icons)
+    * [Creating Icons](#creating-icons)
+* [Developer Guide](#developer-guide)
+    * [Initial Setup](#initial-setup)
+    * [Running Tests](#running-tests)
+    * [Creating a Release](#creating-a-release)
+    * [Builds](#builds)
+* [The Sample Projects](#the-sample-projects)
+    * [React Native](#react-native)
+    * [Cordova](#cordova)
+    * [Native](#native)
+* [Compatibility](#compatibility)
+* [Troubleshooting](#troubleshooting)
+* [License](#license)
+
+<!-- vim-markdown-toc -->
 
 ## Introduction
 
@@ -24,10 +34,13 @@ This simple tool allows you to create a single icon in your app project, then cr
 Create a single large `icon.png`, at least 192 pixels square, then run:
 
 ```bash
+# If you are using npm 5.2 onwards...
 npx app-icon generate
-```
 
-As long as you are running `npm` 5.2 onwards it download and run the tool, generating icons for your project!
+# ...for older versions of npm
+npm install -g app-icon
+app-icon generate
+```
 
 ## Installation
 
@@ -124,17 +137,17 @@ app-icon create --android-adaptive
 
 This will create files named `icon.background.png`, `icon.foreground.png` and `icon.mask.png`. You can now run `app-icon generate` to update all Android projects.
 
-## Coding
+## Developer Guide
 
 The only dependencies are Node 6 (or above) and Yarn.
 
 Useful commands for development are:
 
-| Command | Usage |
-|---------|-------|
-| `npm test` | Runs the unit tests. |
+| Command              | Usage                                                                                    |
+|----------------------|------------------------------------------------------------------------------------------|
+| `npm test`           | Runs the unit tests.                                                                     |
 | `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging. |
-| `npm run cov` | Runs the tests, writing coverage reports to `./artifacts/coverage`. |
+| `npm run cov`        | Runs the tests, writing coverage reports to `./artifacts/coverage`.                      |
 
 Currently the linting style is based on [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). Run `npm run lint` to lint the code.
 
@@ -159,6 +172,8 @@ npm test
 ```
 
 Tests are executed with [Mocha](https://mochajs.org/) and coverage is handled by [Istanbul](https://github.com/gotwarlost/istanbul). Coverage reports are written to an `./artifacts` folder.
+
+Note that best practices are to pass Mocha a quoted string with a glob pattern for cross-platform execution of tests (see [Mocha Docs](https://mochajs.org/#the-test-directory)). However for some reason on AppVeyor this doesn't seem to work. Leaving the pattern unquoted works for `cmd` as well as the shell in builds for now. So please be careful if changing the quotes and test on both platforms.
 
 ### Creating a Release
 
@@ -214,10 +229,10 @@ To run the native apps, open the `./test/NativeApp` directory, then open the iOS
 
 The table below shows the current confirmed compatibility:
 
-| Platform | `app-icon` | ImageMagick | Status |
-|----------|------------|-------------|--------|
-| OSX      | `0.6.x`    | 6, 7        | ✅ |
-| Ubuntu 14 | `0.6.x`    | 6 | ✅ |
+| Platform  | `app-icon` | ImageMagick | Status |
+|-----------|------------|-------------|--------|
+| OSX       | `0.6.x`    | 6, 7        | ✅     |
+| Ubuntu 14 | `0.6.x`    | 6           | ✅     |
 
 ## Troubleshooting
 
