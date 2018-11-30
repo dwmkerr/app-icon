@@ -1,4 +1,4 @@
-const callImagemagick = require('../imagemagick/call-imagemagick');
+const imagemagickCli = require('imagemagick-cli');
 const getImageWidth = require('../imagemagick/get-image-width');
 
 /**
@@ -25,7 +25,7 @@ function create(template, output, options) {
             -gravity center -size ${w}x${h} \
             caption:"${caption}" \
             ${template} +swap -composite ${output}`;
-      return callImagemagick(command);
+      return imagemagickCli.exec(command);
     });
 }
 
