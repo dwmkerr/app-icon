@@ -98,10 +98,9 @@ program
   .option('-c, --caption [caption]', "An optional caption for the icon, e.g 'App'.")
   .action((params) => {
     const { caption } = params;
-    isImagemagickInstalled()
-      .catch((err) => { throw err; })
-      .then((imageMagickInstalled) => {
-        if (!imageMagickInstalled) {
+    imagemagickCli.getVersion()
+      .then((version) => {
+        if (!version) {
           console.error('  Error: ImageMagick must be installed. Try:');
           console.error('    brew install imagemagick');
           return process.exit(1);
