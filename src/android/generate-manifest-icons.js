@@ -27,5 +27,10 @@ module.exports = function generateManifestIcons(sourceIcon, manifest) {
         return resolve(resizeImage(sourceIcon, targetPath, icon.size));
       });
     });
-  })).then(() => results);
+  })).then(() => {
+    //  Before writing the contents file, sort the contents (otherwise
+    //  they could be in a different order each time).
+    results.icons.sort();
+    return results;
+  });
 };
