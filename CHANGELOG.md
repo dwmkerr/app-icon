@@ -1,3 +1,7 @@
+# v0.6.4
+
+- Icons are always produced in the same order, fixes #67.
+
 # v0.6.2
 
 - Added support for the new iOS marketing icon sizes, see [this](https://stackoverflow.com/a/44691659), thanks [sampsasaarela](https://github.com/sampsasaarela)!
