@@ -1,3 +1,5 @@
+- Allow package to be required, thanks [cadesalaberry](https://github.com/cadesalaberry)!
+
 # v0.6.4
 
 - Icons are always produced in the same order, fixes #67.
