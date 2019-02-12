@@ -7,7 +7,7 @@ const validateParameters = require('./validate-parameters');
 
 module.exports = function generate(parameters) {
   //  Validate and coerce the parameters.
-  const { sourceIcon, searchRoot, platforms } = validateParameters(parameters);
+  const { sourceIcon, searchRoot, platforms } = validateParameters(parameters || {});
 
   //  Set up the results object.
   const results = { iconsets: [], manifests: [] };
