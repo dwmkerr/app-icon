@@ -42,6 +42,32 @@ npm install -g app-icon
 app-icon generate
 ```
 
+You can also use the module directly in node:
+```js
+/**
+ * appIcon = {
+ *   labelImage(inputFilePath, outputFilePath, topText, bottomText),
+ *   generate({ sourceIcon, platforms, search }),
+ *   templates: {
+ *     'AndroidManifest.icons': {...json file...},
+ *     'AppIcon.iconset': {...json file...},
+ *   },
+ * }
+ */
+import appIcon from 'app-icon';
+
+Promise.resolve()
+  .then(() => appIcon.labelImage('./inputfile.png', './out.png', 'UAT', '0.12.3'))
+  .then(() => appIcon.labelImage('./inputfile.png', './out.png', 'UAT')) // Bottom text optional
+  .then(() => appIcon.labelImage('./inputfile.png', './out.png', null, '0.12.3')) // Top text optional
+  .then(() => appIcon.generate()) // will use all default values
+  .then(() => appIcon.generate({
+    sourceIcon: './icon.png', // Path of the icon to use
+    platforms: 'android,ios', // The platforms to generate icons for (i.e. 'android')
+    search: './',
+  }));
+```
+
 ## Installation
 
 Install with:
