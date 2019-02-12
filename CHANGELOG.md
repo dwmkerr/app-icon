@@ -1,3 +1,5 @@
+# v0.8.0
+
 - Allow package to be required, thanks [cadesalaberry](https://github.com/cadesalaberry)!
 
 # v0.6.4
