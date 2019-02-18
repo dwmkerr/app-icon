@@ -1,6 +1,6 @@
 {
   "name": "app-icon",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by cordova-icon.",
   "main": "./src/index.js",
   "bin": {
