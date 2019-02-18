@@ -11,7 +11,8 @@
     "test": "mocha -t 10000 src/**/*.specs.js",
     "test:debug": "mocha -d --inspect-brk -w --inspect ./src/**/*.specs.js",
     "cov": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' -x './src/**/*.specs.js' mocha --timeout 10000 ./src/**/*.specs.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
