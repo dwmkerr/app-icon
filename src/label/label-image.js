@@ -2,7 +2,29 @@ const fs = require('fs');
 const imagemagickCli = require('imagemagick-cli');
 const getImageWidth = require('../imagemagick/get-image-width');
 
-//  Use imagemagick to label an image. Gravity should be 'north' or 'south'.
+/**
+ * copyFile - copy 'source' to 'destination'. Needed as Node 6 doesn't have a
+ * native method.
+ *
+ * @param source - the path to the source file.
+ * @param target - the path to the target file.
+ * @returns - a promise which resolves when the file is copied, or rejects on an error.
+ */
+function copyFile(source, target) {
+  const rd = fs.createReadStream(source);
+  const wr = fs.createWriteStream(target);
+  return new Promise((resolve, reject) => {
+    rd.on('error', reject);
+    wr.on('error', reject);
+    wr.on('finish', resolve);
+    rd.pipe(wr);
+  }).catch((error) => {
+    rd.destroy();
+    wr.end();
+    throw error;
+  });
+}
+
 /**
  * caption - add a caption to an image.
  *
@@ -38,12 +60,7 @@ function caption(input, output, label, gravity, proportionalSize) {
 //  Single function to label an image (optionally top and bottom).
 module.exports = function labelImage(input, output, top, bottom, middle) {
   //  First, create the output image. This will overwrite any existing file.
-  let promise = new Promise((resolve, reject) => {
-    fs.copyFile(input, output, (err) => {
-      if (err) return reject(err);
-      return resolve();
-    });
-  });
+  let promise = copyFile(input, output);
 
   //  We'll have a set of promises which we will run, which will update the image.
   if (top) promise = promise.then(() => caption(output, output, top, 'north', 0.2));
