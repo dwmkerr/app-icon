@@ -36,6 +36,9 @@ module.exports = function generateIconSetIcons(sourceIcon, iconset) {
         });
     }))
       .then(() => {
+        //  Before writing the contents file, sort the contents (otherwise
+        //  they could be in a different order each time).
+        contents.images.sort((imageA, imageB) => imageA.filename.localeCompare(imageB.filename));
         fs.writeFile(contentsPath, JSON.stringify(contents, null, 2), (err) => {
           if (err) return reject(err);
           results.contentsPath = contentsPath;

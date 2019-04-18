@@ -41,7 +41,7 @@ program
           return process.exit(1);
         }
         //  Generate some icons.
-        return generate({ sourceIcon: icon, search, platforms });
+        return generate({ sourceIcon: icon, searchRoot: search, platforms });
       })
       .catch((generateErr) => {
         console.error(chalk.red(`An error occurred generating the icons: ${generateErr.message}`));
