@@ -4,7 +4,8 @@ jobs:
   # a coverage report.
   test:
     docker:
-      - image: dwmkerr/node:8-imagemagick
+      - image: dwmkerr/node:6-imagemagick-6.9
+      # - image: dwmkerr/node:8-imagemagick
     steps:
       - checkout
       - run: make test
