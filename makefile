@@ -5,7 +5,7 @@ build:
 # Test the code. First lints, then runs the unit tests, checking coverage.
 test: build
 	npm run lint
-	DEBUG=imagemagick-cli npm run test
+	npm run test
 
 # Run the CircleCI build locally.
 # Install the CLI with: curl -fLSs https://circle.ci/cli | bash

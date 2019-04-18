@@ -3,7 +3,7 @@ const init = require('./init');
 const compareImages = require('../testing/compare-images');
 
 describe('init', () => {
-  it.only('should be able to init an icon', () => {
+  it('should be able to init an icon', () => {
     const template = './src/init/icon.template.png';
     const output = './src/init/test-images/init-output.png';
     const reference = './src/init/test-images/init-reference.png';
