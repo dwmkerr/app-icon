@@ -10,6 +10,7 @@ const imagemagickCli = require('imagemagick-cli');
 const path = require('path');
 const pack = require('../package.json');
 const generate = require('../src/generate');
+const init = require('../src/init/init');
 const labelImage = require('../src/label/label-image');
 const fileExists = require('../src/utils/file-exists');
 
@@ -108,8 +109,8 @@ program
         }
 
         //  Create the icon from the template, captioned if needed.
-        const input = path.resolve(__dirname, '../src/create/icon.template.png');
-        return labelImage(input, './icon.png', null, null, caption);
+        const input = path.resolve(__dirname, '../src/init/icon.template.png');
+        return init(input, './icon.png', { caption });
       })
       .then(() => {
         console.log(`Created icon '${chalk.green('icon.png')}'`);

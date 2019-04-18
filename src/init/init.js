@@ -2,14 +2,14 @@ const imagemagickCli = require('imagemagick-cli');
 const getImageWidth = require('../imagemagick/get-image-width');
 
 /**
- * create - creates an icon from a template.
+ * init - creates an icon from a template.
  *
  * @param template
  * @param output
  * @param options
  * @returns a promise which resolves when the icon has been created.
  */
-function create(template, output, options) {
+function init(template, output, options) {
   //  Get the image width.
   return getImageWidth(template)
     .then((width) => {
@@ -29,4 +29,4 @@ function create(template, output, options) {
     });
 }
 
-module.exports = create;
+module.exports = init;
