@@ -8,6 +8,7 @@ test: build
 	npm run test
 
 # Run the CircleCI build locally.
+# Install the CLI with: curl -fLSs https://circle.ci/cli | bash
 circleci:
 	circleci config validate -c .circleci/config.yml
 	circleci build --job test

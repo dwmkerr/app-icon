@@ -1,15 +1,15 @@
 # app-icon [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/app-icon.svg)](https://greenkeeper.io/) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
+Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 6 and onwards supported.
 
 <img src="./assets/banner.png" width="614" alt="Banner">
-
 
 <!-- vim-markdown-toc GFM -->
 
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Usage](#usage)
+    * [Initialising](#initialising)
     * [Generating Icons](#generating-icons)
     * [Labelling Icons](#labelling-icons)
 * [Developer Guide](#developer-guide)
@@ -32,7 +32,7 @@ Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Nati
 
 This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android. You can also add labels to your app icons.
 
-Create a single large `icon.png`, at least 192 pixels square, then run:
+Create a single large `icon.png` at least 192 pixels square, or run `app-icon init` to create this icon, then run:
 
 ```bash
 # If you are using npm 5.2 onwards...
@@ -44,6 +44,7 @@ app-icon generate
 ```
 
 You can also use the module directly in node:
+
 ```js
 /**
  * appIcon = {
@@ -87,11 +88,25 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
-The commandline tool can be used to generate icons or label icons.
+The `app-icon` tool can be used to create a simple template icon, generate icons of all sizes from a template icon, or label icons.
+
+### Initialising
+
+If you do not already have a single icon to use as the main icon for your project, you can create one with the `init` command:
+
+```bash
+app-icon init                    # generates an icon named icon.png
+```
+
+You can also add a simple label to the icon.
+
+```bash
+app-icon init --caption "App"    # creates an icon with the text 'App'
+```
 
 ### Generating Icons
 
-Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root. To automatically generate icons of all sizes for all app projects in the same folder, run:
+Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root (or run `app-icon init`). To automatically generate icons of all sizes for all app projects in the same folder, run:
 
 ```bash
 app-icon generate
@@ -146,11 +161,11 @@ The only dependencies are Node 6 (or above) and Yarn.
 
 Useful commands for development are:
 
-| Command | Usage |
-|---------|-------|
-| `npm test` | Runs the unit tests. |
+| Command              | Usage                                                                                    |
+|----------------------|------------------------------------------------------------------------------------------|
+| `npm test`           | Runs the unit tests.                                                                     |
 | `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging. |
-| `npm run cov` | Runs the tests, writing coverage reports to `./artifacts/coverage`. |
+| `npm run cov`        | Runs the tests, writing coverage reports to `./artifacts/coverage`.                      |
 
 Currently the linting style is based on [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). Run `npm run lint` to lint the code.
 
@@ -238,10 +253,10 @@ To run the native apps, open the `./test/NativeApp` directory, then open the iOS
 
 The table below shows the current confirmed compatibility:
 
-| Platform | `app-icon` | ImageMagick | Status |
-|----------|------------|-------------|--------|
-| OSX      | `0.6.x`    | 6, 7        | ✅ |
-| Ubuntu 14 | `0.6.x`    | 6 | ✅ |
+| Platform  | `app-icon` | ImageMagick | Status |
+|-----------|------------|-------------|--------|
+| OSX       | `0.6.x`    | 6, 7        | ✅     |
+| Ubuntu 14 | `0.6.x`    | 6           | ✅     |
 
 ## Troubleshooting
 

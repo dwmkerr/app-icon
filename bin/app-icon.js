@@ -7,8 +7,10 @@
 const chalk = require('chalk');
 const program = require('commander');
 const imagemagickCli = require('imagemagick-cli');
+const path = require('path');
 const pack = require('../package.json');
 const generate = require('../src/generate');
+const init = require('../src/init/init');
 const labelImage = require('../src/label/label-image');
 const fileExists = require('../src/utils/file-exists');
 
@@ -91,6 +93,35 @@ program
       });
   });
 
+//  Define the 'init' command.
+program
+  .command('init')
+  .description('Initialises app icons')
+  .option('-c, --caption [caption]', "An optional caption for the icon, e.g 'App'.")
+  .action((params) => {
+    const { caption } = params;
+    imagemagickCli.getVersion()
+      .then((version) => {
+        if (!version) {
+          console.error('  Error: ImageMagick must be installed. Try:');
+          console.error('    brew install imagemagick');
+          return process.exit(1);
+        }
+
+        //  Create the icon from the template, captioned if needed.
+        const input = path.resolve(__dirname, '../src/init/icon.template.png');
+        return init(input, './icon.png', { caption });
+      })
+      .then(() => {
+        console.log(`Created icon '${chalk.green('icon.png')}'`);
+      })
+      .catch((createError) => {
+        console.error('An error occurred creating the icon...');
+        console.log(createError);
+        return process.exit(1);
+      });
+  });
+
 //  Extend the help with some examples.
 program.on('--help', () => {
   console.log('  Examples:');
@@ -98,6 +129,7 @@ program.on('--help', () => {
   console.log('    $ app-icon generate');
   console.log('    $ app-icon generate -i myicon.png -s ./app/cordova-app');
   console.log('    $ app-icon label -i myicon.png -o myicon.out.png -t qa -b 1.2.3');
+  console.log('    $ app-icon init --caption "App"');
   console.log('');
 });
 

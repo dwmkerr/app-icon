@@ -7,7 +7,10 @@ test/CordovaApp/platforms/android/res
 test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset
 test/NativeApp/android/native_app/src/main/res
 npm-debug.log
+src/init/test-images/*-output.png
 src/label/test-images/*-output.png
 src/resize/test-images/*output.png
 .nyc_output/
+
+# Windows junk.
 Thumbs.db
