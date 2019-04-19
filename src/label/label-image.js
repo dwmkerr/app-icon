@@ -1,29 +1,6 @@
-const fs = require('fs');
 const imagemagickCli = require('imagemagick-cli');
 const getImageWidth = require('../imagemagick/get-image-width');
-
-/**
- * copyFile - copy 'source' to 'destination'. Needed as Node 6 doesn't have a
- * native method.
- *
- * @param source - the path to the source file.
- * @param target - the path to the target file.
- * @returns - a promise which resolves when the file is copied, or rejects on an error.
- */
-function copyFile(source, target) {
-  const rd = fs.createReadStream(source);
-  const wr = fs.createWriteStream(target);
-  return new Promise((resolve, reject) => {
-    rd.on('error', reject);
-    wr.on('error', reject);
-    wr.on('finish', resolve);
-    rd.pipe(wr);
-  }).catch((error) => {
-    rd.destroy();
-    wr.end();
-    throw error;
-  });
-}
+const copyFile = require('../utils/copy-file');
 
 /**
  * caption - add a caption to an image.
