@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.9.0](https://github.com/dwmkerr/app-icon/compare/v0.8.1...v0.9.0) (2019-04-19)
+
+
+### Features
+
+* added the 'init' command ([#77](https://github.com/dwmkerr/app-icon/issues/77)) ([3736f84](https://github.com/dwmkerr/app-icon/commit/3736f84))
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 ## [0.8.1](https://github.com/dwmkerr/app-icon/compare/v0.8.0...v0.8.1) (2019-02-18)
 
 
