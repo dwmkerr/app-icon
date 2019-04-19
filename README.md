@@ -88,7 +88,7 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
-The `app-icon` tool can be used to generate icons or label icons.
+The `app-icon` tool can be used to create a simple template icon, generate icons of all sizes from a template icon, or label icons.
 
 ### Initialising
 

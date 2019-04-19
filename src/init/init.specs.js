@@ -3,8 +3,6 @@ const init = require('./init');
 const compareImages = require('../testing/compare-images');
 
 describe('init', () => {
-  //  Note: there seems to be an issue with imagemagick 6.8 which
-  //  can cause 'convert' to timeout in certain circumstances.
   it('should be able to init an icon', () => {
     const template = './src/init/icon.template.png';
     const output = './src/init/test-images/init-output.png';
