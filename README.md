@@ -1,10 +1,8 @@
-# app-icon [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/app-icon.svg)](https://greenkeeper.io/) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+# app-icon
 
-<<<<<<< HEAD
+[![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/app-icon.svg)](https://greenkeeper.io/) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
 Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 6 and onwards supported.
-=======
-Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
->>>>>>> feat/create
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
@@ -16,11 +14,7 @@ Icon management for Mobile Apps. Create icons, generate all required sizes, labe
     * [Initialising](#initialising)
     * [Generating Icons](#generating-icons)
     * [Labelling Icons](#labelling-icons)
-<<<<<<< HEAD
     * [Adaptive Icons](#adaptive-icons)
-=======
-    * [Creating Icons](#creating-icons)
->>>>>>> feat/create
 * [Developer Guide](#developer-guide)
     * [Initial Setup](#initial-setup)
     * [Running Tests](#running-tests)
@@ -97,7 +91,6 @@ sudo yum install imagemagick      # CentOS/etc
 
 ## Usage
 
-<<<<<<< HEAD
 The `app-icon` tool can be used to create a simple template icon, generate icons of all sizes from a template icon, or label icons.
 
 ### Initialising
@@ -113,9 +106,9 @@ You can also add a simple label to the icon.
 ```bash
 app-icon init --caption "App"    # creates an icon with the text 'App'
 ```
-=======
-The `app-icon` tool can be used to generate icons or label icons.
->>>>>>> feat/create
+
+To create template [Adaptive Icons for Android](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) include the `--adaptive-icons` flag.
+
 
 ### Generating Icons
 
@@ -168,7 +161,6 @@ This would produce output like the below image:
 
 This is a useful trick when you are creating things like internal QA versions of your app, where you might want to show a version number or other label in the icon itself.
 
-<<<<<<< HEAD
 ### Adaptive Icons
 
 Support for [Adaptive Icons for Android](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) is being introduced. This will happen in stages and should be considered an 'alpha' feature until otherwise noted.
@@ -179,31 +171,6 @@ The current goals are:
 2. Creating or generating adaptive icons is done via the `--adaptive-icons` flag
 
 None of the current commands support the `--adaptive-icons` flag. The `init` command will be the first to bring support, then `generate`. If the feature is working well for users then I will document in detail its usage, until then it is an 'experimental' feature!
-=======
-### Creating Icons
-
-The tool can create a simple icon of the right size and structure, as well as template 'Adaptive Icons' for Android. Run the `create` command:
-
-```sh
-app-icon create
-```
-
-A simple icon named `icon.png` will be created. You can now run `app-icon generate` to create all icons of the required sizes for all projects.
-
-You can also include text for the icon:
-
-```sh
-app-icon create "App"  # creates an icon with the text 'App'
-```
-
-To create adaptive icons, run:
-
-```sh
-app-icon create --android-adaptive
-```
-
-This will create files named `icon.background.png`, `icon.foreground.png` and `icon.mask.png`. You can now run `app-icon generate` to update all Android projects.
->>>>>>> feat/create
 
 ## Developer Guide
 

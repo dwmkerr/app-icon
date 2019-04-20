@@ -96,9 +96,9 @@ program
 //  Define the 'init' command.
 program
   .command('init')
-  .description('Initialises app icons')
+  .description('Initialises app icons by creating simple icon templates')
   .option('-c, --caption [caption]', "An optional caption for the icon, e.g 'App'.")
-  .option('--adaptive-icons', 'Generate Android Adaptive Icon templates')
+  .option('--adaptive-icons', 'Additionally, generate Android Adaptive Icon templates')
   .action((params) => {
     const { caption, adaptiveIcons } = params;
     imagemagickCli.getVersion()
