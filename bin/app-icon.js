@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// We use Node 4 to keep compatibility high, so need the 'use strict' statement.
+// We use Node 6 to keep compatibility high, so need the 'use strict' statement.
 // eslint-disable-next-line
 'use strict';
 
@@ -96,10 +96,11 @@ program
 //  Define the 'init' command.
 program
   .command('init')
-  .description('Initialises app icons')
+  .description('Initialises app icons by creating simple icon templates')
   .option('-c, --caption [caption]', "An optional caption for the icon, e.g 'App'.")
+  .option('--adaptive-icons', 'Additionally, generate Android Adaptive Icon templates')
   .action((params) => {
-    const { caption } = params;
+    const { caption, adaptiveIcons } = params;
     imagemagickCli.getVersion()
       .then((version) => {
         if (!version) {
@@ -110,10 +111,20 @@ program
 
         //  Create the icon from the template, captioned if needed.
         const input = path.resolve(__dirname, '../src/init/icon.template.png');
-        return init(input, './icon.png', { caption });
+        return init(input, './icon.png', { caption })
+          .then(() => console.log(`Created icon '${chalk.green('icon.png')}'`));
       })
       .then(() => {
-        console.log(`Created icon '${chalk.green('icon.png')}'`);
+        //  If we are going to use adaptive icons, create them.
+        if (!adaptiveIcons) return;
+        const inputBackground = path.resolve(__dirname, '../src/init/icon.background.template.png');
+        const inputForeground = path.resolve(__dirname, '../src/init/icon.foreground.template.png');
+        init(inputBackground, './icon.background.png')
+          .then(() => init(inputForeground, './icon.foreground.png'))
+          .then(() => {
+            console.log(`Created icon '${chalk.green('icon.background.png')}'`);
+            console.log(`Created icon '${chalk.green('icon.foreground.png')}'`);
+          });
       })
       .catch((createError) => {
         console.error('An error occurred creating the icon...');
@@ -130,6 +141,7 @@ program.on('--help', () => {
   console.log('    $ app-icon generate -i myicon.png -s ./app/cordova-app');
   console.log('    $ app-icon label -i myicon.png -o myicon.out.png -t qa -b 1.2.3');
   console.log('    $ app-icon init --caption "App"');
+  console.log('    $ app-icon init --caption "App" --adaptive-icons');
   console.log('');
 });
 
