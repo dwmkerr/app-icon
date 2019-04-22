@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.10.0](https://github.com/dwmkerr/app-icon/compare/v0.9.0...v0.10.0) (2019-04-22)
+
+
+### Features
+
+* support for android round icons and ldpi ([0f53c3e](https://github.com/dwmkerr/app-icon/commit/0f53c3e)), closes [#71](https://github.com/dwmkerr/app-icon/issues/71) [#82](https://github.com/dwmkerr/app-icon/issues/82)
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 # [0.9.0](https://github.com/dwmkerr/app-icon/compare/v0.8.1...v0.9.0) (2019-04-19)
 
 
