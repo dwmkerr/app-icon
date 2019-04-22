@@ -8,11 +8,18 @@ const sourceIcon = 'icon.png';
 describe('generate-manifest-icons', () => {
   it('should be able to generate icons for the React Native manifest', () => {
     const files = [
+      'test/ReactNativeIconTest/android/app/src/main/res/mipmap-ldpi/ic_launcher.png',
+      'test/ReactNativeIconTest/android/app/src/main/res/mipmap-ldpi/ic_launcher_round.png',
       'test/ReactNativeIconTest/android/app/src/main/res/mipmap-hdpi/ic_launcher.png',
+      'test/ReactNativeIconTest/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png',
       'test/ReactNativeIconTest/android/app/src/main/res/mipmap-mdpi/ic_launcher.png',
+      'test/ReactNativeIconTest/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png',
       'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png',
+      'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png',
       'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png',
+      'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png',
       'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png',
+      'test/ReactNativeIconTest/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png',
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
@@ -30,11 +37,18 @@ describe('generate-manifest-icons', () => {
 
   it('should be able to generate icons for the Cordova manifest', () => {
     const files = [
+      'test/CordovaApp/platforms/android/res/mipmap-ldpi/ic_launcher.png',
+      'test/CordovaApp/platforms/android/res/mipmap-ldpi/ic_launcher_round.png',
       'test/CordovaApp/platforms/android/res/mipmap-hdpi/ic_launcher.png',
+      'test/CordovaApp/platforms/android/res/mipmap-hdpi/ic_launcher_round.png',
       'test/CordovaApp/platforms/android/res/mipmap-mdpi/ic_launcher.png',
+      'test/CordovaApp/platforms/android/res/mipmap-mdpi/ic_launcher_round.png',
       'test/CordovaApp/platforms/android/res/mipmap-xhdpi/ic_launcher.png',
+      'test/CordovaApp/platforms/android/res/mipmap-xhdpi/ic_launcher_round.png',
       'test/CordovaApp/platforms/android/res/mipmap-xxhdpi/ic_launcher.png',
+      'test/CordovaApp/platforms/android/res/mipmap-xxhdpi/ic_launcher_round.png',
       'test/CordovaApp/platforms/android/res/mipmap-xxxhdpi/ic_launcher.png',
+      'test/CordovaApp/platforms/android/res/mipmap-xxxhdpi/ic_launcher_round.png',
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
@@ -52,11 +66,18 @@ describe('generate-manifest-icons', () => {
 
   it('should be able to generate icons for the Native manifest', () => {
     const files = [
+      'test/NativeApp/android/native_app/src/main/res/mipmap-ldpi/ic_launcher.png',
+      'test/NativeApp/android/native_app/src/main/res/mipmap-ldpi/ic_launcher_round.png',
       'test/NativeApp/android/native_app/src/main/res/mipmap-hdpi/ic_launcher.png',
+      'test/NativeApp/android/native_app/src/main/res/mipmap-hdpi/ic_launcher_round.png',
       'test/NativeApp/android/native_app/src/main/res/mipmap-mdpi/ic_launcher.png',
+      'test/NativeApp/android/native_app/src/main/res/mipmap-mdpi/ic_launcher_round.png',
       'test/NativeApp/android/native_app/src/main/res/mipmap-xhdpi/ic_launcher.png',
+      'test/NativeApp/android/native_app/src/main/res/mipmap-xhdpi/ic_launcher_round.png',
       'test/NativeApp/android/native_app/src/main/res/mipmap-xxhdpi/ic_launcher.png',
+      'test/NativeApp/android/native_app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png',
       'test/NativeApp/android/native_app/src/main/res/mipmap-xxxhdpi/ic_launcher.png',
+      'test/NativeApp/android/native_app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png',
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
