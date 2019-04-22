@@ -109,6 +109,7 @@ app-icon init --caption "App"    # creates an icon with the text 'App'
 
 To create template [Adaptive Icons for Android](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) include the `--adaptive-icons` flag.
 
+To test how adaptive icons will look when animated, swiped, etc, the [Adaptive Icons](https://adapticon.tooo.io/) website by [Marius Claret](https://twitter.com/mariusclaret) is very useful!
 
 ### Generating Icons
 
