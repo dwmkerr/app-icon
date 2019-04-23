@@ -9,7 +9,7 @@
   "scripts": {
     "start": "./bin/app-icon.js",
     "test": "mocha -t 10000 ./src/{,**/}*.specs.js",
-    "test:debug": "mocha -d --inspect-brk -w --inspect ./src/{,**/}*.specs.js",
+    "test:debug": "mocha -d -w ./src/{,**/}*.specs.js",
     "cov": "nyc mocha --timeout 10000 ./src/{,**/}*.specs.js",
     "lint": "eslint .",
     "release": "standard-version"
