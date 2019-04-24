@@ -16,10 +16,15 @@ module.exports = function validateParameters(parameters) {
   }
 
   //  Validate or assign the adaptive icons flag.
+  //  Set default values for the adaptive icons paths.
   const adaptiveIcons = !!parameters.adaptiveIcons;
+  const backgroundIcon = parameters.backgroundIcon || 'icon.background.png';
+  const foregroundIcon = parameters.foregroundIcon || 'icon.foreground.png';
 
   return {
     sourceIcon,
+    backgroundIcon,
+    foregroundIcon,
     searchRoot,
     platforms,
     adaptiveIcons,

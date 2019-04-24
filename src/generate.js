@@ -18,7 +18,11 @@ module.exports = function generate(parameters) {
   } = validateParameters(parameters || {});
 
   //  Set up the results object.
-  const results = { iconsets: [], manifests: [] };
+  const results = {
+    iconsets: [],
+    manifests: [],
+    adaptiveIconManifests: [],
+  };
 
   return findIconsetFolders(searchRoot)
     .then(iconSets => Promise.all(iconSets.map((iconset) => {
@@ -30,7 +34,7 @@ module.exports = function generate(parameters) {
         .then(({ icons }) => {
           results.iconsets.push({ iconset, icons });
           icons.forEach((icon) => {
-            console.log(`    ${chalk.green('✓')}  Generated ${icon}`);
+            console.log(`    ${chalk.green('✓')}  Generated icon ${icon}`);
           });
           console.log(`    ${chalk.green('✓')}  Updated Contents.json`);
         });
@@ -41,26 +45,22 @@ module.exports = function generate(parameters) {
 
       console.log(`Found Android Manifest: ${manifest}...`);
       const operations = [
-        () => {
-          generateManifestIcons(sourceIcon, manifest).then(({ icons }) => {
-            results.manifests.push({ manifest, icons });
-            icons.forEach((icon) => {
-              console.log(`    ${chalk.green('✓')}  Generated ${icon}`);
-            });
+        generateManifestIcons(sourceIcon, manifest).then(({ icons }) => {
+          results.manifests.push({ manifest, icons });
+          icons.forEach((icon) => {
+            console.log(`    ${chalk.green('✓')}  Generated icon ${icon}`);
           });
-        },
+        }),
       ];
 
       if (adaptiveIcons) {
-        operations.push(() => {
-          generateManifestAdaptiveIcons(foregroundIcon, backgroundIcon, manifest)
-            .then(({ icons }) => {
-              results.manifests.push({ manifest, icons });
-              icons.forEach((icon) => {
-                console.log(`    ${chalk.green('✓')}  Generated (adaptive icon) ${icon}`);
-              });
+        operations.push(generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifest)
+          .then(({ icons }) => {
+            results.adaptiveIconManifests.push({ manifest, icons });
+            icons.forEach((icon) => {
+              console.log(`    ${chalk.green('✓')}  Generated adaptive icon ${icon}`);
             });
-        });
+          }));
       }
       return Promise.all(operations);
     })))

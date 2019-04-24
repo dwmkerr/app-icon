@@ -21,6 +21,7 @@ const expectedFolders = [
 //  The files we expect in each of the folders above.
 const expectedFiles = [
   './ic_launcher.xml',
+  './ic_launcher_round.xml',
   './ic_launcher_background.png',
   './ic_launcher_foreground.png',
 ];

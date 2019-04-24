@@ -34,8 +34,9 @@ module.exports = function generateManifestIcons(backgroundIcon, foregroundIcon, 
       mkdirp(resourceFolder, (err) => {
         if (err) return reject(err);
 
-        //  Create the manifest.
+        //  Create the manifests, for the normal icons and round icons.
         fs.writeFileSync(path.join(resourceFolder, 'ic_launcher.xml'), icLauncherManifestXml, 'utf8');
+        fs.writeFileSync(path.join(resourceFolder, 'ic_launcher_round.xml'), icLauncherManifestXml, 'utf8');
 
         //  Create the background icon.
         const backgroundOutput = path.join(resourceFolder, icon.backgroundIcon);
