@@ -35,6 +35,12 @@
             "backgroundIcon": "ic_launcher_background.png",
             "foregroundIcon": "ic_launcher_foreground.png",
             "size": "192x192"
+        },
+        {
+            "folder": "res/mipmap-anydpi-v26",
+            "backgroundIcon": "ic_launcher_background.png",
+            "foregroundIcon": "ic_launcher_foreground.png",
+            "size": "108x108"
         }
     ]
 }

@@ -15,6 +15,7 @@ const expectedFolders = [
   './res/mipmap-xhdpi-v26',
   './res/mipmap-xxhdpi-v26',
   './res/mipmap-xxxhdpi-v26',
+  './res/mipmap-anydpi-v26',
 ];
 
 //  The files we expect in each of the folders above.
