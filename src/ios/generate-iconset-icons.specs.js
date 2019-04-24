@@ -3,7 +3,7 @@ const generateIconsetIcons = require('./generate-iconset-icons');
 const deleteIfExists = require('../utils/delete-if-exists');
 const fileExists = require('../utils/file-exists');
 
-const sourceIcon = 'icon.png';
+const sourceIcon = './test/icon.png';
 
 describe('generate-iconset-icons', () => {
   it('should be able to generate icons for the React Native iconset', () => {

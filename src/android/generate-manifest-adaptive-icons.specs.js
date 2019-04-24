@@ -1,7 +1,7 @@
-const path = require('path');
 const { expect } = require('chai');
+const path = require('path');
+const deleteFolderIfExists = require('../utils/delete-folder-if-exists');
 const generateManifestAdaptiveIcons = require('./generate-manifest-adaptive-icons');
-const deleteIfExists = require('../utils/delete-if-exists');
 const fileExists = require('../utils/file-exists');
 
 const backgroundIcon = './test/icon.background.png';
@@ -24,85 +24,41 @@ const expectedFiles = [
   './ic_launcher_foreground.png',
 ];
 
-describe.only('generate-manifest-adaptive-icons', () => {
-  it('should be able to generate adaptive icons for the React Native manifest', () => {
-    //  Define the path to the manifest, and it's folder.
-    const manifestPath = './test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml';
-    const manifestFolder = path.dirname(manifestPath);
-    const resourceFolders = expectedFolders.map(f => path.join(manifestFolder, f));
-    const resourceFoldersFiles = resourceFolders.reduce((allFiles, folder) => {
-      expectedFiles.forEach(ef => allFiles.push(path.join(folder, ef)));
-      return allFiles;
-    }, []);
+//  Create a test for each manifest.
+const testManifests = [{
+  projectName: 'React Native Manifest',
+  manifestPath: './test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml',
+}, {
+  projectName: 'Cordova Manifest',
+  manifestPath: './test/CordovaApp/platforms/android/src/main/AndroidManifest.xml',
+}, {
+  projectName: 'Native Manifest',
+  manifestPath: './test/NativeApp/android/native_app/src/main/AndroidManifest.xml',
+}];
 
-    //  Delete all of the folders we're expecting to create, then generate them.
-    return Promise.all(resourceFolders.map(f => deleteIfExists(f)))
-      .then(() => (
-        generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifestPath)
-      ))
-      .then(() => Promise.all(resourceFoldersFiles.map(fileExists)))
-      .then((filesDoExist) => {
-        filesDoExist.forEach((exists, index) => {
-          expect(exists, `${resourceFoldersFiles[index]} should be generated`).to.equal(true);
+describe('generate-manifest-adaptive-icons', () => {
+  //  Run each test.
+  testManifests.forEach(({ projectName, manifestPath }) => {
+    it(`should be able to generate adaptive icons for the ${projectName} manifest`, () => {
+      //  Get the manifest folder, create an array of every icon we expect to see.
+      const manifestFolder = path.dirname(manifestPath);
+      const resourceFolders = expectedFolders.map(f => path.join(manifestFolder, f));
+      const resourceFoldersFiles = resourceFolders.reduce((allFiles, folder) => {
+        expectedFiles.forEach(ef => allFiles.push(path.join(folder, ef)));
+        return allFiles;
+      }, []);
+
+      //  Delete all of the folders we're expecting to create, then generate the icons.
+      return Promise.all(resourceFolders.map(deleteFolderIfExists))
+        .then(() => (
+          generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifestPath)
+        ))
+        .then(() => Promise.all(resourceFoldersFiles.map(fileExists)))
+        .then((filesDoExist) => {
+          filesDoExist.forEach((exists, index) => {
+            expect(exists, `${resourceFoldersFiles[index]} should be generated`).to.equal(true);
+          });
         });
-      });
+    });
   });
-
-  // it('should be able to generate icons for the Cordova manifest', () => {
-    // const files = [
-      // 'test/CordovaApp/platforms/android/res/mipmap-ldpi/ic_launcher.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-ldpi/ic_launcher_round.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-hdpi/ic_launcher.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-hdpi/ic_launcher_round.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-mdpi/ic_launcher.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-mdpi/ic_launcher_round.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-xhdpi/ic_launcher.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-xhdpi/ic_launcher_round.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-xxhdpi/ic_launcher.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-xxhdpi/ic_launcher_round.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-xxxhdpi/ic_launcher.png',
-      // 'test/CordovaApp/platforms/android/res/mipmap-xxxhdpi/ic_launcher_round.png',
-    // ];
-
-    // //  Delete all of the files we're expecting to create, then generate them.
-    // return Promise.all(files.map(f => deleteIfExists(f)))
-      // .then(() => (
-        // generateManifestIcons(sourceIcon, 'test/CordovaApp/platforms/android/AndroidManifest.xml')
-      // ))
-      // .then(() => Promise.all(files.map(fileExists)))
-      // .then((filesDoExist) => {
-        // filesDoExist.forEach((exists, index) => {
-          // expect(exists, `${files[index]} should be generated`).to.equal(true);
-        // });
-      // });
-  // });
-
-  // it('should be able to generate icons for the Native manifest', () => {
-    // const files = [
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-ldpi/ic_launcher.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-ldpi/ic_launcher_round.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-hdpi/ic_launcher.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-hdpi/ic_launcher_round.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-mdpi/ic_launcher.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-mdpi/ic_launcher_round.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-xhdpi/ic_launcher.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-xhdpi/ic_launcher_round.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-xxhdpi/ic_launcher.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-xxxhdpi/ic_launcher.png',
-      // 'test/NativeApp/android/native_app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png',
-    // ];
-
-    // //  Delete all of the files we're expecting to create, then generate them.
-    // return Promise.all(files.map(f => deleteIfExists(f)))
-      // .then(() => (
-        // generateManifestIcons(sourceIcon, 'test/NativeApp/android/native_app/src/main/AndroidManifest.xml')
-      // ))
-      // .then(() => Promise.all(files.map(fileExists)))
-      // .then((filesDoExist) => {
-        // filesDoExist.forEach((exists, index) => {
-          // expect(exists, `${files[index]} should be generated`).to.equal(true);
-        // });
-      // });
-  // });
 });

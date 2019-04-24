@@ -4,7 +4,7 @@ const generate = require('./generate');
 describe('generate', () => {
   it('should be able to generate test app icons', () => {
     const parameters = {
-      sourceIcon: 'icon.png',
+      sourceIcon: './test/icon.png',
       searchPath: './',
     };
 

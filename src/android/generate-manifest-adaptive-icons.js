@@ -36,8 +36,8 @@ module.exports = function generateManifestIcons(backgroundIcon, foregroundIcon, 
         fs.writeFileSync(path.join(resourceFolder, 'ic_launcher.xml'), icLauncherManifestXml, 'utf8');
 
         //  Create the background icon.
-        const backgroundOutput = path.join(manifestFolder, icon.backgroundIcon);
-        const foregroundOutput = path.join(manifestFolder, icon.foregroundIcon);
+        const backgroundOutput = path.join(resourceFolder, icon.backgroundIcon);
+        const foregroundOutput = path.join(resourceFolder, icon.foregroundIcon);
         const operations = [
           resizeImage(backgroundIcon, backgroundOutput, icon.size),
           resizeImage(foregroundIcon, foregroundOutput, icon.size),
