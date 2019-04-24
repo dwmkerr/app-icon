@@ -1,18 +1,20 @@
 const path = require('path');
 const fs = require('fs');
+const { EOL } = require('os');
 const mkdirp = require('mkdirp');
 
 const androidManifestAdaptiveIcons = require('./AndroidManifest.adaptive-icons.json');
 const resizeImage = require('../resize/resize-image');
 
 //  The XML for the ic launcher manifest.
+//  eslint-disable-next-line
 const icLauncherManifestXml =
-  `<?xml version="1.0" encoding="utf-8"?>
-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@mipmap/ic_launcher_background" />
-    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
-</adaptive-icon>
-`;
+    `<?xml version="1.0" encoding="utf-8"?>${EOL}`
+  + `<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">${EOL}`
+  + `    <background android:drawable="@mipmap/ic_launcher_background" />${EOL}`
+  + `    <foreground android:drawable="@mipmap/ic_launcher_foreground" />${EOL}`
+  + `</adaptive-icon>${EOL}`;
+
 //  Generate Android Manifest icons given a manifest file.
 module.exports = function generateManifestIcons(backgroundIcon, foregroundIcon, manifest) {
   //  Create the object we will return.
