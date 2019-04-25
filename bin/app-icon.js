@@ -156,7 +156,7 @@ program
         const inputBackground = path.resolve(__dirname, '../src/init/icon.background.template.png');
         const inputForeground = path.resolve(__dirname, '../src/init/icon.foreground.template.png');
         init(inputBackground, './icon.background.png')
-          .then(() => init(inputForeground, './icon.foreground.png'))
+          .then(() => init(inputForeground, './icon.foreground.png', { caption }))
           .then(() => {
             console.log(`Created icon '${chalk.green('icon.background.png')}'`);
             console.log(`Created icon '${chalk.green('icon.foreground.png')}'`);

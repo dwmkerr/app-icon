@@ -160,6 +160,8 @@ This would produce output like the below image:
 
 This is a useful trick when you are creating things like internal QA versions of your app, where you might want to show a version number or other label in the icon itself.
 
+To label adaptive icons, simply run the `label` command against the _foregroud_ adaptive icon image.
+
 ### Adaptive Icons
 
 Support for [Adaptive Icons for Android](https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive) is being introduced. This will happen in stages and should be considered an 'alpha' feature until otherwise noted.

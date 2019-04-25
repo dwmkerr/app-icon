@@ -28,7 +28,7 @@ function init(template, output, options) {
       const command = `convert \
             -background "rgba(0,0,0,0)" -fill white \
             -gravity center -size ${w}x${h} \
-            caption:"${caption}" \
+            -stroke black -strokewidth 2 caption:"${caption}" \
             ${template} +swap -composite ${output}`;
       return imagemagickCli.exec(command);
     });
