@@ -38,7 +38,7 @@ const testManifests = [{
   manifestPath: './test/NativeApp/android/native_app/src/main/AndroidManifest.xml',
 }];
 
-describe.only('generate-manifest-adaptive-icons', () => {
+describe('generate-manifest-adaptive-icons', () => {
   //  Run each test.
   testManifests.forEach(({ projectName, manifestPath }) => {
     it(`should be able to generate adaptive icons for the ${projectName} manifest`, () => {
