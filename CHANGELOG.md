@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.11.0](https://github.com/dwmkerr/app-icon/compare/v0.10.0...v0.11.0) (2019-04-25)
+
+
+### Features
+
+* standardise icons ([#90](https://github.com/dwmkerr/app-icon/issues/90)) ([9c65dcf](https://github.com/dwmkerr/app-icon/commit/9c65dcf))
+* support adaptive icons for 'generate' ([#86](https://github.com/dwmkerr/app-icon/issues/86)) ([3423491](https://github.com/dwmkerr/app-icon/commit/3423491))
+* support adaptive icons for `init` command ([#81](https://github.com/dwmkerr/app-icon/issues/81)) ([c55dc2e](https://github.com/dwmkerr/app-icon/commit/c55dc2e))
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 # [0.10.0](https://github.com/dwmkerr/app-icon/compare/v0.9.0...v0.10.0) (2019-04-22)
 
 
