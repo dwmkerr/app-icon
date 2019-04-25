@@ -37,10 +37,8 @@
             "size": "192x192"
         },
         {
-            "folder": "res/mipmap-anydpi-v26",
-            "backgroundIcon": "ic_launcher_background.png",
-            "foregroundIcon": "ic_launcher_foreground.png",
-            "size": "108x108"
+            "comment": "Note that the anydpi folder will *not* contain icons - it contains a reference to the mipmaps for specific sizes",
+            "folder": "res/mipmap-anydpi-v26"
         }
     ]
 }

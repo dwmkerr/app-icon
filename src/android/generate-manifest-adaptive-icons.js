@@ -38,15 +38,20 @@ module.exports = function generateManifestIcons(backgroundIcon, foregroundIcon, 
         fs.writeFileSync(path.join(resourceFolder, 'ic_launcher.xml'), icLauncherManifestXml, 'utf8');
         fs.writeFileSync(path.join(resourceFolder, 'ic_launcher_round.xml'), icLauncherManifestXml, 'utf8');
 
-        //  Create the background icon.
-        const backgroundOutput = path.join(resourceFolder, icon.backgroundIcon);
-        const foregroundOutput = path.join(resourceFolder, icon.foregroundIcon);
-        const operations = [
-          resizeImage(backgroundIcon, backgroundOutput, icon.size),
-          resizeImage(foregroundIcon, foregroundOutput, icon.size),
-        ];
-        results.icons.push(foregroundOutput);
-        results.icons.push(backgroundOutput);
+        const operations = [];
+        //  If the manifest requires us to generate icons for the folder, do so.
+        //  Not *every* folder has icons - for example the 'anydpi' folder will
+        //  not contain icons.
+        if (icon.backgroundIcon) {
+          const backgroundOutput = path.join(resourceFolder, icon.backgroundIcon);
+          operations.push(resizeImage(backgroundIcon, backgroundOutput, icon.size));
+          results.icons.push(backgroundOutput);
+        }
+        if (icon.foregroundIcon) {
+          const foregroundOutput = path.join(resourceFolder, icon.foregroundIcon);
+          operations.push(resizeImage(foregroundIcon, foregroundOutput, icon.size));
+          results.icons.push(foregroundOutput);
+        }
         return resolve(Promise.all(operations));
       });
     });

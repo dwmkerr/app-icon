@@ -38,7 +38,7 @@ const testManifests = [{
   manifestPath: './test/NativeApp/android/native_app/src/main/AndroidManifest.xml',
 }];
 
-describe('generate-manifest-adaptive-icons', () => {
+describe.only('generate-manifest-adaptive-icons', () => {
   //  Run each test.
   testManifests.forEach(({ projectName, manifestPath }) => {
     it(`should be able to generate adaptive icons for the ${projectName} manifest`, () => {
@@ -50,12 +50,19 @@ describe('generate-manifest-adaptive-icons', () => {
         return allFiles;
       }, []);
 
+      //  A bit of a hack here - the 'anydpi' folder should not contain any images,
+      //  it just references the other mipmaps. So remove the anydpi folder images
+      //  from the expected set of files.
+      const expectedPaths = resourceFoldersFiles.filter(f => !(/anydpi.*png$/.test(f)));
+      console.log(`Len: ${resourceFoldersFiles.length}`);
+      expectedPaths.forEach(f => console.log(`Expecting: ${f}`));
+
       //  Delete all of the folders we're expecting to create, then generate the icons.
       return Promise.all(resourceFolders.map(deleteFolderIfExists))
         .then(() => (
           generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifestPath)
         ))
-        .then(() => Promise.all(resourceFoldersFiles.map(fileExists)))
+        .then(() => Promise.all(expectedPaths.map(fileExists)))
         .then((filesDoExist) => {
           filesDoExist.forEach((exists, index) => {
             expect(exists, `${resourceFoldersFiles[index]} should be generated`).to.equal(true);
