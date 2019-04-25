@@ -9,7 +9,7 @@
   "scripts": {
     "start": "./bin/app-icon.js",
     "test": "mocha -t 10000 ./src/{,**/}*.specs.js",
-    "test:debug": "mocha -d --inspect-brk -w --inspect ./src/{,**/}*.specs.js",
+    "test:debug": "mocha -d -w ./src/{,**/}*.specs.js",
     "cov": "nyc mocha --timeout 10000 ./src/{,**/}*.specs.js",
     "lint": "eslint .",
     "release": "standard-version"
@@ -44,7 +44,8 @@
     "chalk": "^2.3.0",
     "commander": "^2.19.0",
     "imagemagick-cli": "^0.5.0",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.3"
   },
   "nyc": {
     "all": true,

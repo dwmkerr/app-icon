@@ -14,6 +14,17 @@ const init = require('../src/init/init');
 const labelImage = require('../src/label/label-image');
 const fileExists = require('../src/utils/file-exists');
 
+//  Helper to throw an error if a file doesn't exist.
+const errorIfMissing = (filePath, errorMessage) => {
+  return fileExists(filePath).then((exists) => {
+    if (!exists) {
+      console.error(`${chalk.red('error')}: ${errorMessage}`);
+      return process.exit(1);
+    }
+    return true;
+  });
+};
+
 //  Create the program.
 program
   .version(pack.version);
@@ -25,25 +36,50 @@ program
   .option('-i, --icon [icon]', "The icon to use. Defaults to 'icon.png'", 'icon.png')
   .option('-s, --search [optional]', "The folder to search from. Defaults to './'", './')
   .option('-p, --platforms [optional]', "The platforms to generate icons for. Defaults to 'android,ios'", 'android,ios')
-  .action(({ icon, search, platforms }) => {
+  .option('--background-icon [optional]', "The background icon path. Defaults to 'icon.background.png'")
+  .option('--foreground-icon [optional]', "The foregroud icon path. Defaults to 'icon.foregroud.png'")
+  .option('--adaptive-icons [optional]', "Additionally, generate Android Adaptive Icon templates. Defaults to 'false'")
+  .action((parameters) => {
+    const {
+      icon,
+      backgroundIcon,
+      foregroundIcon,
+      search,
+      platforms,
+      adaptiveIcons,
+    } = parameters;
     imagemagickCli.getVersion()
       .then((version) => {
         if (!version) {
           console.error('  Error: ImageMagick must be installed. Try:');
           console.error('    brew install imagemagick');
-          return process.exit(1);
+          process.exit(1);
         }
-
-        //  Check that we have a source icon.
-        return fileExists(icon);
       })
-      .then((exists) => {
-        if (!exists) {
-          console.error(`Source file '${icon}' does not exist. Add the file or specify source icon with the '--icon' parameter.`);
-          return process.exit(1);
+      .then(() => {
+        //  Check we have the files we need.
+        const operations = [];
+        operations.push(errorIfMissing(icon, `Source file '${icon}' does not exist. Add the file or specify source icon with the '--icon' parameter.`));
+        if (adaptiveIcons) {
+          const checkPath = backgroundIcon || 'icon.background.png';
+          operations.push(errorIfMissing(checkPath, `Background icon file '${checkPath}' does not exist. Add the file or specify background icon with the '--background-icon' parameter.`));
         }
+        if (adaptiveIcons) {
+          const checkPath = foregroundIcon || 'icon.foreground.png';
+          operations.push(errorIfMissing(checkPath, `Foreground icon file '${checkPath}' does not exist. Add the file or specify foreground icon with the '--foreground-icon' parameter.`));
+        }
+        return Promise.all(operations);
+      })
+      .then(() => {
         //  Generate some icons.
-        return generate({ sourceIcon: icon, searchRoot: search, platforms });
+        return generate({
+          sourceIcon: icon,
+          backgroundIcon,
+          foregroundIcon,
+          searchRoot: search,
+          platforms,
+          adaptiveIcons,
+        });
       })
       .catch((generateErr) => {
         console.error(chalk.red(`An error occurred generating the icons: ${generateErr.message}`));
@@ -98,7 +134,7 @@ program
   .command('init')
   .description('Initialises app icons by creating simple icon templates')
   .option('-c, --caption [caption]', "An optional caption for the icon, e.g 'App'.")
-  .option('--adaptive-icons', 'Additionally, generate Android Adaptive Icon templates')
+  .option('--adaptive-icons [optional]', "Additionally, generate Android Adaptive Icon templates. Defaults to 'false'")
   .action((params) => {
     const { caption, adaptiveIcons } = params;
     imagemagickCli.getVersion()

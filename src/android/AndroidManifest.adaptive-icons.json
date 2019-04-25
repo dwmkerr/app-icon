@@ -1,0 +1,44 @@
+{
+    "adaptiveIcons": [
+        {
+            "folder": "res/mipmap-ldpi-v26",
+            "backgroundIcon": "ic_launcher_background.png",
+            "foregroundIcon": "ic_launcher_foreground.png",
+            "size": "36x36"
+        },
+        {
+            "folder": "res/mipmap-mdpi-v26",
+            "backgroundIcon": "ic_launcher_background.png",
+            "foregroundIcon": "ic_launcher_foreground.png",
+            "size": "48x48"
+        },
+        {
+            "folder": "res/mipmap-hdpi-v26",
+            "backgroundIcon": "ic_launcher_background.png",
+            "foregroundIcon": "ic_launcher_foreground.png",
+            "size": "72x72"
+        },
+        {
+            "folder": "res/mipmap-xhdpi-v26",
+            "backgroundIcon": "ic_launcher_background.png",
+            "foregroundIcon": "ic_launcher_foreground.png",
+            "size": "96x96"
+        },
+        {
+            "folder": "res/mipmap-xxhdpi-v26",
+            "backgroundIcon": "ic_launcher_background.png",
+            "foregroundIcon": "ic_launcher_foreground.png",
+            "size": "144x144"
+        },
+        {
+            "folder": "res/mipmap-xxxhdpi-v26",
+            "backgroundIcon": "ic_launcher_background.png",
+            "foregroundIcon": "ic_launcher_foreground.png",
+            "size": "192x192"
+        },
+        {
+            "comment": "Note that the anydpi folder will *not* contain icons - it contains a reference to the mipmaps for specific sizes",
+            "folder": "res/mipmap-anydpi-v26"
+        }
+    ]
+}
