@@ -27,6 +27,7 @@ Icon management for Mobile Apps. Create icons, generate all required sizes, labe
     * [Native](#native)
 * [Compatibility](#compatibility)
 * [Troubleshooting](#troubleshooting)
+* [Reference and Thanks](#reference-and-thanks)
 * [License](#license)
 
 <!-- vim-markdown-toc -->
@@ -285,6 +286,10 @@ The table below shows the current confirmed compatibility:
 **Images labelled with `app-icon label` have the text slightly vertically offset**
 
 This seems to be an issue with Imagemagick 6 - try upgrading to 7.
+
+## Reference and Thanks
+
+Many thanks to *Marc Edwards* for the [Adaptive Icons Templates](https://www.designernews.co/stories/81778-android-adaptive-icon-templates-for-photoshop-sketch-illustrator-affinity-designer).
 
 ## License
 
