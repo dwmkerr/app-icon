@@ -10,7 +10,7 @@ describe('init', () => {
     return init(template, output)
       .then(() => compareImages(output, reference))
       .then((difference) => {
-        expect(difference).to.be.below(2.5, 'Generated image is below accepted similarly threshold');
+        expect(difference).to.be.below(5, 'Generated image is below accepted similarly threshold');
       });
   });
 
@@ -21,7 +21,7 @@ describe('init', () => {
     return init(template, output, { caption: 'Test' })
       .then(() => compareImages(output, reference))
       .then((difference) => {
-        expect(difference).to.be.below(2.5, 'Generated image is below accepted similarly threshold');
+        expect(difference).to.be.below(5, 'Generated image is below accepted similarly threshold');
       });
   });
 });
