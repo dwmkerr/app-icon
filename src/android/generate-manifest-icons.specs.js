@@ -36,7 +36,7 @@ const testManifests = [{
 describe('generate-manifest-icons', () => {
   //  Run each test.
   testManifests.forEach(({ projectName, manifestPath }) => {
-    it(`should be able to generate icons and round icons for the ${projectName} manifest`, () => {
+    it(`should be able to generate icons and round icons for the ${projectName} manifest`, async () => {
       //  Get the manifest folder, create an array of every icon we expect to see.
       const manifestFolder = path.dirname(manifestPath);
       const resourceFolders = expectedFolders.map(f => path.join(manifestFolder, f));
@@ -46,16 +46,12 @@ describe('generate-manifest-icons', () => {
       }, []);
 
       //  Delete all of the folders we're expecting to create, then generate the icons.
-      return Promise.all(resourceFolders.map(deleteFolderIfExists))
-        .then(() => (
-          generateManifestIcons(sourceIcon, manifestPath)
-        ))
-        .then(() => Promise.all(resourceFoldersFiles.map(fileExists)))
-        .then((filesDoExist) => {
-          filesDoExist.forEach((exists, index) => {
-            expect(exists, `${resourceFoldersFiles[index]} should be generated`).to.equal(true);
-          });
-        });
+      await Promise.all(resourceFolders.map(deleteFolderIfExists));
+      await (generateManifestIcons(sourceIcon, manifestPath));
+      const filesDoExist = await Promise.all(resourceFoldersFiles.map(fileExists));
+      filesDoExist.forEach((exists, index) => {
+        expect(exists, `${resourceFoldersFiles[index]} should be generated`).to.equal(true);
+      });
     });
   });
 });

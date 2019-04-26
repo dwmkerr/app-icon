@@ -6,7 +6,7 @@ const generateManifestIcons = require('./android/generate-manifest-icons');
 const generateManifestAdaptiveIcons = require('./android/generate-manifest-adaptive-icons');
 const validateParameters = require('./validate-parameters');
 
-module.exports = function generate(parameters) {
+module.exports = async function generate(parameters) {
   //  Validate and coerce the parameters.
   const {
     sourceIcon,
@@ -24,45 +24,40 @@ module.exports = function generate(parameters) {
     adaptiveIconManifests: [],
   };
 
-  return findIconsetFolders(searchRoot)
-    .then(iconSets => Promise.all(iconSets.map((iconset) => {
-      if (!platforms.includes('ios')) return null;
+  const iconSets = await findIconsetFolders(searchRoot);
+  await Promise.all(iconSets.map(async (iconset) => {
+    if (!platforms.includes('ios')) return null;
+    console.log(`Found iOS iconset: ${iconset}...`);
 
-      console.log(`Found iOS iconset: ${iconset}...`);
+    const { icons } = await generateIconsetIcons(sourceIcon, iconset);
+    results.iconsets.push({ iconset, icons });
+    icons.forEach((icon) => {
+      console.log(`    ${chalk.green('✓')}  Generated icon ${icon}`);
+    });
+    console.log(`    ${chalk.green('✓')}  Updated Contents.json`);
 
-      return generateIconsetIcons(sourceIcon, iconset)
-        .then(({ icons }) => {
-          results.iconsets.push({ iconset, icons });
-          icons.forEach((icon) => {
-            console.log(`    ${chalk.green('✓')}  Generated icon ${icon}`);
-          });
-          console.log(`    ${chalk.green('✓')}  Updated Contents.json`);
-        });
-    })))
-    .then(() => findAndroidManifests(searchRoot))
-    .then(manifests => Promise.all(manifests.map((manifest) => {
-      if (!platforms.includes('android')) return null;
+    return null;
+  }));
+  const manifests = await findAndroidManifests(searchRoot);
+  await Promise.all(manifests.map(async (manifest) => {
+    if (!platforms.includes('android')) return null;
+    console.log(`Found Android Manifest: ${manifest}...`);
 
-      console.log(`Found Android Manifest: ${manifest}...`);
-      const operations = [
-        generateManifestIcons(sourceIcon, manifest).then(({ icons }) => {
-          results.manifests.push({ manifest, icons });
-          icons.forEach((icon) => {
-            console.log(`    ${chalk.green('✓')}  Generated icon ${icon}`);
-          });
-        }),
-      ];
+    const manResult = await generateManifestIcons(sourceIcon, manifest);
+    results.manifests.push({ manifest, icons: manResult.icons });
+    manResult.icons.forEach((icon) => {
+      console.log(`    ${chalk.green('✓')}  Generated icon ${icon}`);
+    });
 
-      if (adaptiveIcons) {
-        operations.push(generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifest)
-          .then(({ icons }) => {
-            results.adaptiveIconManifests.push({ manifest, icons });
-            icons.forEach((icon) => {
-              console.log(`    ${chalk.green('✓')}  Generated adaptive icon ${icon}`);
-            });
-          }));
-      }
-      return Promise.all(operations);
-    })))
-    .then(() => results);
+    if (adaptiveIcons) {
+      const atvRes = await generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifest);
+      results.adaptiveIconManifests.push({ manifest, icons: atvRes.icons });
+      atvRes.icons.forEach((icon) => {
+        console.log(`    ${chalk.green('✓')}  Generated adaptive icon ${icon}`);
+      });
+    }
+
+    return null;
+  }));
+  return results;
 };
