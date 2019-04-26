@@ -239,7 +239,7 @@ Builds are run on CircleCI. You can run the CircleCI build locally with the foll
 make circleci
 ```
 
-The CircleCI build runs on a custom image `dwmkerr/node:8-imagemagick` which is the standard [`circleci/node:8`](https://hub.docker.com/r/circleci/node/) image with ImageMagick installed on top.
+The builds use custom docker images which contain the appropriate Node.js runtime, as well as the ImageMagick binaries. These custom images are stored in the `.circleci/images` folder. You can use the `.circleci/images/makefile` makefile to build them, but permissions to push to the `dwmkerr` Docker Hub account are required to publish these images. In general, these should not need to be modified.
 
 ## The Sample Projects
 
