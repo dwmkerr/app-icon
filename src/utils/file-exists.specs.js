@@ -19,7 +19,7 @@ describe('file-exists', () => {
   it('should be return a sensible error message with invalid input', () => {
     return fileExists(undefined)
       .catch((err) => {
-        expect(err.message).to.match(/path/);
+        expect(err.message).to.match(/path.*string/);
       });
   });
 });

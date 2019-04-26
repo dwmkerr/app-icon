@@ -21,7 +21,7 @@ describe('delete-if-exists', () => {
   it('should be return a sensible error message with invalid input', () => {
     return deleteIfExists(undefined)
       .catch((err) => {
-        expect(err.message).to.match(/path/);
+        expect(err.message).to.match(/path.*string/);
       });
   });
 });
