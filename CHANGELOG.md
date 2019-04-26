@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.1](https://github.com/dwmkerr/app-icon/compare/v0.11.0...v0.11.1) (2019-04-26)
+
+
+### Bug Fixes
+
+* **security:** Update mocha to resolve security vulnerabilities ([9bd8dc3](https://github.com/dwmkerr/app-icon/commit/9bd8dc3))
+* **tests:** Update regex for node error messages ([0939dfe](https://github.com/dwmkerr/app-icon/commit/0939dfe))
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 # [0.11.0](https://github.com/dwmkerr/app-icon/compare/v0.10.0...v0.11.0) (2019-04-25)
 
 
