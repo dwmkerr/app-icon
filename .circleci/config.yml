@@ -2,9 +2,9 @@ version: 2
 jobs:
   # To test, we just build the code, run the tests, then create and upload
   # a coverage report.
-  test:
+  test-common: &test-common
     docker:
-      - image: dwmkerr/node:8-imagemagick
+        - image: dwmkerr/node:8-imagemagick
     steps:
       - checkout
       - run: make test
@@ -17,12 +17,34 @@ jobs:
           path: "src/label/test-images"
       - store_artifacts:
           path: "src/resize/test-images"
+  test-node8:
+    <<: *test-common
+    docker:
+      - image: dwmkerr/node:8-imagemagick
+  test-node10:
+    <<: *test-common
+    docker:
+      - image: dwmkerr/node:10-imagemagick
+  test-node12:
+    <<: *test-common
+    docker:
+      - image: dwmkerr/node:12-imagemagick
 
 workflows:
   version: 2
   build:
     jobs:
-      - test:
+      - test-node8:
+          # All branches, all tags.
+          filters:
+            tags:
+              only: /.*/
+      - test-node10:
+          # All branches, all tags.
+          filters:
+            tags:
+              only: /.*/
+      - test-node12:
           # All branches, all tags.
           filters:
             tags:
