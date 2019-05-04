@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.production.guardrails.io/dwmkerr/app-icon.svg)](https://www.guardrails.io) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/app-icon.svg)](https://greenkeeper.io/) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 6 and onwards supported.
+Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 8 and onwards supported.
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
@@ -181,7 +181,7 @@ Note that Adaptive Icons of *all* supported sizes are generated. However, we als
 
 ## Developer Guide
 
-The only dependencies are Node 6 (or above) and Yarn.
+The only dependencies are Node 8 (or above) and Yarn.
 
 Useful commands for development are:
 
@@ -198,8 +198,8 @@ Currently the linting style is based on [airbnb](https://github.com/airbnb/javas
 Install the dependencies (I recommend [Node Version Manager](https://github.com/creationix/nvm)):
 
 ```bash
-nvm install 6
-nvm use 6
+nvm install 8
+nvm use 8
 git clone git@github.com:dwmkerr/app-icon.git
 cd app-icon
 npm install && npm test

@@ -1,4 +1,6 @@
-extends: airbnb-base
+extends: 
+  - airbnb-base
+  - plugin:node/recommended
 env:
   node: true
   mocha: true
@@ -10,3 +12,4 @@ rules:
   # tests, so relax the requirement to have single return statements
   arrow-body-style: 0
   import/no-extraneous-dependencies: [error, { devDependencies: ['**/*.specs.js'] }]
+  no-process-exit: 0

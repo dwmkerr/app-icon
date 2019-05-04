@@ -7,7 +7,7 @@ const rexNodeModules = new RegExp('node_modules');
 const rexBuildFoler = new RegExp(`${path.normalize('/build/').replace(/\\/g, '\\\\')}`);
 
 //  Given a search root, finds all iOS iconsets.
-module.exports = function findAndroidManifests(searchRoot) {
+module.exports = async function findAndroidManifests(searchRoot) {
   return find(searchRoot, (file, stat) => {
     //  Exclude: node modules and android build intermediates.
     if (file.match(rexNodeModules)) return false;

@@ -6,7 +6,7 @@ const fileExists = require('../utils/file-exists');
 const sourceIcon = './test/icon.png';
 
 describe('generate-iconset-icons', () => {
-  it('should be able to generate icons for the React Native iconset', () => {
+  it('should be able to generate icons for the React Native iconset', async () => {
     const files = [
       'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-40x40-1x.png',
       'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset/ipad-29x29-2x.png',
@@ -28,19 +28,15 @@ describe('generate-iconset-icons', () => {
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
-    return Promise.all(files.map(deleteIfExists))
-      .then(() => (
-        generateIconsetIcons(sourceIcon, 'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset')
-      ))
-      .then(() => Promise.all(files.map(fileExists)))
-      .then((filesDoExist) => {
-        filesDoExist.forEach((exists, index) => {
-          expect(exists, `${files[index]} should be generated`).to.equal(true);
-        });
-      });
+    await Promise.all(files.map(deleteIfExists));
+    await (generateIconsetIcons(sourceIcon, 'test/ReactNativeIconTest/ios/ReactNativeIconTest/Images.xcassets/AppIcon.appiconset'));
+    const filesDoExist = await Promise.all(files.map(fileExists));
+    filesDoExist.forEach((exists, index) => {
+      expect(exists, `${files[index]} should be generated`).to.equal(true);
+    });
   });
 
-  it('should be able to generate icons for the Cordova iconset', () => {
+  it('should be able to generate icons for the Cordova iconset', async () => {
     const files = [
       'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset/ipad-40x40-1x.png',
       'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset/ipad-29x29-2x.png',
@@ -62,19 +58,15 @@ describe('generate-iconset-icons', () => {
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
-    return Promise.all(files.map(deleteIfExists))
-      .then(() => (
-        generateIconsetIcons(sourceIcon, 'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset')
-      ))
-      .then(() => Promise.all(files.map(fileExists)))
-      .then((filesDoExist) => {
-        filesDoExist.forEach((exists, index) => {
-          expect(exists, `${files[index]} should be generated`).to.equal(true);
-        });
-      });
+    await Promise.all(files.map(deleteIfExists));
+    await (generateIconsetIcons(sourceIcon, 'test/CordovaApp/platforms/ios/ionic_app/Images.xcassets/AppIcon.appiconset'));
+    const filesDoExist = await Promise.all(files.map(fileExists));
+    filesDoExist.forEach((exists, index) => {
+      expect(exists, `${files[index]} should be generated`).to.equal(true);
+    });
   });
 
-  it('should be able to generate icons for the Native iconset', () => {
+  it('should be able to generate icons for the Native iconset', async () => {
     const files = [
       'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset/ipad-40x40-1x.png',
       'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset/ipad-29x29-2x.png',
@@ -96,15 +88,11 @@ describe('generate-iconset-icons', () => {
     ];
 
     //  Delete all of the files we're expecting to create, then generate them.
-    return Promise.all(files.map(deleteIfExists))
-      .then(() => (
-        generateIconsetIcons(sourceIcon, 'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset')
-      ))
-      .then(() => Promise.all(files.map(fileExists)))
-      .then((filesDoExist) => {
-        filesDoExist.forEach((exists, index) => {
-          expect(exists, `${files[index]} should be generated`).to.equal(true);
-        });
-      });
+    await Promise.all(files.map(deleteIfExists));
+    await (generateIconsetIcons(sourceIcon, 'test/NativeApp/ios/native_app/Assets.xcassets/AppIcon.appiconset'));
+    const filesDoExist = await Promise.all(files.map(fileExists));
+    filesDoExist.forEach((exists, index) => {
+      expect(exists, `${files[index]} should be generated`).to.equal(true);
+    });
   });
 });

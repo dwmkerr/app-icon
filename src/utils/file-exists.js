@@ -1,11 +1,14 @@
 const fs = require('fs');
+const { promisify } = require('util');
 
-module.exports = function fileExists(path) {
-  return new Promise((resolve, reject) => {
-    fs.stat(path, (err) => {
-      if (err === null) return resolve(true);
-      if (err && err.code === 'ENOENT') return resolve(false);
-      return reject(err);
-    });
-  });
+const statAsync = promisify(fs.stat);
+
+module.exports = async function fileExists(path) {
+  try {
+    await statAsync(path);
+    return true;
+  } catch (err) {
+    if (err && err.code === 'ENOENT') return false;
+    throw err;
+  }
 };

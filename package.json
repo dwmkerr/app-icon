@@ -3,14 +3,17 @@
   "version": "0.11.1",
   "description": "Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Inspired by cordova-icon.",
   "main": "./src/index.js",
+  "engines": {
+    "node": ">=8.5"
+  },
   "bin": {
     "app-icon": "./bin/app-icon.js"
   },
   "scripts": {
     "start": "./bin/app-icon.js",
-    "test": "mocha -t 10000 ./src/{,**/}*.specs.js",
+    "test": "mocha -t 15000 ./src/{,**/}*.specs.js",
     "test:debug": "mocha -d -w ./src/{,**/}*.specs.js",
-    "cov": "nyc mocha --timeout 10000 ./src/{,**/}*.specs.js",
+    "cov": "nyc mocha --timeout 15000 ./src/{,**/}*.specs.js",
     "lint": "eslint .",
     "release": "standard-version"
   },
@@ -36,6 +39,7 @@
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.1",
     "mocha": "^6.1.4",
     "nyc": "^14.0.0",
     "standard-version": "^5.0.0"
