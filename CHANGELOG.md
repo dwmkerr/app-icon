@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.12.0](https://github.com/dwmkerr/app-icon/compare/v0.11.1...v0.12.0) (2019-05-04)
+
+
+### chore
+
+* Refactor code to take advantage of async/await ([326d26f](https://github.com/dwmkerr/app-icon/commit/326d26f))
+
+
+### BREAKING CHANGES
+
+* Support for Node 6 deprecated, now minimum Node 8
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 ## [0.11.1](https://github.com/dwmkerr/app-icon/compare/v0.11.0...v0.11.1) (2019-04-26)
 
 
