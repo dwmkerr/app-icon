@@ -4,7 +4,7 @@
 
 Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 8 and onwards supported.
 
-<img src="./assets/banner.png" width="614" alt="Banner">
+<img src="./assets/banner/banner.png" width="614" alt="Banner">
 
 <!-- vim-markdown-toc GFM -->
 
