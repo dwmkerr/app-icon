@@ -4,7 +4,7 @@
 
 Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 8 and onwards supported.
 
-<img src="./assets/banner.png" width="614" alt="Banner">
+<img src="./assets/banner/banner.png" width="614" alt="Banner">
 
 <!-- vim-markdown-toc GFM -->
 
@@ -21,6 +21,7 @@ Icon management for Mobile Apps. Create icons, generate all required sizes, labe
     * [Commit Messages](#commit-messages)
     * [Creating a Release](#creating-a-release)
     * [Builds](#builds)
+    * [Debugging](#debugging)
 * [The Sample Projects](#the-sample-projects)
     * [React Native](#react-native)
     * [Cordova](#cordova)
@@ -240,6 +241,14 @@ make circleci
 ```
 
 The builds use custom docker images which contain the appropriate Node.js runtime, as well as the ImageMagick binaries. These custom images are stored in the `.circleci/images` folder. You can use the `.circleci/images/makefile` makefile to build them, but permissions to push to the `dwmkerr` Docker Hub account are required to publish these images. In general, these should not need to be modified.
+
+### Debugging
+
+The [`debug`](https://www.npmjs.com/package/debug) package is used to support low-level debugging. If you want to see debug messages when running the tool, just set the `DEBUG` environment variable to `app-icon`:
+
+```sh
+DEBUG=app-icon app-icon generate --platforms android
+```
 
 ## The Sample Projects
 
