@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.0",
-    "commander": "^2.19.0",
+    "commander": "^3.0.0",
     "debug": "^4.1.1",
     "imagemagick-cli": "^0.5.0",
     "mkdirp": "^0.5.1",
