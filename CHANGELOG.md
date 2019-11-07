@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.13.1](https://github.com/dwmkerr/app-icon/compare/v0.13.0...v0.13.1) (2019-11-07)
+
+
+### Features
+
+* Strip metadata from output images ([c73f735](https://github.com/dwmkerr/app-icon/commit/c73f7355fb680dc7959fd78c9944b13c2ee06527))
+
+
+### Bug Fixes
+
+* **package:** update commander to version 3.0.0 ([f8ba45d](https://github.com/dwmkerr/app-icon/commit/f8ba45dd15d8838674112c1ebf79e682ed309971))
+* **package:** update rimraf to version 3.0.0 ([911ad83](https://github.com/dwmkerr/app-icon/commit/911ad8383f886718112c6f649317abcedf4f64be))
+
 ## [0.13.0](https://github.com/dwmkerr/app-icon/compare/v0.12.0...v0.13.0) (2019-07-04)
 
 
