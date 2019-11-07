@@ -39,9 +39,9 @@ describe('generate-manifest-icons', () => {
     it(`should be able to generate icons and round icons for the ${projectName} manifest`, async () => {
       //  Get the manifest folder, create an array of every icon we expect to see.
       const manifestFolder = path.dirname(manifestPath);
-      const resourceFolders = expectedFolders.map(f => path.join(manifestFolder, f));
+      const resourceFolders = expectedFolders.map((f) => path.join(manifestFolder, f));
       const resourceFoldersFiles = resourceFolders.reduce((allFiles, folder) => {
-        expectedFiles.forEach(ef => allFiles.push(path.join(folder, ef)));
+        expectedFiles.forEach((ef) => allFiles.push(path.join(folder, ef)));
         return allFiles;
       }, []);
 

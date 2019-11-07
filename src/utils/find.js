@@ -37,7 +37,7 @@ module.exports = function find(root, predicate) {
   return new Promise((resolve, reject) => {
     walk(root, [], predicate, (err, files) => {
       if (err) return reject(err);
-      return resolve(files.map(f => path.relative('', f)));
+      return resolve(files.map((f) => path.relative('', f)));
     });
   });
 };
