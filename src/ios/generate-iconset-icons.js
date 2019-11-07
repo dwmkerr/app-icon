@@ -25,7 +25,7 @@ module.exports = async function generateIconSetIcons(sourceIcon, iconset) {
     const targetName = `${image.idiom}-${image.size}-${image.scale}.png`;
     const targetPath = path.join(iconset, targetName);
     const targetScale = parseInt(image.scale.slice(0, 1), 10);
-    const targetSize = image.size.split('x').map(p => p * targetScale).join('x');
+    const targetSize = image.size.split('x').map((p) => p * targetScale).join('x');
     await resizeImage(sourceIcon, targetPath, targetSize);
     results.icons.push(targetName);
     contents.images.push({

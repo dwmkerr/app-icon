@@ -44,18 +44,18 @@ describe('generate-manifest-adaptive-icons', () => {
     it(`should be able to generate adaptive icons for the ${projectName} manifest`, async () => {
       //  Get the manifest folder, create an array of every icon we expect to see.
       const manifestFolder = path.dirname(manifestPath);
-      const resourceFolders = expectedFolders.map(f => path.join(manifestFolder, f));
+      const resourceFolders = expectedFolders.map((f) => path.join(manifestFolder, f));
       const resourceFoldersFiles = resourceFolders.reduce((allFiles, folder) => {
-        expectedFiles.forEach(ef => allFiles.push(path.join(folder, ef)));
+        expectedFiles.forEach((ef) => allFiles.push(path.join(folder, ef)));
         return allFiles;
       }, []);
 
       //  A bit of a hack here - the 'anydpi' folder should not contain any images,
       //  it just references the other mipmaps. So remove the anydpi folder images
       //  from the expected set of files.
-      const expectedPaths = resourceFoldersFiles.filter(f => !(/anydpi.*png$/.test(f)));
+      const expectedPaths = resourceFoldersFiles.filter((f) => !(/anydpi.*png$/.test(f)));
       console.log(`Len: ${resourceFoldersFiles.length}`);
-      expectedPaths.forEach(f => console.log(`Expecting: ${f}`));
+      expectedPaths.forEach((f) => console.log(`Expecting: ${f}`));
 
       //  Delete all of the folders we're expecting to create, then generate the icons.
       await Promise.all(resourceFolders.map(deleteFolderIfExists));
