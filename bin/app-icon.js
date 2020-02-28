@@ -46,6 +46,7 @@ program
   .option('--background-icon [optional]', "The background icon path. Defaults to 'icon.background.png'")
   .option('--foreground-icon [optional]', "The foregroud icon path. Defaults to 'icon.foregroud.png'")
   .option('--adaptive-icons [optional]', "Additionally, generate Android Adaptive Icon templates. Defaults to 'false'")
+  .option('--rounded [optional]', "Rounded options for Android, Possible values: [none, only].")
   .action(async (parameters) => {
     const {
       icon,
@@ -54,6 +55,7 @@ program
       search,
       platforms,
       adaptiveIcons,
+      rounded,
     } = parameters;
 
     await imageMagickCheck();
@@ -75,6 +77,7 @@ program
         searchRoot: search,
         platforms,
         adaptiveIcons,
+        rounded,
       });
     } catch (err) {
       console.error(chalk.red(`An error occurred generating the icons: ${err.message}`));

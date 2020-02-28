@@ -8,7 +8,7 @@ const androidManifestIcons = require('./AndroidManifest.icons.json');
 const resizeImage = require('../resize/resize-image');
 
 //  Generate Android Manifest icons given a manifest file.
-module.exports = async function generateManifestIcons(sourceIcon, manifest) {
+module.exports = async function generateManifestIcons(sourceIcon, manifest, rounded) {
   //  Create the object we will return.
   const results = {
     icons: [],
@@ -17,8 +17,21 @@ module.exports = async function generateManifestIcons(sourceIcon, manifest) {
   //  We've got the manifest file, get the parent folder.
   const manifestFolder = path.dirname(manifest);
 
+  function filterRounded(icon) {
+    if (!rounded) return true;
+
+    switch (rounded) {
+      case 'only':
+        return icon.path.indexOf('ic_launcher_round.png') !== -1;
+      case 'none':
+        return icon.path.indexOf('ic_launcher_round.png') === -1;
+      default:
+        return true;
+    }
+  }
+
   //  Generate each image in the full icon set, updating the contents.
-  await Promise.all(androidManifestIcons.icons.map(async (icon) => {
+  await Promise.all(androidManifestIcons.icons.filter(filterRounded).map(async (icon) => {
     const targetPath = path.join(manifestFolder, icon.path);
 
     //  Each icon lives in its own folder, so we'd better make sure that folder
