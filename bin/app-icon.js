@@ -46,7 +46,7 @@ program
   .option('--background-icon [optional]', "The background icon path. Defaults to 'icon.background.png'")
   .option('--foreground-icon [optional]', "The foregroud icon path. Defaults to 'icon.foregroud.png'")
   .option('--adaptive-icons [optional]', "Additionally, generate Android Adaptive Icon templates. Defaults to 'false'")
-  .option('--rounded [optional]', "Rounded options for Android, Possible values: [none, only].")
+  .option('--rounded [optional]', 'Rounded options for Android, Possible values: [none, only].')
   .action(async (parameters) => {
     const {
       icon,
