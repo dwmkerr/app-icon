@@ -2,12 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const { EOL } = require('os');
 const mkdirp = require('mkdirp');
-const { promisify } = require('util');
 
 const androidManifestAdaptiveIcons = require('./AndroidManifest.adaptive-icons.json');
 const resizeImage = require('../resize/resize-image');
-
-const mkdirpAsync = promisify(mkdirp);
 
 //  The XML for the ic launcher manifest.
 //  eslint-disable-next-line
@@ -33,7 +30,7 @@ module.exports = async function generateManifestIcons(backgroundIcon, foreground
     //  Each icon lives in its own folder, so we'd better make sure that folder
     //  exists.
     const resourceFolder = path.join(manifestFolder, icon.folder);
-    await mkdirpAsync(resourceFolder);
+    await mkdirp(resourceFolder);
 
     fs.writeFileSync(path.join(resourceFolder, 'ic_launcher.xml'), icLauncherManifestXml, 'utf8');
     fs.writeFileSync(path.join(resourceFolder, 'ic_launcher_round.xml'), icLauncherManifestXml, 'utf8');

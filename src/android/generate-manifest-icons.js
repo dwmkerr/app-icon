@@ -1,8 +1,5 @@
 const path = require('path');
 const mkdirp = require('mkdirp');
-const { promisify } = require('util');
-
-const mkdirpAsync = promisify(mkdirp);
 
 const androidManifestIcons = require('./AndroidManifest.icons.json');
 const resizeImage = require('../resize/resize-image');
@@ -23,7 +20,7 @@ module.exports = async function generateManifestIcons(sourceIcon, manifest) {
 
     //  Each icon lives in its own folder, so we'd better make sure that folder
     //  exists.
-    await mkdirpAsync(path.dirname(targetPath));
+    await mkdirp(path.dirname(targetPath));
     results.icons.push(icon.path);
 
     return resizeImage(sourceIcon, targetPath, icon.size);
