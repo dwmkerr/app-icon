@@ -15,6 +15,7 @@ Icon management for Mobile Apps. Create icons, generate all required sizes, labe
     * [Generating Icons](#generating-icons)
     * [Labelling Icons](#labelling-icons)
     * [Adaptive Icons](#adaptive-icons)
+    * [Rounded Icons on Android](#rounded-icons-on-android)
 * [Developer Guide](#developer-guide)
     * [Initial Setup](#initial-setup)
     * [Running Tests](#running-tests)
@@ -179,6 +180,23 @@ There is an excellent guide on developing Adaptive Icons [here](https://medium.c
 To test how adaptive icons will look when animated, swiped, etc, the [Adaptive Icons](https://adapticon.tooo.io/) website by [Marius Claret](https://twitter.com/mariusclaret) is very useful!
 
 Note that Adaptive Icons of *all* supported sizes are generated. However, we also generate the `res/mipmap-anydpi-v26/` adaptive icon. This is a large size icon which Android from v26 onwards will automatically rescale as needed to all other sizes. This technically makes the density specific icons redundant. The reason we generate both is to ensure that after `generate` is run, *all* icons in the project will be consistent.
+
+### Rounded Icons on Android
+
+The default behaviour when generating icons is that both normal and rounded icons are generated from a single image. If you want to use different image files for normal and rounded icons, you can set the `--rounded` option to specify behaviour.
+
+Setting `--rounded none` means that the tool will not generate any `ic_launcher_round.png` icons for Android. While setting `--rounded only` means that it will generate **only** `ic_launcher_round.png` icons.
+
+In this way, you can generate "normal" and "rounded" icons from different image files.
+
+Sample usage:
+```bash
+# generates all iOS icons and "normal" icons on Android:
+app-icon generate -i icon.png --platforms=android,ios --rounded none
+
+# generates just rounded icons on Android:
+app-icon generate -i icon.round.png --platforms=android --rounded only
+```
 
 ## Developer Guide
 
