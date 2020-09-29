@@ -44,7 +44,7 @@ program
   .option('-s, --search [optional]', "The folder to search from. Defaults to './'", './')
   .option('-p, --platforms [optional]', "The platforms to generate icons for. Defaults to 'android,ios'", 'android,ios')
   .option('--background-icon [optional]', "The background icon path. Defaults to 'icon.background.png'")
-  .option('--foreground-icon [optional]', "The foregroud icon path. Defaults to 'icon.foregroud.png'")
+  .option('--foreground-icon [optional]', "The foreground icon path. Defaults to 'icon.foreground.png'")
   .option('--adaptive-icons [optional]', "Additionally, generate Android Adaptive Icon templates. Defaults to 'false'")
   .action(async (parameters) => {
     const {
