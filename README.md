@@ -161,7 +161,7 @@ This would produce output like the below image:
 
 This is a useful trick when you are creating things like internal QA versions of your app, where you might want to show a version number or other label in the icon itself.
 
-To label adaptive icons, simply run the `label` command against the _foregroud_ adaptive icon image.
+To label adaptive icons, simply run the `label` command against the _foreground_ adaptive icon image.
 
 ### Adaptive Icons
 
