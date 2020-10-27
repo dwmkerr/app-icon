@@ -20,6 +20,7 @@ module.exports = function validateParameters(parameters) {
   const adaptiveIcons = !!parameters.adaptiveIcons;
   const backgroundIcon = parameters.backgroundIcon || 'icon.background.png';
   const foregroundIcon = parameters.foregroundIcon || 'icon.foreground.png';
+  const assetName = parameters.assetName || '';
 
   return {
     sourceIcon,
@@ -28,5 +29,6 @@ module.exports = function validateParameters(parameters) {
     searchRoot,
     platforms,
     adaptiveIcons,
+    assetName,
   };
 };

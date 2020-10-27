@@ -16,6 +16,21 @@ describe('generate', () => {
     expect(results.manifests.length).to.equal(4);
   });
 
+  it('should be able to generate icons for Custom xcasset set', async () => {
+    const parameters = {
+      sourceIcon: './test/icon.png',
+      searchPath: './',
+      assetName: 'CustomAppIcon'
+    };
+
+    //  Delete all of the files we're expecting to create, then generate them.
+    const results = await generate(parameters);
+    //  TODO: Check we found the manifests etc etc
+    expect(results).not.to.equal(null);
+    expect(results.iconsets.length).to.equal(1);
+    expect(results.manifests.length).to.equal(4);
+  });
+
   it('should be able to generate test app icons with adaptive icons included', async () => {
     const parameters = {
       sourceIcon: './test/icon.png',

@@ -15,6 +15,7 @@ module.exports = async function generate(parameters) {
     searchRoot,
     platforms,
     adaptiveIcons,
+    assetName
   } = validateParameters(parameters || {});
 
   //  Set up the results object.
@@ -24,7 +25,12 @@ module.exports = async function generate(parameters) {
     adaptiveIconManifests: [],
   };
 
-  const iconSets = await findIconsetFolders(searchRoot);
+  const iconSets = await findIconsetFolders(searchRoot, assetName);
+
+  if(iconSets.length === 0){
+    console.error(chalk.red(`No iconset found in xcode project`));
+  }
+
   await Promise.all(iconSets.map(async (iconset) => {
     if (!platforms.includes('ios')) return null;
     console.log(`Found iOS iconset: ${iconset}...`);
@@ -59,5 +65,10 @@ module.exports = async function generate(parameters) {
 
     return null;
   }));
+
+  if(manifests.length === 0){
+    console.error(chalk.red(`No manifest found in android project`));
+  }
+
   return results;
 };
