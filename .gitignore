@@ -12,5 +12,8 @@ src/label/test-images/*-output.png
 src/resize/test-images/*output.png
 .nyc_output/
 
+.idea
+*.iml
+
 # Windows junk.
 Thumbs.db
