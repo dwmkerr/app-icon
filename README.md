@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/app-icon.svg)](https://badge.fury.io/js/app-icon) [![CircleCI](https://circleci.com/gh/dwmkerr/app-icon.svg?style=shield)](https://circleci.com/gh/dwmkerr/app-icon) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/app-icon) [![codecov](https://codecov.io/gh/dwmkerr/app-icon/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/app-icon) [![dependencies Status](https://david-dm.org/dwmkerr/app-icon/status.svg)](https://david-dm.org/dwmkerr/app-icon) [![devDependencies Status](https://david-dm.org/dwmkerr/app-icon/dev-status.svg)](https://david-dm.org/dwmkerr/app-icon?type=dev) [![GuardRails badge](https://badges.guardrails.io/dwmkerr/app-icon.svg?token=569f2cc38a148f785f3a38ef0bcf5f5964995d7ca625abfad9956b14bd06ad96&provider=github)](https://dashboard.guardrails.io/default/gh/dwmkerr/app-icon) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/app-icon.svg)](https://greenkeeper.io/) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 8 and onwards supported.
+Icon management for Mobile Apps. Create icons, generate all required sizes, label and annotate. Supports Native, Cordova, React Native, Xamarin and more. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon). Node 10 and onwards supported.
 
 <img src="./assets/banner/banner.png" width="614" alt="Banner">
 
@@ -182,7 +182,7 @@ Note that Adaptive Icons of *all* supported sizes are generated. However, we als
 
 ## Developer Guide
 
-The only dependencies are Node 8 (or above) and Yarn.
+The only dependencies are Node 10 (or above) and Yarn.
 
 Useful commands for development are:
 

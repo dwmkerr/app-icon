@@ -4,7 +4,7 @@ jobs:
   # a coverage report.
   test-common: &test-common
     docker:
-        - image: dwmkerr/node:8-imagemagick
+        - image: dwmkerr/node:10-imagemagick
     steps:
       - checkout
       - run: make test
@@ -17,10 +17,6 @@ jobs:
           path: "src/label/test-images"
       - store_artifacts:
           path: "src/resize/test-images"
-  test-node8:
-    <<: *test-common
-    docker:
-      - image: dwmkerr/node:8-imagemagick
   test-node10:
     <<: *test-common
     docker:
@@ -34,11 +30,6 @@ workflows:
   version: 2
   build:
     jobs:
-      - test-node8:
-          # All branches, all tags.
-          filters:
-            tags:
-              only: /.*/
       - test-node10:
           # All branches, all tags.
           filters:
