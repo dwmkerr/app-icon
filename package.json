@@ -11,9 +11,9 @@
   },
   "scripts": {
     "start": "./bin/app-icon.js",
-    "test": "mocha -t 15000 ./src/{,**/}*.specs.js",
+    "test": "mocha --timeout 20000 ./src/{,**/}*.specs.js",
     "test:debug": "mocha -d -w ./src/{,**/}*.specs.js",
-    "cov": "nyc mocha --timeout 15000 ./src/{,**/}*.specs.js",
+    "cov": "nyc mocha --timeout 20000 ./src/{,**/}*.specs.js",
     "lint": "eslint .",
     "release": "standard-version"
   },
@@ -22,7 +22,9 @@
     "url": "git+https://github.com/dwmkerr/app-icon.git"
   },
   "keywords": [
-    "cordvoa",
+    "android",
+    "ios",
+    "cordova",
     "react-native",
     "icon",
     "cordova-icon",

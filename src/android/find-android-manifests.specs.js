@@ -14,11 +14,11 @@ describe('find-android-manifests', () => {
     expect(manifests).to.include(path.normalize('test/ReactNativeIconTest/android/app/src/main/AndroidManifest.xml'));
   });
 
-  it('should be able to find the Cordova manifests', async () => {
+  it('should be able to find the Cordova manifest', async () => {
     const manifests = await findAndroidManifests('./test/CordovaApp');
-    expect(manifests.length).to.equal(2);
+    expect(manifests.length).to.equal(1);
     expect(manifests).to.include(path.normalize('test/CordovaApp/platforms/android/AndroidManifest.xml'));
-    expect(manifests).to.include(path.normalize('test/CordovaApp/platforms/android/CordovaLib/AndroidManifest.xml'));
+    expect(manifests).to.not.include(path.normalize('test/CordovaApp/platforms/android/CordovaLib/AndroidManifest.xml'));
   });
 
   it('should be able to find the Native manifest', async () => {
