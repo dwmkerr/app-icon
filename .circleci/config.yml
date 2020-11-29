@@ -25,6 +25,10 @@ jobs:
     <<: *test-common
     docker:
       - image: dwmkerr/node:12-imagemagick
+  test-node14:
+    <<: *test-common
+    docker:
+      - image: dwmkerr/node:14-imagemagick
 
 workflows:
   version: 2
@@ -36,6 +40,11 @@ workflows:
             tags:
               only: /.*/
       - test-node12:
+          # All branches, all tags.
+          filters:
+            tags:
+              only: /.*/
+      - test-node14:
           # All branches, all tags.
           filters:
             tags:
