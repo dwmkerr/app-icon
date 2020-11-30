@@ -21,6 +21,11 @@ module.exports = function validateParameters(parameters) {
   const backgroundIcon = parameters.backgroundIcon || 'icon.background.png';
   const foregroundIcon = parameters.foregroundIcon || 'icon.foreground.png';
 
+  const { rounded } = parameters;
+  if (rounded && (rounded !== 'none' && rounded !== 'only')) {
+    throw new Error(`--rounded option '${rounded}' unrecognized, expected 'none' or 'only'.`);
+  }
+
   return {
     sourceIcon,
     backgroundIcon,
@@ -28,5 +33,6 @@ module.exports = function validateParameters(parameters) {
     searchRoot,
     platforms,
     adaptiveIcons,
+    rounded,
   };
 };

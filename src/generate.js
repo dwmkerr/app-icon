@@ -15,6 +15,7 @@ module.exports = async function generate(parameters) {
     searchRoot,
     platforms,
     adaptiveIcons,
+    rounded,
   } = validateParameters(parameters || {});
 
   //  Set up the results object.
@@ -43,7 +44,7 @@ module.exports = async function generate(parameters) {
     if (!platforms.includes('android')) return null;
     console.log(`Found Android Manifest: ${manifest}...`);
 
-    const manResult = await generateManifestIcons(sourceIcon, manifest);
+    const manResult = await generateManifestIcons(sourceIcon, manifest, rounded);
     results.manifests.push({ manifest, icons: manResult.icons });
     manResult.icons.forEach((icon) => {
       console.log(`    ${chalk.green('✓')}  Generated icon ${icon}`);
