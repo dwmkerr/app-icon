@@ -1,0 +1,9 @@
+{
+    "notificationIcons": [
+        { "path": "res/drawable-mdpi/ic_stat_<originalFileName>"           , "size": "24x24" },
+        { "path": "res/drawable-hdpi/ic_stat_<originalFileName>"           , "size": "36x36" },
+        { "path": "res/drawable-xhdpi/ic_stat_<originalFileName>"          , "size": "48x48" },
+        { "path": "res/drawable-xxhdpi/ic_stat_<originalFileName>"         , "size": "72x72" },
+        { "path": "res/drawable-xxxhdpi/ic_stat_<originalFileName>"        , "size": "96x96" }
+    ]
+}

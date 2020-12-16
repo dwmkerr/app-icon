@@ -7,9 +7,11 @@ describe('validateParameters', () => {
       sourceIcon: 'icon.png',
       backgroundIcon: 'icon.background.png',
       foregroundIcon: 'icon.foreground.png',
+      notificationIcon: 'notification.png',
       searchRoot: './',
       platforms: 'android,ios',
       adaptiveIcons: false,
+      notificationIcons: false,
     };
   }
 
@@ -34,6 +36,13 @@ describe('validateParameters', () => {
     assert.strictEqual(parameters.foregroundIcon, 'icon.foreground.png');
   });
 
+  it('should provide a default notification icon', () => {
+    const params = validParameters();
+    delete params.notificationIcon;
+    const parameters = validateParameters(params);
+    assert.strictEqual(parameters.notificationIcon, 'notification.png');
+  });
+
   it('should provide a default search root', () => {
     const params = validParameters();
     delete params.searchRoot;
@@ -46,6 +55,13 @@ describe('validateParameters', () => {
     delete params.adaptiveIcons;
     const parameters = validateParameters(params);
     assert.strictEqual(parameters.adaptiveIcons, false);
+  });
+
+  it('should provide a default notification icons option', () => {
+    const params = validParameters();
+    delete params.notificationIcons;
+    const parameters = validateParameters(params);
+    assert.strictEqual(parameters.notificationIcons, false);
   });
 
   it('should provide a default set of platforms', () => {
