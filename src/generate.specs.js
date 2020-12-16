@@ -33,4 +33,21 @@ describe('generate', () => {
     expect(results.manifests.length).to.equal(3);
     expect(results.adaptiveIconManifests.length).to.equal(3);
   });
+
+  it('should be able to generate test app icons with notification icons included', async () => {
+    const parameters = {
+      sourceIcon: './test/icon.png',
+      notificationIcon: './test/notification.png',
+      searchPath: './',
+      notificationIcons: true,
+    };
+
+    //  Delete all of the files we're expecting to create, then generate them.
+    const results = await generate(parameters);
+    //  TODO: Check we found the manifests etc etc
+    expect(results).to.not.equal(null);
+    expect(results.iconsets.length).to.equal(3);
+    expect(results.manifests.length).to.equal(3);
+    expect(results.notificationIconManifests.length).to.equal(3);
+  });
 });

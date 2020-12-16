@@ -21,12 +21,19 @@ module.exports = function validateParameters(parameters) {
   const backgroundIcon = parameters.backgroundIcon || 'icon.background.png';
   const foregroundIcon = parameters.foregroundIcon || 'icon.foreground.png';
 
+  //  Validate or assign the notification icons flag.
+  //  Set default value for the notification icon path.
+  const notificationIcons = !!parameters.notificationIcons;
+  const notificationIcon = parameters.notificationIcon || 'notification.png';
+
   return {
     sourceIcon,
     backgroundIcon,
     foregroundIcon,
+    notificationIcon,
     searchRoot,
     platforms,
     adaptiveIcons,
+    notificationIcons,
   };
 };
