@@ -3,6 +3,7 @@ const mkdirp = require('mkdirp');
 
 const androidManifestNotificationIcons = require('./AndroidManifest.notification-icons.json');
 const resizeImage = require('../resize/resize-image');
+const monochromeImage = require('../color/monochrome-image');
 
 //  Generate Android Manifest icons given a manifest file.
 module.exports = async function generateManifestIcons(notificationIcon, manifest) {
@@ -24,7 +25,8 @@ module.exports = async function generateManifestIcons(notificationIcon, manifest
     await mkdirp(path.dirname(targetPath));
     results.icons.push(iconPathWithFileName);
 
-    return resizeImage(notificationIcon, targetPath, icon.size);
+    return resizeImage(notificationIcon, targetPath, icon.size)
+      .then(() => monochromeImage(targetPath, targetPath, 'white'));
   }));
   //  Before writing the contents file, sort the contents (otherwise
   //  they could be in a different order each time).
