@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const path = require('path');
-const deleteFolderIfExists = require('../utils/delete-folder-if-exists');
 const generateManifestAdaptiveIcons = require('./generate-manifest-adaptive-icons');
+const deleteFolderIfExists = require('../utils/delete-folder-if-exists');
 const fileExists = require('../utils/file-exists');
 
 const backgroundIcon = './test/icon.background.png';
@@ -59,7 +59,7 @@ describe('generate-manifest-adaptive-icons', () => {
 
       //  Delete all of the folders we're expecting to create, then generate the icons.
       await Promise.all(resourceFolders.map(deleteFolderIfExists));
-      await (generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifestPath));
+      await generateManifestAdaptiveIcons(backgroundIcon, foregroundIcon, manifestPath);
       const filesDoExist = await Promise.all(expectedPaths.map(fileExists));
       filesDoExist.forEach((exists, index) => {
         expect(exists, `${resourceFoldersFiles[index]} should be generated`).to.equal(true);

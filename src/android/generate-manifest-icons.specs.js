@@ -21,6 +21,7 @@ const expectedFiles = [
   './ic_launcher.png',
   './ic_launcher_round.png',
 ];
+
 //  Create a test for each manifest.
 const testManifests = [{
   projectName: 'React Native Manifest',
@@ -47,7 +48,7 @@ describe('generate-manifest-icons', () => {
 
       //  Delete all of the folders we're expecting to create, then generate the icons.
       await Promise.all(resourceFolders.map(deleteFolderIfExists));
-      await (generateManifestIcons(sourceIcon, manifestPath));
+      await generateManifestIcons(sourceIcon, manifestPath);
       const filesDoExist = await Promise.all(resourceFoldersFiles.map(fileExists));
       filesDoExist.forEach((exists, index) => {
         expect(exists, `${resourceFoldersFiles[index]} should be generated`).to.equal(true);
