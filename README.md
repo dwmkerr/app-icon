@@ -70,7 +70,7 @@ Promise.resolve()
   .then(() => appIcon.generate({
     sourceIcon: './icon.png', // Path of the icon to use
     platforms: 'android,ios', // The platforms to generate icons for (i.e. 'android')
-    search: './',
+    searchRoot: './',
   }));
 ```
 
