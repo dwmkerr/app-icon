@@ -4,6 +4,7 @@ const generateIconsetIcons = require('./ios/generate-iconset-icons');
 const findAndroidManifests = require('./android/find-android-manifests');
 const generateManifestIcons = require('./android/generate-manifest-icons');
 const generateManifestAdaptiveIcons = require('./android/generate-manifest-adaptive-icons');
+const generateManifestNotificationIcons = require('./android/generate-manifest-notification-icons');
 const validateParameters = require('./validate-parameters');
 
 module.exports = async function generate(parameters) {
@@ -12,9 +13,11 @@ module.exports = async function generate(parameters) {
     sourceIcon,
     backgroundIcon,
     foregroundIcon,
+    notificationIcon,
     searchRoot,
     platforms,
     adaptiveIcons,
+    notificationIcons,
   } = validateParameters(parameters || {});
 
   //  Set up the results object.
@@ -22,6 +25,7 @@ module.exports = async function generate(parameters) {
     iconsets: [],
     manifests: [],
     adaptiveIconManifests: [],
+    notificationIconManifests: [],
   };
 
   const iconSets = await findIconsetFolders(searchRoot);
@@ -54,6 +58,14 @@ module.exports = async function generate(parameters) {
       results.adaptiveIconManifests.push({ manifest, icons: atvRes.icons });
       atvRes.icons.forEach((icon) => {
         console.log(`    ${chalk.green('✓')}  Generated adaptive icon ${icon}`);
+      });
+    }
+
+    if (notificationIcons) {
+      const notifRes = await generateManifestNotificationIcons(notificationIcon, manifest);
+      results.notificationIconManifests.push({ manifest, icons: notifRes.icons });
+      notifRes.icons.forEach((icon) => {
+        console.log(`    ${chalk.green('✓')}  Generated notification icon ${icon}`);
       });
     }
 
